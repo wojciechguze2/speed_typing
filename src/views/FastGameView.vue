@@ -1,7 +1,7 @@
 <template>
   <div class="main-bg">
     <MainGame
-        :game-mode="GAME_MODE_FAST"
+        :game-mode-type="GAME_MODE_FAST"
     />
   </div>
 </template>

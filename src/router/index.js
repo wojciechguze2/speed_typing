@@ -7,6 +7,12 @@ import SitemapView from '@/views/SitemapView'
 import PrivacyPolicyView from '@/views/PrivacyPolicyView'
 import RegulationsView from '@/views/RegulationsView'
 import TextsView from '@/views/TextsView'
+import LoginView from '@/views/LoginView'
+import RegisterView from '@/views/RegisterView'
+import AccountView from '@/views/AccountView'
+import AccountStatisticsView from '@/views/AccountStatisticsView'
+import LogoutView from '@/views/LogoutView'
+import AccountHistoryView from '@/views/AccountHistoryView'
 
 const routes = [
     {
@@ -48,6 +54,36 @@ const routes = [
         path: '/texts',
         name: 'TextsView',
         component: TextsView
+    },
+    {
+        path: '/login',
+        name: 'LoginView',
+        component: LoginView
+    },
+    {
+        path: '/logout',
+        name: 'LogoutView',
+        component: LogoutView
+    },
+    {
+        path: '/register',
+        name: 'RegisterView',
+        component: RegisterView
+    },
+    {
+        path: '/account',
+        name: 'AccountView',
+        component: AccountView
+    },
+    {
+        path: '/account/statistics',
+        name: 'AccountStatisticsView',
+        component: AccountStatisticsView
+    },
+    {
+        path: '/account/history',
+        name: 'AccountHistoryView',
+        component: AccountHistoryView
     }
 ]
 

@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="container py-3">
-      <h4 class="display-4">
-        O stronie: {{ TITLE }}
-      </h4>
-      <div class="lead m3-4">
+      <h3>
+        O stronie
+      </h3>
+      <div class="lead mt-4">
         Wykorzystane technologie:
         <ul class="mt-2 mb-4">
           <li>

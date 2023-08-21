@@ -4,7 +4,7 @@
         ref="gameInputControl"
         class="form-control"
         :class="{'disabled bg-dark text-white': !isGameRunning}"
-        rows="5"
+        rows="8"
         spellcheck="false"
         autocomplete="off"
         autocapitalize="off"
@@ -14,7 +14,7 @@
     />
     <span class="d-flex justify-content-end">
       Ilość wprowadzonych znaków:&nbsp;
-      <span class="text-primary">
+      <span class="text-primary font-weight-bold">
         {{ gameInputText.length }}
       </span>
     </span>

@@ -1,5 +1,7 @@
 @import 'homepage.scss';
 @import 'game.scss';
+@import 'sidebar.scss'; // todo: split this (in templates)
+@import 'login.scss'; // todo: split this (in templates)
 
 html, body {
   min-height: 100vh;
@@ -11,8 +13,20 @@ html, body {
   pointer-events: none;
 }
 
+.place-content-center {
+  place-content: center;
+}
+
+.font-weight-bold {
+  font-weight: bold;
+}
+
 .mr-10px {
   margin-right: 10px;
+}
+
+.min-vh-90 {
+  min-height: 90vh;
 }
 
 .navbar {

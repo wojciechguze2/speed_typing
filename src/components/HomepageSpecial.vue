@@ -9,7 +9,7 @@
         {{ expectedChar }}
       </span>
     </div>
-    <transition name="fade-out">
+    <transition name="homepage-special-fade-out">
       <textarea
           v-if="!finished"
           ref="homepageSpecialInput"
@@ -59,9 +59,9 @@ export default {
             this.currentCharIndex = 0
             this.finished = false
             this.typeTextAutomatically()
-          }, 3000)
+          }, 2500)
         }
-      }, 50)
+      }, 45)
     }
   }
 }

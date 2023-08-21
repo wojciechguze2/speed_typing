@@ -45,6 +45,9 @@
         <router-link to="/contact" class="nav-link mx-3">
           Kontakt
         </router-link>
+        <router-link :to="isAuthenticated ? '/account' : '/login'" class="nav-link mx-3">
+          <font-awesome-icon icon="user" />
+        </router-link>
       </div>
     </div>
   </header>
@@ -58,6 +61,11 @@ export default {
   data() {
     return {
       TITLE
+    }
+  },
+  computed: {
+    isAuthenticated() {
+      return this.$store.getters.isAuthenticated
     }
   }
 }

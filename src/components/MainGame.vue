@@ -210,6 +210,7 @@ export default {
     },
     clearGameInput() {
       this.gameInputText = ''
+      this.mistakesCount = 0
     },
     pauseGame() {
       this.stopGameTimer()

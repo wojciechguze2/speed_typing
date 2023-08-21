@@ -3,8 +3,8 @@
       class="bg-dark rounded-2 p-2"
       :class="isGameRunning ? 'text-primary' : 'text-danger'"
   >
-    Czas: {{ formatTime(gameTimeMs) }} <br>
-    CPM: {{ cpm }}
+    <p class="m-0 p-1">Czas: <span class="font-weight-bold">{{ formatTime(gameTimeMs) }}</span></p>
+    <p class="m-0 p-1 timer-border-divider">CPM: <span class="font-weight-bold">{{ cpm }}</span></p>
   </div>
 </template>
 
