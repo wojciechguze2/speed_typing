@@ -1,0 +1,64 @@
+<template>
+  <header class="navbar navbar-dark bg-dark">
+    <div class="container d-flex justify-content-between align-items-center">
+      <router-link to="/" class="navbar-brand text-primary">
+        {{ TITLE }}
+      </router-link>
+
+      <div class="d-flex align-items-center">
+        <router-link to="/fast-game" class="nav-link mx-3">
+          <font-awesome-icon icon="play" class="me-1" />
+          Szybki test
+        </router-link>
+        <div class="dropdown ms-3">
+          <button
+              class="btn btn-outline-light dropdown-toggle"
+              type="button"
+              id="game-mode-dropdown"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+          >
+            Tryby do wyboru
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="game-mode-dropdown">
+            <li>
+              <router-link to="/mode1" class="dropdown-item">
+                Tryb 1
+              </router-link>
+            </li>
+            <li>
+              <router-link to="/mode2" class="dropdown-item">
+                Tryb 2
+              </router-link>
+            </li>
+          </ul>
+        </div>
+        <router-link to="/texts" class="nav-link mx-3">
+          <font-awesome-icon icon="list" class="me-1" />
+          Lista tekstów
+        </router-link>
+      </div>
+      <div class="d-flex">
+        <router-link to="/about" class="nav-link mx-3">
+          O stronie
+        </router-link>
+        <router-link to="/contact" class="nav-link mx-3">
+          Kontakt
+        </router-link>
+      </div>
+    </div>
+  </header>
+</template>
+
+<script>
+import { TITLE } from '@/plugins/constants'
+
+export default {
+  name: 'MainHeader',
+  data() {
+    return {
+      TITLE
+    }
+  }
+}
+</script>

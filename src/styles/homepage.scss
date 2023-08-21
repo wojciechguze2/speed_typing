@@ -1,0 +1,15 @@
+.homepage {
+  .fade-out-enter-active,
+  .fade-out-leave-active {
+    transition: opacity 3s;
+  }
+
+  .fade-out-leave-active {
+    color: #199854dd;
+  }
+
+  .fade-out-enter,
+  .fade-out-leave-to {
+    opacity: 0;
+  }
+}
