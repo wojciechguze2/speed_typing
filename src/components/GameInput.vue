@@ -13,7 +13,10 @@
         @input="updateGameInputText"
     />
     <span class="d-flex justify-content-end">
-      Ilość wprowadzonych znaków: {{ gameInputText.length }}
+      Ilość wprowadzonych znaków:&nbsp;
+      <span class="text-primary">
+        {{ gameInputText.length }}
+      </span>
     </span>
   </div>
 </template>

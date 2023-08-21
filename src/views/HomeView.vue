@@ -86,7 +86,7 @@
           Jeśli masz pytania, sugestie, chcesz się ze mną skontaktować, nie wahaj się do mnie napisać.
           Zapraszam do kontaktu!
         </p>
-        <router-link to="/kontakt" class="btn btn-dark">
+        <router-link to="/contact" class="btn btn-dark">
           Przejdź do formularza kontaktowego
         </router-link>
       </div>

@@ -1,6 +1,9 @@
 <template>
   <span>
-    Ilość błędów: {{ mistakesCount }}
+    Ilość błędów:
+    <span :class="mistakesCount > 0 ? 'text-danger' : 'text-success'">
+      {{ mistakesCount }}
+    </span>
   </span>
 </template>
 

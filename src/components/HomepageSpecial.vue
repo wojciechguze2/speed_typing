@@ -1,6 +1,6 @@
 <template>
   <div class="w-75 m-auto">
-    <div ref="homepageSpecialExpectedOutput" class="bg-dark text-light p-2">
+    <div ref="homepageSpecialExpectedOutput" class="bg-dark text-light p-2 disabled">
     <span
         v-for="(expectedChar, index) in expectedOutput"
         :key="index"
