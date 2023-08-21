@@ -1,6 +1,10 @@
 @import 'homepage.scss';
 @import 'game.scss';
 
+html, body {
+  min-height: 100vh;
+}
+
 .disabled {
   user-select: none !important;
   cursor: not-allowed;
@@ -17,3 +21,27 @@
   }
 }
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  flex: 1;
+}
+
+.loader {
+  max-width: 80vw;
+  max-height: 80vh;
+
+  &.full-size {
+    width: 200px;
+    height: 200px;
+  }
+
+  &.lg {
+    width: 3rem;
+    height: 3rem;
+  }
+}

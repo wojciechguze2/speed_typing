@@ -26,9 +26,9 @@
           </div>
         </div>
       </div>
-      <div class="my-2">
+      <div class="my-3">
         <div v-if="loading">
-          <Loader />
+          <Loader additional-class="lg" />
         </div>
         <GameExpectedOutput
             v-else
@@ -49,6 +49,7 @@
       </div>
       <div class="my-3">
         <GameInput
+            ref="gameInputContainer"
             :game-input-text="gameInputText"
             :is-game-running="isGameRunning"
             @update-game-input-text="updateGameInputText"
@@ -204,6 +205,9 @@ export default {
       clearInterval(this.gameTimerInterval)
       this.gameTimeMs = 0
     },
+    focusGameInput() {
+      this.$refs.gameInputContainer.$refs.gameInputControl.focus()
+    },
     clearGameInput() {
       this.gameInputText = ''
     },
@@ -212,6 +216,7 @@ export default {
       this.isGameRunning = false
     },
     continueGame() {
+      this.focusGameInput()
       this.startGameTimer()
       this.isGameRunning = true
     },

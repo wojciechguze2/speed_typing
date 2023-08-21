@@ -1,7 +1,5 @@
 <template>
-  <div v-if="loading">
-    <Loader />
-  </div>
+  <Loader v-if="loading" additional-class="full-size" :center-horizontally="true" />
   <div v-else>
     <table class="table table-responsive">
       <thead>
@@ -48,8 +46,6 @@ export default {
           .then(response => {
             this.expectedTexts = response.data
             this.loading = false
-
-            console.log(this.expectedTexts)
           })
           .catch(error => {
             console.error(error)

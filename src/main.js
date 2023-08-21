@@ -22,7 +22,7 @@ import {
     faVuejs,
     faBootstrap,
     faPython,
-    faFontAwesome
+    faFontAwesome,
 } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { VueReCaptcha } from 'vue-recaptcha-v3'
@@ -44,7 +44,7 @@ library.add(
     faVuejs,
     faBootstrap,
     faPython,
-    faFontAwesome
+    faFontAwesome,
 )
 
 const app = createApp(App)

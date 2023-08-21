@@ -1,16 +1,18 @@
 <template>
-  <div>
-    <span
-        v-for="(expectedChar, index) in expectedOutput"
-        :key="index"
-        :class="{
-          'text-success': isCharCorrect(index),
-          'text-danger': isCharIncorrect(index),
-          'current-char text-dark bg-light': isCurrentChar(index)
-        }"
-    >
-        {{ expectedChar }}
-      </span>
+  <div class="game-expected-output d-flex">
+    <div class="my-auto">
+      <span
+          v-for="(expectedChar, index) in expectedOutput"
+          :key="index"
+          :class="{
+            'text-success': isCharCorrect(index),
+            'text-danger': isCharIncorrect(index),
+            'current-char text-dark bg-light': isCurrentChar(index)
+          }"
+      >
+          {{ expectedChar }}
+        </span>
+    </div>
   </div>
 </template>
 

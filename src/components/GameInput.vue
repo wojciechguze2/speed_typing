@@ -4,7 +4,7 @@
         ref="gameInputControl"
         class="form-control"
         :class="{'disabled bg-dark text-white': !isGameRunning}"
-        rows="4"
+        rows="5"
         spellcheck="false"
         autocomplete="off"
         autocapitalize="off"
