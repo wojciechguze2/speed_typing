@@ -1,6 +1,6 @@
 <template>
   <div class="col-lg-4">
-    <transition name="bounce">
+    <transition name="homepage-special-slide-reverse">
       <div v-if="!loading" class="card bg-dark text-white p-3">
         <div class="card-title">
           <font-awesome-icon icon="flag" size="lg" />
@@ -19,7 +19,7 @@
     </transition>
   </div>
   <div class="col-lg-4">
-    <transition name="bounce">
+    <transition name="homepage-special-slide-reverse">
       <div v-if="!loading" class="card bg-dark text-white p-3">
         <div class="card-title">
           <font-awesome-icon icon="database" size="lg" />
@@ -38,14 +38,14 @@
     </transition>
   </div>
   <div class="col-lg-4">
-    <transition name="bounce">
+    <transition name="homepage-special-slide-reverse">
       <div v-if="!loading" class="card bg-dark text-white p-3">
         <div class="card-title">
           <font-awesome-icon icon="chart-pie" size="lg" />
         </div>
         <div class="card-body d-flex align-items-center">
           <p>
-            Dzięki rozbudowanym statystykom możesz śledzić swoje postępy oraz analizować wyniki.
+            Dzięki rozbudowanym statystykom możesz śledzić postępy oraz analizować wyniki.
           </p>
         </div>
         <div class="card-footer">

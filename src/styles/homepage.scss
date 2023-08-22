@@ -5,7 +5,7 @@
   }
 
   .homepage-special-fade-out-leave-active {
-    color: #199854dd;
+    color: rgba(13, 110, 253, 0.7);
   }
 
   .homepage-special-fade-out-enter,
@@ -13,25 +13,35 @@
     opacity: 0;
   }
 
-  .bounce-enter-active {
-    animation: bounce-in .4s;
+  .homepage-special-slide-enter-active {
+    animation: homepage-special-slide-animation .4s;
   }
 
-  .bounce-leave-active {
-    animation: bounce-in .25s reverse;
-  }
-}
-
-@keyframes bounce-in {
-  0% {
-    transform: scale(0)
+  .homepage-special-slide-reverse-enter-active {
+    animation: homepage-special-slide-reverse-animation .4s;
   }
 
-  50% {
-    transform: scale(1.25)
+  @keyframes homepage-special-slide-animation {
+    0% {
+      opacity: 0;
+      transform: translateY(-50%)
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0)
+    }
   }
 
-  100% {
-    transform: scale(1)
+  @keyframes homepage-special-slide-reverse-animation {
+    0% {
+      opacity: 0;
+      transform: translateY(50%)
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0)
+    }
   }
 }

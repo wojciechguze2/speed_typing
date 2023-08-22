@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from '@/plugins/axios'
 import { validateEmail } from '@/plugins/validators'
 import {
   DEFAULT_AUTHENTICATED_REDIRECT_URL,
@@ -76,6 +76,9 @@ import {
 import { VueReCaptcha } from 'vue-recaptcha-v3'
 import LoginSpecial from '@/components/LoginSpecial'
 import Loader from '@/components/Loader'
+import {
+  setAuthentication
+} from '@/plugins/helpers'
 
 export default {
   name: 'LoginView',
@@ -125,8 +128,7 @@ export default {
         const url = `${process.env.VUE_APP_BACKEND_URL}/api/users/login`,
             response = await axios.post(url, loginData)
 
-        this.$store.commit('setAuthentication', response.data.token)
-        localStorage.setItem('vuex-state', JSON.stringify(this.$store.state))
+        setAuthentication(response.data.token)
         this.$router.push(LOGIN_SUCCESS_REDIRECT_URL)
       } catch (error) {
         this.errorMessage = error.response && error.response.status === 406

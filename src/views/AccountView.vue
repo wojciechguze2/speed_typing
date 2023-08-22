@@ -88,7 +88,7 @@
 <script>
 import AccountTabs from '@/components/AccountTabs'
 import Loader from '@/components/Loader'
-import axios from 'axios'
+import axios from '@/plugins/axios'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import ModalConfirm from '@/components/ModalConfirm'
 import { validateEmail } from '@/plugins/validators'
@@ -123,7 +123,6 @@ export default {
     }
   },
   beforeCreate() {
-    console.log(this.$store.getters.isAuthenticated)
     if (!this.$store.getters.isAuthenticated) {
       this.$router.push(DEFAULT_AUTHENTICATED_REDIRECT_URL)
     }

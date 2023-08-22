@@ -1,6 +1,6 @@
 <template>
   <div class="game-expected-output d-flex">
-    <div class="my-auto">
+    <div class="my-auto user-select-none pointer-events-none">
       <span
           v-for="(expectedChar, index) in expectedOutput"
           :key="index"

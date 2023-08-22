@@ -1,10 +1,11 @@
 <script>
+import { logout } from '@/plugins/helpers'
+
 export default {
   name: 'LogouView',
   beforeCreate() {
     if (this.$store.getters.isAuthenticated) {
-      this.$store.commit('setAuthentication', null)
-      localStorage.setItem('vuex-state', JSON.stringify(this.$store.state))
+      logout()
     }
 
     this.$router.push('/')

@@ -34,17 +34,7 @@ import { VueReCaptcha } from 'vue-recaptcha-v3'
 import {
     RECAPTCHA_KEY
 } from '@/plugins/constants'
-import axios from 'axios'
-
-axios.interceptors.request.use(config => {
-    const token = store.state.token
-
-    if (token) {
-        config.headers.Authorization = `JWT ${token}`
-    }
-
-    return config
-})
+import languages from '@/languages'
 
 library.add(
     faPlay,
@@ -66,13 +56,15 @@ library.add(
     faUser,
     faTrashCan,
     faPen,
-    faTimes,
+    faTimes
 )
 
 const app = createApp(App)
 
+app.use(languages)
 app.use(router)
 app.use(store)
+
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(VueReCaptcha, { siteKey: RECAPTCHA_KEY })
 

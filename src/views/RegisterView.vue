@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from '@/plugins/axios'
 import {
   EMAIL_NOT_VALID_MESSAGE,
   REGISTER_ERROR_MESSAGE,
@@ -74,6 +74,9 @@ import {
 import { validateEmail } from '@/plugins/validators'
 import { VueReCaptcha } from 'vue-recaptcha-v3'
 import Loader from '@/components/Loader'
+import {
+  setAuthentication
+} from '@/plugins/helpers'
 
 export default {
   name: 'RegisterView',
@@ -120,8 +123,7 @@ export default {
         const url = `${process.env.VUE_APP_BACKEND_URL}/api/users/register`,
             response = await axios.post(url, registerData) // todo: alert, confirmation
 
-        this.$store.commit('setAuthentication', response.data.token)
-        localStorage.setItem('vuex-state', JSON.stringify(this.$store.state))
+        setAuthentication(response.data.token)
         this.$router.push(REGISTER_SUCCESS_REDIRECT_URL)
       } catch (error) {
         this.errorMessage = error.response && error.response.status === 409 ? USER_ALREADY_EXISTS_MESSAGE : REGISTER_ERROR_MESSAGE

@@ -1,7 +1,3 @@
-@import 'homepage.scss';
-@import 'game.scss';
-@import 'sidebar.scss'; // todo: split this (in templates)
-
 .modal {
   display: flow;
   background: rgba(13, 110, 253, 0.12);
@@ -37,6 +33,10 @@ html, body {
   .nav-link {
     color: #fff;
   }
+}
+
+.pointer-events-none {
+  pointer-events: none !important;
 }
 
 .wrapper {

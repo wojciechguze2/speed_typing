@@ -1,0 +1,17 @@
+.about {
+  .about-slide-enter-active {
+    animation: about-slide-animation 1.25s;
+  }
+
+  @keyframes about-slide-animation {
+    0% {
+      opacity: 0.1;
+      transform: translateX(75%)
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0)
+    }
+  }
+}

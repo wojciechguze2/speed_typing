@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="about">
     <div class="container py-3">
       <h3>
         O stronie
@@ -12,15 +12,27 @@
             <ul>
               <li>
                 Vue.js
-                <font-awesome-icon :icon="['fab', 'vuejs']" />
+                <a href="https://vuejs.org/">
+                  <transition appear name="about-slide">
+                    <font-awesome-icon :icon="['fab', 'vuejs']" />
+                  </transition>
+                </a>
               </li>
               <li>
                 Bootstrap
-                <font-awesome-icon :icon="['fab', 'bootstrap']" />
+                <a href="https://getbootstrap.com/">
+                  <transition appear name="about-slide">
+                    <font-awesome-icon :icon="['fab', 'bootstrap']" />
+                  </transition>
+                </a>
               </li>
               <li>
                 FontAwesome
-                <font-awesome-icon :icon="['fab', 'font-awesome']" />
+                <a href="https://fontawesome.com/">
+                  <transition appear name="about-slide">
+                    <font-awesome-icon :icon="['fab', 'font-awesome']" />
+                  </transition>
+                </a>
               </li>
             </ul>
           </li>
@@ -29,11 +41,19 @@
             <ul>
               <li>
                 Python3 - Django
-                <font-awesome-icon :icon="['fab', 'python']" />
+                <a href="https://www.djangoproject.com/">
+                  <transition appear name="about-slide">
+                    <font-awesome-icon :icon="['fab', 'python']" />
+                  </transition>
+                </a>
               </li>
               <li>
                 PostgreSQL
-                <font-awesome-icon icon="database" />
+                <a href="https://www.postgresql.org/">
+                  <transition appear name="about-slide">
+                    <font-awesome-icon icon="database" />
+                  </transition>
+                </a>
               </li>
             </ul>
           </li>
@@ -76,3 +96,7 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  @import '@/styles/about.scss';
+</style>

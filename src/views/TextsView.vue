@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from '@/plugins/axios'
 import Loader from '@/components/Loader'
 
 export default {

@@ -1,89 +1,78 @@
-import {createRouter, createWebHistory} from 'vue-router'
-import HomeView from '@/views/HomeView'
-import FastGameView from '@/views/FastGameView'
-import ContactView from '@/views/ContactView'
-import AboutView from '@/views/AboutView'
-import SitemapView from '@/views/SitemapView'
-import PrivacyPolicyView from '@/views/PrivacyPolicyView'
-import RegulationsView from '@/views/RegulationsView'
-import TextsView from '@/views/TextsView'
-import LoginView from '@/views/LoginView'
-import RegisterView from '@/views/RegisterView'
-import AccountView from '@/views/AccountView'
-import AccountStatisticsView from '@/views/AccountStatisticsView'
-import LogoutView from '@/views/LogoutView'
-import AccountHistoryView from '@/views/AccountHistoryView'
+import {
+    createRouter,
+    createWebHistory
+} from 'vue-router'
 
 const routes = [
     {
         path: '/',
         name: 'HomeView',
-        component: HomeView
+        component: () => import('@/views/HomeView')
     },
     {
         path: '/fast-game',
         name: 'FastGameView',
-        component: FastGameView
+        component: () => import('@/views/FastGameView')
     },
     {
         path: '/contact',
         name: 'ContactView',
-        component: ContactView
+        component: () => import('@/views/ContactView')
     },
     {
         path: '/about',
         name: 'AboutView',
-        component: AboutView
+        component: () => import('@/views/AboutView')
     },
     {
         path: '/regulations',
         name: 'RegulationsView',
-        component: RegulationsView
+        component: () => import('@/views/RegulationsView')
     },
     {
         path: '/privacy-policy',
         name: 'PrivacyPolicyView',
-        component: PrivacyPolicyView
+        component: () => import('@/views/PrivacyPolicyView')
     },
     {
         path: '/sitemap',
         name: 'SitemapView',
-        component: SitemapView
+        component: () => import('@/views/SitemapView')
     },
     {
         path: '/texts',
         name: 'TextsView',
-        component: TextsView
+        component: () => import('@/views/TextsView')
     },
     {
         path: '/login',
         name: 'LoginView',
-        component: LoginView
+        component: () => import('@/views/LoginView')
     },
     {
         path: '/logout',
         name: 'LogoutView',
-        component: LogoutView
+        component: () => import('@/views/LogoutView')
     },
     {
         path: '/register',
         name: 'RegisterView',
-        component: RegisterView
+        component: () => import('@/views/RegisterView')
     },
     {
         path: '/account',
         name: 'AccountView',
-        component: AccountView
+        component: () => import('@/views/AccountView')
     },
     {
         path: '/account/statistics',
         name: 'AccountStatisticsView',
-        component: AccountStatisticsView
+        component: () => import('@/views/AccountStatisticsView')
     },
     {
         path: '/account/history',
         name: 'AccountHistoryView',
-        component: AccountHistoryView
+        component: () => import('@/views/AccountHistoryView')
     }
 ]
 

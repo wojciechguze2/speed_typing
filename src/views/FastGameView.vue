@@ -1,7 +1,7 @@
 <template>
   <div class="main-bg">
     <MainGame
-        :game-mode-type="GAME_MODE_FAST"
+        :game-mode-code="GAME_MODE_FAST"
     />
   </div>
 </template>
@@ -21,3 +21,7 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  @import '@/styles/game.scss';
+</style>

@@ -11,7 +11,7 @@
         </div>
         <div class="col-lg-6">
           <h4>
-            {{ gameModeType }}
+            {{ gameModeCode }} <!-- todo: translation/get name -->
           </h4>
         </div>
         <div class="col-lg-3">
@@ -27,7 +27,7 @@
         </div>
       </div>
       <div class="my-3">
-        <div v-if="loading">
+        <div v-if="loadingExpectedOutput">
           <Loader additional-class="lg" />
         </div>
         <GameExpectedOutput
@@ -74,7 +74,7 @@ import GameMistakes from '@/components/GameMistakes'
 import GameButtonRestart from '@/components/GameButtonRestart'
 import { GAME_MODE_FAST } from '@/plugins/constants'
 import Loader from '@/components/Loader'
-import axios from "axios";
+import axios from '@/plugins/axios'
 
 export default {
   name: 'MainGame',
@@ -89,7 +89,7 @@ export default {
     Loader
   },
   props: {
-    gameModeType: {
+    gameModeCode: {
       type: String,
       required: true
     }
@@ -103,7 +103,9 @@ export default {
       gameInputText: '',
       gameInputTimeEndings: [],
       expectedOutput: '',
-      loading: true
+      loadingExpectedOutput: true,
+      loadingSavingResult: false,
+      expectedOutputId: null
     }
   },
   computed: {
@@ -112,8 +114,11 @@ export default {
 
       return !isNaN(cpm) ? cpm.toFixed(2) : 0
     },
+    finished() {
+      return this.gameInputText.length === this.expectedOutput.length
+    },
     countdownSeconds() {
-      return this.gameModeType === GAME_MODE_FAST ? 3 : 5
+      return this.gameModeCode === GAME_MODE_FAST ? 3 : 5
     },
   },
   created() {
@@ -127,23 +132,48 @@ export default {
     }
   },
   methods: {
+    saveResult() {
+      this.loadingSavingResult = true
+      const url = `${process.env.VUE_APP_BACKEND_URL}/api/game/save`,
+          postData = {
+            'expectedTextId': this.expectedOutputId,
+            'gameModeCode': this.gameModeCode,
+            'cpm': this.cpm,
+            'timeMs': this.gameTimeMs,
+            'mistakesCount': this.mistakesCount
+          }
+
+      axios.post(url, postData)
+          .then(() => {
+            // todo: alert
+            this.loadingSavingResult = false
+          })
+          .catch(error => {
+            // todo: alert
+            console.error(error)
+          })
+    },
     fetchData() {
-      this.loading = true
+      this.loadingExpectedOutput = true
       const url = `${process.env.VUE_APP_BACKEND_URL}/api/expected-texts/random`
 
       axios.get(url)
           .then(response => {
-            this.expectedOutput = response.data.text
-            this.loading = false
+            const expectedOutputText = response.data
+            this.expectedOutput = expectedOutputText.text
+            this.expectedOutputId = expectedOutputText.id
+            this.loadingExpectedOutput = false
+            // todo: alert
           })
           .catch(error => {
+            // todo: alert
             console.error(error)
           })
     },
     updateGameInputText(newText) {
       this.gameInputText = newText
-      this.calculateMistakesCount()
       this.checkForGameFinish()
+      this.calculateMistakesCount()
       this.controlGameInputTimes()
     },
     controlGameInputTimes() {
@@ -166,8 +196,9 @@ export default {
       }
     },
     checkForGameFinish() {
-      if (this.gameInputText.length === this.expectedOutput.length) {
+      if (this.finished) {
         this.pauseGame()
+        this.saveResult()
       }
     },
     inputChar(index) {
@@ -217,9 +248,13 @@ export default {
       this.isGameRunning = false
     },
     continueGame() {
-      this.focusGameInput()
-      this.startGameTimer()
-      this.isGameRunning = true
+      if (this.finished) {
+        this.restartGame()
+      } else {
+        this.focusGameInput()
+        this.startGameTimer()
+        this.isGameRunning = true
+      }
     },
     clearGame() {
       this.clearTimer()

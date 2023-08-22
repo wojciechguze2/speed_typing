@@ -1,15 +1,48 @@
 <template>
   <AccountTabs />
   <Loader v-if="loading"/>
-  <table v-else>
-
+  <table
+      v-else
+      class="mx-auto my-5 w-50 table table-responsive table-bordered text-center"
+  >
+    <thead>
+      <tr>
+        <th>Tryb gry</th>
+        <th>CPM</th>
+        <th>Ilość błędów</th>
+        <th>Czas</th>
+        <th>Data</th>
+        <th>Długość tekstu</th>
+      </tr>
+    </thead>
+    <tbody v-if="historyData.length">
+      <tr
+          v-for="game in historyData"
+          v-bind:key="game.id"
+      >
+        <td>{{ game.gameModeCode }}</td>
+        <td>{{ game.cpm }}</td>
+        <td>{{ game.mistakesCount }}</td>
+        <td>{{ game.timeMs }}</td>
+        <td>{{ game.createDate }}</td>
+        <td>{{ game.expectedTextLength }}</td>
+      </tr>
+    </tbody>
+    <tbody
+      v-else
+    >
+      <tr>
+        <td colspan="6">
+          Jeszcze nie rozegrałeś żadnej gry.
+        </td>
+      </tr>
+    </tbody>
   </table>
 </template>
 
 <script>
-// todo: po zrobieniu zapisywania wyników
 import AccountTabs from '@/components/AccountTabs'
-import axios from 'axios'
+import axios from '@/plugins/axios'
 import Loader from '@/components/Loader'
 import {
   DEFAULT_NOT_AUTHENTICATED_REDIRECT_URL

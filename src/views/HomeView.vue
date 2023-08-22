@@ -27,9 +27,11 @@
           Jeśli masz pytania, sugestie, chcesz się ze mną skontaktować, nie wahaj się do mnie napisać.
           Zapraszam do kontaktu!
         </p>
-        <router-link to="/contact" class="btn btn-dark">
-          Przejdź do formularza kontaktowego
-        </router-link>
+        <transition appear name="homepage-special-slide-reverse">
+          <router-link to="/contact" class="btn btn-dark">
+            Przejdź do formularza kontaktowego
+          </router-link>
+        </transition>
       </div>
     </div>
   </div>
@@ -57,3 +59,7 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+  @import '@/styles/homepage.scss';
+</style>

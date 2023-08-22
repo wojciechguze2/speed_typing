@@ -53,7 +53,7 @@
 <script>
 // todo: add charts (Chart.js)
 import AccountTabs from '@/components/AccountTabs'
-import axios from 'axios'
+import axios from '@/plugins/axios'
 import Loader from '@/components/Loader'
 import {
   DEFAULT_NOT_AUTHENTICATED_REDIRECT_URL
