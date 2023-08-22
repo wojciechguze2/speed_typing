@@ -73,6 +73,21 @@ const routes = [
         path: '/account/history',
         name: 'AccountHistoryView',
         component: () => import('@/views/AccountHistoryView')
+    },
+    {
+        path: '/pl',
+        name: 'ChangeLanguageViewPL',
+        component: () => import('@/views/ChangeLanguageView')
+    },
+    {
+        path: '/en',
+        name: 'ChangeLanguageViewEN',
+        component: () => import('@/views/ChangeLanguageView')
+    },
+    {
+        path: '/de',
+        name: 'ChangeLanguageViewDE',
+        component: () => import('@/views/ChangeLanguageView')
     }
 ]
 

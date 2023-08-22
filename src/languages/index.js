@@ -10,23 +10,23 @@ function getPreferredLocale() {
     return preferredLocale.split('-')[0]
 }
 
-function getUrlLocale() {
+export function getUrlLocale() {
     const urlSegments = window.location.pathname.split('/'),
         urlLocale = urlSegments[1]
 
     return AVAILABLE_LOCALES.includes(urlLocale) ? urlLocale : null
 }
 
-function getLocale() {
-    return getUrlLocale() || getPreferredLocale()
+export function getLocale() {
+    return window['LOCALE_ISO'] || localStorage.getItem('LOCALE_ISO') || getUrlLocale() || getPreferredLocale()
 }
 
-async function fetchTranslations(localeIso) {
+export async function fetchTranslations(localeIso) {
     try {
         let translations = await axios.get(`${process.env.VUE_APP_BACKEND_URL}/api/translations/${localeIso}`)
 
         translations = translations.data.reduce((obj, translation) => {
-            obj[translation.code] = translation.translation
+            obj[translation['base__code']] = translation.translation
             return obj
         }, {})
 
@@ -40,6 +40,10 @@ async function fetchTranslations(localeIso) {
 async function getI18n() {
     const locale = getLocale(),
         translations = await fetchTranslations(locale)
+
+    if (!window.LOCALE_ISO) {
+        window.LOCALE_ISO = locale
+    }
 
     return createI18n({
         locale,

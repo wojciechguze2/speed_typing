@@ -4,9 +4,9 @@
       <h3>
         {{ $t('messages.about_site') }}
       </h3>
-      <div class="lead mt-4">
+      <div class="lead mt-4 fs-4">
         {{ $t('about.used_technologies') }}:
-        <ul class="mt-2 mb-4">
+        <ul class="mt-2 mb-4 fs-5">
           <li>
             Frontend:
             <ul>
@@ -55,13 +55,21 @@
                   </transition>
                 </a>
               </li>
+              <li>
+                Texts generator -
+                <a href="https://openai.com/">
+                  <transition appear name="about-slide">
+                    OpenAI
+                  </transition>
+                </a>
+              </li>
             </ul>
           </li>
         </ul>
       </div>
-      <div>
+      <div class="fs-5">
         <p>{{ $t('messages.site') }} "{{ TITLE }}" {{ $t('about.my_first_project')}}</p>
-        <p>{{ $t('about.execution_time') }}</p>
+        <!--<p>{{ $t('about.execution_time') }}</p> 2/3 days but i still make changes in it-->
         <p>{{ $t('about.site_goal') }}</p>
         <p>
           {{ $t('about.more_projects.before_link') }}

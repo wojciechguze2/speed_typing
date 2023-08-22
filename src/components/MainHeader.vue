@@ -38,7 +38,7 @@
             {{ $t('messages.texts_list') }}
           </router-link>
       </div>
-      <div class="d-flex">
+      <div class="d-flex align-items-center">
         <router-link to="/about" class="nav-link mx-3">
           {{ $t('messages.about_site') }}
         </router-link>
@@ -48,6 +48,7 @@
         <router-link :to="isAuthenticated ? '/account' : '/login'" class="nav-link mx-3">
           <font-awesome-icon icon="user" />
         </router-link>
+        <LanguageSelect />
       </div>
     </div>
   </header>
@@ -55,9 +56,11 @@
 
 <script>
 import { TITLE } from '@/plugins/constants'
+import LanguageSelect from '@/components/LanguageSelect'
 
 export default {
   name: 'MainHeader',
+  components: {LanguageSelect},
   data() {
     return {
       TITLE

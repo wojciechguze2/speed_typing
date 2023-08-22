@@ -14,9 +14,7 @@
         <h2>
           {{ $t('homepage.content_2.header') }}
         </h2>
-        <p>
-          {{ $t('homepage.content_2.content') }}
-        </p>
+        <p v-html="$t('homepage.content_2.content')" />
       </div>
       <div class="mt-5 row col-lg-12">
         <HomeCards

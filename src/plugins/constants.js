@@ -18,6 +18,7 @@ export const REGISTER_NEED_ADMIN_ACCEPT = false
 export const LOGIN_SUCCESS_REDIRECT_URL = '/'
 export const REGISTER_SUCCESS_REDIRECT_URL = '/'
 export const DEFAULT_AUTHENTICATED_REDIRECT_URL = '/'
+export const LANGUAGE_CHANGE_REDIRECT_URL = '/'
 export const DEFAULT_NOT_AUTHENTICATED_REDIRECT_URL = '/login'
 export const LOGOUT_URL = '/logout'
 export const ACCOUNT_EMAIL_CHANGE_AVAILABLE = false

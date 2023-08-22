@@ -155,9 +155,12 @@ export default {
     },
     fetchData() {
       this.loadingExpectedOutput = true
-      const url = `${process.env.VUE_APP_BACKEND_URL}/api/expected-texts/random`
+      const url = `${process.env.VUE_APP_BACKEND_URL}/api/expected-texts/random`,
+          params = {
+            locale_iso: window.LOCALE_ISO
+          }
 
-      axios.get(url)
+      axios.get(url, {params})
           .then(response => {
             const expectedOutputText = response.data
             this.expectedOutput = expectedOutputText.text
