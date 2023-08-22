@@ -1,7 +1,11 @@
 @import 'homepage.scss';
 @import 'game.scss';
 @import 'sidebar.scss'; // todo: split this (in templates)
-@import 'login.scss'; // todo: split this (in templates)
+
+.modal {
+  display: flow;
+  background: rgba(13, 110, 253, 0.12);
+}
 
 html, body {
   min-height: 100vh;

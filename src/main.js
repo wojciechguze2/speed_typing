@@ -16,7 +16,10 @@ import {
     faEraser,
     faEnvelope,
     faPhone,
-    faUser
+    faUser,
+    faTrashCan,
+    faPen,
+    faTimes,
 } from '@fortawesome/free-solid-svg-icons'
 import {
     faLinkedin,
@@ -60,7 +63,10 @@ library.add(
     faBootstrap,
     faPython,
     faFontAwesome,
-    faUser
+    faUser,
+    faTrashCan,
+    faPen,
+    faTimes,
 )
 
 const app = createApp(App)

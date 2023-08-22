@@ -66,8 +66,10 @@ import {
   EMAIL_NOT_VALID_MESSAGE,
   REGISTER_ERROR_MESSAGE,
   REGISTER_NEED_ADMIN_ACCEPT,
-  USER_ALREADY_EXISTS,
-  TITLE
+  USER_ALREADY_EXISTS_MESSAGE,
+  TITLE,
+  REGISTER_SUCCESS_REDIRECT_URL,
+  DEFAULT_AUTHENTICATED_REDIRECT_URL
 } from '@/plugins/constants'
 import { validateEmail } from '@/plugins/validators'
 import { VueReCaptcha } from 'vue-recaptcha-v3'
@@ -92,7 +94,7 @@ export default {
   },
   beforeCreate() {
     if (this.$store.getters.isAuthenticated) {
-      this.$router.push('/')
+      this.$router.push(DEFAULT_AUTHENTICATED_REDIRECT_URL)
     }
   },
   methods: {
@@ -116,13 +118,13 @@ export default {
 
       try {
         const url = `${process.env.VUE_APP_BACKEND_URL}/api/users/register`,
-            response = await axios.post(url, registerData)
+            response = await axios.post(url, registerData) // todo: alert, confirmation
 
         this.$store.commit('setAuthentication', response.data.token)
         localStorage.setItem('vuex-state', JSON.stringify(this.$store.state))
-        this.$router.push('/')
+        this.$router.push(REGISTER_SUCCESS_REDIRECT_URL)
       } catch (error) {
-        this.errorMessage = error.response && error.response.status ? USER_ALREADY_EXISTS : REGISTER_ERROR_MESSAGE
+        this.errorMessage = error.response && error.response.status === 409 ? USER_ALREADY_EXISTS_MESSAGE : REGISTER_ERROR_MESSAGE
 
         console.error(error)
       }

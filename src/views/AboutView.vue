@@ -41,7 +41,7 @@
       </div>
       <div>
         <p>Strona "{{ TITLE }}" to mój pierwszy większy projekt osobisty, na który w końcu znalazłem czas.</p>
-        <p>Cały proces tworzenia zajął mi około 2 dni.</p>
+        <p>Cały proces tworzenia zajął mi około 3 dni.</p>
         <p>Głównym celem tej strony jest pomoc użytkownikom w ćwiczeniu i doskonaleniu umiejętności szybkiego pisania na klawiaturze.</p>
         <p>
           Więcej moich projektów będziesz mógł/mogła ujrzeć na moim

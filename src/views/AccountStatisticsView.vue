@@ -51,9 +51,13 @@
 </template>
 
 <script>
+// todo: add charts (Chart.js)
 import AccountTabs from '@/components/AccountTabs'
 import axios from 'axios'
 import Loader from '@/components/Loader'
+import {
+  DEFAULT_NOT_AUTHENTICATED_REDIRECT_URL
+} from '@/plugins/constants'
 
 export default {
   name: 'AccountStatisticsView',
@@ -75,7 +79,7 @@ export default {
   },
   beforeCreate() {
     if (!this.$store.getters.isAuthenticated) {
-      this.$router.push('/login')
+      this.$router.push(DEFAULT_NOT_AUTHENTICATED_REDIRECT_URL)
     }
   },
   async mounted() {

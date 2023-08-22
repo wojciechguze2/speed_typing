@@ -6,7 +6,7 @@
         v-bind:key="tab.code"
         :to="tab.url"
         class="nav-link"
-        :class="{'active': isActiveTab(tab.url)}"
+        :class="[{'active': isActiveTab(tab.url)}, tab.additionalClass ?? '']"
       >
         {{ tab.name }}
       </router-link>
@@ -39,7 +39,8 @@ export default {
           {
             url: '/logout',
             code: 'logout',
-            name: 'Wyloguj się'
+            name: 'Wyloguj się',
+            additionalClass: 'bg-danger text-white'
           },
       ]
     }

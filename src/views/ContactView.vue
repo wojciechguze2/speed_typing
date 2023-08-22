@@ -1,5 +1,5 @@
 <template>
-  <div class="container py-5">
+  <div class="container py-5 contact">
     <h1 class="display-4 text-center">Formularz kontaktowy</h1>
     <form @submit.prevent="submitForm" class="w-50 m-auto">
       <div class="mb-3">
@@ -53,7 +53,7 @@ export default {
       message: '',
       recaptchaToken: null,
       errorMessage: ''
-    };
+    }
   },
   created() {
     this.scrollToTop()

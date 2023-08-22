@@ -64,11 +64,14 @@
 import axios from 'axios'
 import { validateEmail } from '@/plugins/validators'
 import {
+  DEFAULT_AUTHENTICATED_REDIRECT_URL,
   EMAIL_NOT_VALID_MESSAGE,
   LOGIN_ERROR_MESSAGE,
+  LOGIN_SUCCESS_REDIRECT_URL,
   PASSWORD_REMINDER_ENABLED,
   REGISTER_ENABLED,
-  TITLE
+  TITLE,
+  USER_IS_NOT_ACTIVE_MESSAGE
 } from '@/plugins/constants'
 import { VueReCaptcha } from 'vue-recaptcha-v3'
 import LoginSpecial from '@/components/LoginSpecial'
@@ -90,12 +93,12 @@ export default {
       loading: false,
       TITLE,
       PASSWORD_REMINDER_ENABLED,
-      REGISTER_ENABLED
+      REGISTER_ENABLED,
     }
   },
   beforeCreate() {
     if (this.$store.getters.isAuthenticated) {
-      this.$router.push('/')
+      this.$router.push(DEFAULT_AUTHENTICATED_REDIRECT_URL)
     }
   },
   methods: {
@@ -124,9 +127,12 @@ export default {
 
         this.$store.commit('setAuthentication', response.data.token)
         localStorage.setItem('vuex-state', JSON.stringify(this.$store.state))
-        this.$router.push('/')
+        this.$router.push(LOGIN_SUCCESS_REDIRECT_URL)
       } catch (error) {
-        this.errorMessage = LOGIN_ERROR_MESSAGE
+        this.errorMessage = error.response && error.response.status === 406
+            ? USER_IS_NOT_ACTIVE_MESSAGE
+            : LOGIN_ERROR_MESSAGE
+
         console.error(error)
       }
 
