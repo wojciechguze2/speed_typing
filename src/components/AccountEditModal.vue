@@ -13,13 +13,13 @@
         <div class="modal-content">
           <div class="modal-header border-0 bg-gray-100">
             <h3 class="h5 text-uppercase modal-title" id="modal-title">
-              Edytuj konto
+              {{ $t('account.edit_account') }}
             </h3>
             <button
                 class="btn btn-sm btn-outline-secondary close"
                 type="button"
                 data-bs-dismiss="modal"
-                aria-label="Zamknij"
+                :aria-label="$t('messages.close')"
                 @click="onClose"
             >
               <font-awesome-icon icon="times" />
@@ -28,7 +28,7 @@
           <div class="modal-body">
             <div class="form-floating mb-3">
               <div>
-                <label for="email" class="form-label">E-mail</label>
+                <label for="email" class="form-label">{{ $t('messages.email') }}</label>
                 <input
                     type="email"
                     id="email"
@@ -37,24 +37,34 @@
                     autocomplete="off"
                     autofocus
                     required
-                    :placeholder="ACCOUNT_EMAIL_CHANGE_AVAILABLE ? 'Nowy e-mail' : currentEmail"
+                    :placeholder="ACCOUNT_EMAIL_CHANGE_AVAILABLE ? $t('account.new_email') : currentEmail"
                     :disabled="!ACCOUNT_EMAIL_CHANGE_AVAILABLE"
                 >
               </div>
             </div>
             <div class="form-floating mb-3">
               <div>
-                <label for="password" class="form-label">Hasło</label>
-                <input type="password" id="password" v-model="password" class="form-control" placeholder="Nowe hasło" autocomplete="off" required>
+                <label for="password" class="form-label">
+                  {{ $t('messages.password') }}
+                </label>
+                <input
+                    type="password"
+                    id="password"
+                    v-model="password"
+                    class="form-control"
+                    :placeholder="$t('account.new_password')"
+                    autocomplete="off"
+                    required
+                >
               </div>
             </div>
           </div>
           <div class="modal-footer border-0 bg-gray-100">
             <button class="btn btn-secondary" type="button" data-bs-dismiss="modal" @click="onClose">
-              Anuluj
+              {{ $t('messages.cancel') }}
             </button>
             <button class="btn btn-primary" type="submit" @click="onSubmit">
-              Zapisz
+              {{ $t('messages.save') }}
             </button>
           </div>
         </div>

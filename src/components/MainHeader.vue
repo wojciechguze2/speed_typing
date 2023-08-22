@@ -8,7 +8,7 @@
       <div class="d-flex align-items-center">
         <router-link to="/fast-game" class="nav-link mx-3">
           <font-awesome-icon icon="play" class="me-1" />
-          Szybki test
+          {{ $t('game_mode.fast-game') }}
         </router-link>
         <div class="dropdown ms-3">
           <button
@@ -18,7 +18,7 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
           >
-            Tryby do wyboru
+            {{ $t('messages.game_modes') }}
           </button>
           <ul class="dropdown-menu" aria-labelledby="game-mode-dropdown">
             <li>
@@ -35,15 +35,15 @@
         </div>
         <router-link to="/texts" class="nav-link mx-3">
           <font-awesome-icon icon="list" class="me-1" />
-          Lista tekstów
-        </router-link>
+            {{ $t('messages.texts_list') }}
+          </router-link>
       </div>
       <div class="d-flex">
         <router-link to="/about" class="nav-link mx-3">
-          O stronie
+          {{ $t('messages.about_site') }}
         </router-link>
         <router-link to="/contact" class="nav-link mx-3">
-          Kontakt
+          {{ $t('messages.contact') }}
         </router-link>
         <router-link :to="isAuthenticated ? '/account' : '/login'" class="nav-link mx-3">
           <font-awesome-icon icon="user" />

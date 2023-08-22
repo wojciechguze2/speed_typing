@@ -13,7 +13,7 @@
         @input="updateGameInputText"
     />
     <span class="d-flex justify-content-end">
-      Ilość wprowadzonych znaków:&nbsp;
+      {{ $t('game.input_length') }}:&nbsp;
       <span class="text-primary font-weight-bold">
         {{ gameInputText.length }}
       </span>

@@ -7,12 +7,12 @@
         </div>
         <div class="card-body d-flex align-items-center">
           <p>
-            Strona oferuje ćwiczenia w trzech językach: polskim, angielskim i niemieckim.
+            {{ $t('homepage.cards.card_1.body') }}
           </p>
         </div>
         <div class="card-footer">
           <router-link to="/" class="text-decoration-none link-primary">
-            Zmień język
+            {{ $t('homepage.cards.card_1.footer') }}
           </router-link>
         </div>
       </div>
@@ -26,12 +26,12 @@
         </div>
         <div class="card-body d-flex align-items-center">
           <p>
-            Rozbudowana baza tekstów do ćwiczeń pozwala sprawdzić się w różnorodnych kontekstach.
+            {{ $t('homepage.cards.card_2.body') }}
           </p>
         </div>
         <div class="card-footer">
           <router-link to="/texts" class="text-decoration-none link-primary">
-            Przejdź do listy tekstów
+            {{ $t('homepage.cards.card_2.footer') }}
           </router-link>
         </div>
       </div>
@@ -45,7 +45,7 @@
         </div>
         <div class="card-body d-flex align-items-center">
           <p>
-            Dzięki rozbudowanym statystykom możesz śledzić postępy oraz analizować wyniki.
+            {{ $t('homepage.cards.card_3.body') }}
           </p>
         </div>
         <div class="card-footer">
@@ -54,14 +54,14 @@
               to="/account/statistics"
               class="text-decoration-none link-primary"
           >
-            Zobacz swoje statystki
+            {{ $t('homepage.cards.card_3.footer') }}
           </router-link>
           <router-link
               v-else
               to="/login"
               class="text-decoration-none link-primary"
           >
-            Zaloguj się, aby zobaczyć swoje statystki
+            {{ $t('homepage.cards.card_3.footer_not_authenticated') }}
           </router-link>
         </div>
       </div>

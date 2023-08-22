@@ -7,12 +7,12 @@
   >
     <thead>
       <tr>
-        <th>Tryb gry</th>
-        <th>CPM</th>
-        <th>Ilość błędów</th>
-        <th>Czas</th>
-        <th>Data</th>
-        <th>Długość tekstu</th>
+        <th>{{ $t('messages.game_mode') }}</th>
+        <th>{{ $t('messages.cpm') }}</th>
+        <th>{{ $t('game.mistakes_count') }}</th>
+        <th>{{ $t('game.time') }}</th>
+        <th>{{ $t('messages.date') }}</th>
+        <th>{{ $t('game.text_length') }}</th>
       </tr>
     </thead>
     <tbody v-if="historyData.length">
@@ -33,7 +33,7 @@
     >
       <tr>
         <td colspan="6">
-          Jeszcze nie rozegrałeś żadnej gry.
+          {{ $t('account.history.no_games_found') }}
         </td>
       </tr>
     </tbody>

@@ -8,22 +8,42 @@
               {{ TITLE }}
             </h2>
             <span style="max-width: 6rem;">
-              Logowanie
+              {{ $t('login.login') }}
             </span>
             <Loader v-if="loading" />
           </div>
           <form @submit.prevent="login">
             <div class="mb-3">
-              <label for="email" class="form-label">E-mail</label>
-              <input v-model="email" class="form-control" type="email" id="email" placeholder="E-mail" required autofocus>
+              <label for="email" class="form-label">
+                {{ $t('messages.email') }}
+              </label>
+              <input
+                  v-model="email"
+                  class="form-control"
+                  type="email"
+                  id="email"
+                  :placeholder="$t('messages.email')"
+                  required
+                  autofocus
+              >
             </div>
             <div class="mb-4">
               <div class="row">
                 <div class="col">
-                  <label for="password" class="form-label">Hasło</label>
+                  <label for="password" class="form-label">
+                    {{ $t('messages.password') }}
+                  </label>
                 </div>
               </div>
-              <input type="password" id="password" v-model="password" class="form-control" placeholder="Hasło" required autocomplete="off">
+              <input
+                  type="password"
+                  id="password"
+                  v-model="password"
+                  class="form-control"
+                  :placeholder="$t('messages.password')"
+                  required
+                  autocomplete="off"
+              >
             </div>
             <div v-if="errorMessage" class="alert alert-danger">
               {{ errorMessage }}
@@ -32,22 +52,22 @@
               <vue-recaptcha ref="recaptcha" @verify="onRecaptchaVerify" />
             </div>
             <div class="d-grid mb-5">
-              <input type="submit" value="Zaloguj się" class="btn btn-primary btn-xl"  data-dismiss="modal" />
+              <input type="submit" value="Zaloguj się" class="btn btn-primary btn-xl" data-dismiss="modal" />
             </div>
           </form>
           <div v-if="REGISTER_ENABLED" class="text-center">
             <router-link to="/register" class="text-dark text-decoration-none">
-              Nie posiadasz konta?
+              {{ $t('login.no_account') }}
               <span class="link-primary">
-                Zarejestruj się!
+                {{ $t('messages.register') }}
               </span>
             </router-link>
           </div>
           <div v-if="PASSWORD_REMINDER_ENABLED" class="text-center">
             <router-link to="/password-reminder" class="text-dark text-decoration-none">
-              Zapomniałeś hasła?
+              {{ $t('login.no_password') }}
               <span class="link-primary">
-                Przypomnij!
+                {{ $t('login.remind') }}
               </span>
             </router-link>
           </div>

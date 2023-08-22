@@ -11,7 +11,7 @@
         </div>
         <div class="col-lg-6">
           <h4>
-            {{ gameModeCode }} <!-- todo: translation/get name -->
+            {{ $t(`game_mode.${gameModeCode}`) }}
           </h4>
         </div>
         <div class="col-lg-3">
@@ -44,7 +44,7 @@
             @continue-game="continueGame"
         />
         <span v-if="!isGameRunning" @click="continueGame">
-          Kliknij aby rozpocząć
+          {{ $t('game.click_to_start') }}
         </span>
       </div>
       <div class="my-3">

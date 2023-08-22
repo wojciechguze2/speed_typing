@@ -4,9 +4,9 @@
     <table class="table table-responsive">
       <thead>
         <tr>
-          <th>Tekst</th>
-          <th>Autor</th>
-          <th>Język</th>
+          <th>{{ $t('texts.text') }}</th>
+          <th>{{ $t('messages.author') }}</th>
+          <th>{{ $t('messages.language') }}</th>
         </tr>
       </thead>
       <tbody>

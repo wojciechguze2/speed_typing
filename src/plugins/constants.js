@@ -23,3 +23,9 @@ export const LOGOUT_URL = '/logout'
 export const ACCOUNT_EMAIL_CHANGE_AVAILABLE = false
 export const HOMEPAGE_SPECIAL_TYPING_SPEED = 75
 export const HOMEPAGE_SPECIAL_TYPING_COUNTDOWN = 500
+export const DEFAULT_LOCALE_ISO = 'pl'
+export const AVAILABLE_LOCALES = [
+    'pl',
+    'en',
+    'de'
+]

@@ -5,28 +5,28 @@
         <div class="row">
           <div class="col-md-4">
             <h5>
-              Informacje
+              {{ $t('messages.information') }}
             </h5>
             <ul class="list-unstyled">
               <li>
                 <router-link to="/regulations" class="text-white">
-                  Regulamin
+                  {{ $t('messages.regulations') }}
                 </router-link>
               </li>
               <li>
                 <router-link to="/privacy-policy" class="text-white">
-                  Polityka prywatności
+                  {{ $t('messages.privacy_policy') }}
                 </router-link>
               </li>
               <li>
                 <router-link to="/sitemap" class="text-white">
-                  Mapa strony
+                  {{ $t('messages.sitemap') }}
                 </router-link>
               </li>
             </ul>
           </div>
           <div class="col-md-4">
-            <h5>Najpopularniejsze tryby</h5>
+            <h5>{{ $t('messages.most_popular_game_modes') }}</h5>
             <ul class="list-unstyled">
               <li>
                 <router-link to="/popular-mode1" class="text-white">
@@ -46,7 +46,7 @@
             </ul>
           </div>
           <div class="col-md-4">
-            <h5>Najnowsze tryby</h5>
+            <h5>{{ $t('messages.newest_game_modes') }}</h5>
             <ul class="list-unstyled">
               <li>
                 <router-link to="/popular-mode1" class="text-white">

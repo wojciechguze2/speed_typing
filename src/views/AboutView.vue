@@ -2,10 +2,10 @@
   <div class="about">
     <div class="container py-3">
       <h3>
-        O stronie
+        {{ $t('messages.about_site') }}
       </h3>
       <div class="lead mt-4">
-        Wykorzystane technologie:
+        {{ $t('about.used_technologies') }}:
         <ul class="mt-2 mb-4">
           <li>
             Frontend:
@@ -60,11 +60,11 @@
         </ul>
       </div>
       <div>
-        <p>Strona "{{ TITLE }}" to mój pierwszy większy projekt osobisty, na który w końcu znalazłem czas.</p>
-        <p>Cały proces tworzenia zajął mi około 3 dni.</p>
-        <p>Głównym celem tej strony jest pomoc użytkownikom w ćwiczeniu i doskonaleniu umiejętności szybkiego pisania na klawiaturze.</p>
+        <p>{{ $t('messages.site') }} "{{ TITLE }}" {{ $t('about.my_first_project')}}</p>
+        <p>{{ $t('about.execution_time') }}</p>
+        <p>{{ $t('about.site_goal') }}</p>
         <p>
-          Więcej moich projektów będziesz mógł/mogła ujrzeć na moim
+          {{ $t('about.more_projects.before_link') }}
           <a
               :href="GITHUB_LINK"
               target="_blank"
@@ -72,13 +72,13 @@
               class="me-4 link-dark text-decoration-none"
           >
             <font-awesome-icon :icon="['fab', 'github']" />
-            Githubie już wkrótce :)
+            {{ $t('about.more_projects.after_link') }}
           </a>
         </p>
       </div>
-      <div class="text-center pt-4"> <!-- todo: -->
+      <!--<div class="text-center pt-4">  todo:
         Tutaj klawiaturka THREE.js jak mi się będzie nudzić
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

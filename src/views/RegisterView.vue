@@ -15,19 +15,39 @@
               </h3>
               <Loader v-if="loading" />
               <p v-if="REGISTER_NEED_ADMIN_ACCEPT" class="text-muted text-sm mb-5">
-                Po utworzeniu konta konieczne będzie zatwierdzenie przez administratora.
+                {{ $t('register.need_admin_accept') }}
               </p>
               <form @submit.prevent="register">
                 <div class="form-floating mb-3">
                   <div>
-                    <label for="email" class="form-label">E-mail</label>
-                    <input type="email" id="email" v-model="email" class="form-control" placeholder="E-mail" autofocus required>
+                    <label for="email" class="form-label">
+                      {{ $t('messages.email') }}
+                    </label>
+                    <input
+                        type="email"
+                        id="email"
+                        v-model="email"
+                        class="form-control"
+                        :placeholder="$t('messages.email')"
+                        autofocus
+                        required
+                    >
                   </div>
                 </div>
                 <div class="form-floating mb-3">
                   <div>
-                    <label for="password" class="form-label">Hasło</label>
-                    <input type="password" id="password" v-model="password" class="form-control" placeholder="Hasło" autocomplete="off" required>
+                    <label for="password" class="form-label">
+                      {{ $t('messages.password') }}
+                    </label>
+                    <input
+                        type="password"
+                        id="password"
+                        v-model="password"
+                        class="form-control"
+                        :placeholder="$t('messages.password')"
+                        autocomplete="off"
+                        required
+                    >
                   </div>
                 </div>
                 <div v-if="errorMessage" class="alert alert-danger">
@@ -38,7 +58,7 @@
                 </div>
                 <div class="form-group">
                   <button class="btn btn-primary" id="register" type="submit" name="registerSubmit">
-                    Zarejestruj się
+                    {{ $t('messages.register') }}
                   </button>
                 </div>
               </form>
@@ -46,9 +66,9 @@
             <div class="card-footer px-lg-5 py-lg-4">
               <div class="text-sm text-muted">
                 <router-link to="/login" class="text-decoration-none text-dark">
-                  Posiadasz już konto?
+                  {{ $t('register.already_have_an_account') }}
                   <span class="link-primary">
-                    Zaloguj się.
+                    {{ $t('messages.login') }}
                   </span>
                 </router-link>
               </div>

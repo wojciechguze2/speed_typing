@@ -1,6 +1,6 @@
 <template>
   <span>
-    Ilość błędów:
+    {{ $t('game.mistakes_count') }}:
     <span class="font-weight-bold" :class="mistakesCount > 0 ? 'text-danger' : 'text-success'">
       {{ mistakesCount }}
     </span>

@@ -1,6 +1,6 @@
 <template>
   <button class="btn btn-primary" @click="restartGame">
-    Restartuj <font-awesome-icon icon="refresh" />
+    {{ $t('messages.restart') }} <font-awesome-icon icon="refresh" />
   </button>
 </template>
 

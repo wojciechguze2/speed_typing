@@ -8,7 +8,7 @@
           @click="editAccountButtonClick"
           data-bs-toggle="tooltip"
           data-bs-placement="top"
-          title="Edytuj konto"
+          :title="$t('account.edit_account')"
       >
         <font-awesome-icon icon="pen" />
       </button>
@@ -17,7 +17,7 @@
           @click="deleteAccountButtonClick"
           data-bs-toggle="tooltip"
           data-bs-placement="top"
-          title="Usuń konto"
+          :title="$t('account.delete_account')"
       >
         <font-awesome-icon icon="trash-can" />
       </button>
@@ -28,7 +28,7 @@
       <tbody>
         <tr>
           <td>
-            Email
+            {{ $t('messages.email') }}
           </td>
           <td>
             {{ userData.email }}
@@ -36,7 +36,7 @@
         </tr>
         <tr>
           <td>
-            Data ostatniego logowania
+            {{ $t('account.last_login_date') }}
           </td>
           <td>
             {{ userData.lastLoginDate }}
@@ -44,7 +44,7 @@
         </tr>
         <tr>
           <td>
-            Data dołączenia
+            {{ $t('account.join_date') }}
           </td>
           <td>
             {{ userData.createDate }}
@@ -52,15 +52,7 @@
         </tr>
         <tr>
           <td>
-            Data dołączenia
-          </td>
-          <td>
-            {{ userData.createDate }}
-          </td>
-        </tr>
-        <tr>
-          <td>
-            Ostatni tryb gry
+            {{ $t('account.last_game_mode') }}
           </td>
           <td>
             {{ userData.lastGameModeCode }}
@@ -72,8 +64,8 @@
   <ModalConfirm
       :is-opened="deleteModalOpened"
       modal-id="account-delete-modal"
-      modal-title="Usuń konto"
-      modal-message="Czy na pewno chcesz usunąć konto?"
+      :modal-title="$t('account.delete_account')"
+      :modal-message="$t('account.delete_account_confirm')"
       @confirm="deleteAccount"
       @close="hideDeleteModal"
   />

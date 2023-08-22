@@ -4,7 +4,7 @@
       {{ displayedMessage }}
     </h3>
     <h4 class="h2 text-muted">
-      {{ displayedPasswordMessage }}
+      {{ displayedAdditionalMessage }}
     </h4>
   </div>
 </template>
@@ -14,10 +14,10 @@ export default {
   name: 'LoginSpecial',
   data() {
     return {
-      message: 'Efektywność, Wydajność, Sukces.',
-      passwordMessage: 'Pamiętaj o silnym haśle!',
+      message: this.$t('login.special.message'),
+      additionalMessage: this.$t('login.special.additional_message'),
       displayedMessage: '',
-      displayedPasswordMessage: '',
+      displayedAdditionalMessage: '',
     }
   },
   methods: {
@@ -40,14 +40,14 @@ export default {
     async typeMessage() {
       await this.messageTyping(this.message, 'displayedMessage')
       setTimeout(async () => {
-        await this.typePasswordMessage()
+        await this.typeAdditionalMessage()
       }, 1000) // Dodajemy odstęp 1000 ms (1 sekunda) przed wyświetleniem drugiej wiadomości
     },
-    async typePasswordMessage() {
-      return await this.messageTyping(this.passwordMessage, 'displayedPasswordMessage')
+    async typeAdditionalMessage() {
+      return await this.messageTyping(this.additionalMessage, 'displayedAdditionalMessage')
     }
   },
-  async mounted() {
+  mounted() {
     this.typeMessage()
   }
 }

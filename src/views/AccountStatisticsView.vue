@@ -8,7 +8,7 @@
     <tbody>
       <tr>
         <td>
-          Ostatni CPM
+          {{ $t('account.statistics.last_cpm') }}
         </td>
         <td>
           {{ statisticsData.lastCpm || '-' }}
@@ -16,7 +16,7 @@
       </tr>
       <tr>
         <td>
-          Średni CPM
+          {{ $t('account.statistics.average_cpm') }}
         </td>
         <td>
           {{ statisticsData.averageCpm || '-' }}
@@ -24,7 +24,7 @@
       </tr>
       <tr>
         <td>
-          Najlepszy CPM
+          {{ $t('account.statistics.best_cpm') }}
         </td>
         <td>
           {{ statisticsData.bestCpm || '-' }}
@@ -32,7 +32,7 @@
       </tr>
       <tr>
         <td>
-          Ilość rozegranych gier
+          {{ $t('account.statistics.games_played_count') }}
         </td>
         <td>
           {{ statisticsData.gamesPlayedCount || '-' }}
@@ -40,7 +40,7 @@
       </tr>
       <tr>
         <td>
-          Ulubiony tryb
+          {{ $t('account.statistics.favourite_game_mode') }}
         </td>
         <td>
           {{ statisticsData.favoriteGameModeCode || '-' }}

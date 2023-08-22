@@ -5,16 +5,17 @@
         {{ TITLE }}
       </h1>
       <p class="lead mt-1">
-        Rozwijaj swoje umiejętności, sprawdzaj się i analizuj statystyki!
+        {{ $t('homepage.content_1.header') }}
       </p>
       <div class="homepage-special">
         <HomepageSpecial />
       </div>
       <div class="mt-5">
-        <h2>Dlaczego ćwiczenie szybkiego pisania jest ważne</h2>
+        <h2>
+          {{ $t('homepage.content_2.header') }}
+        </h2>
         <p>
-          Szybkie i dokładne pisanie na klawiaturze to umiejętność, która ma ogromne znaczenie w dzisiejszym cyfrowym świecie. <br>
-          Efektywne posługiwanie się klawiaturą zwiększa wydajność pracy, oszczędza czas i pomaga w komunikacji online.
+          {{ $t('homepage.content_2.content') }}
         </p>
       </div>
       <div class="mt-5 row col-lg-12">
@@ -24,12 +25,12 @@
       </div>
       <div v-if="!loading" class="mt-5">
         <p>
-          Jeśli masz pytania, sugestie, chcesz się ze mną skontaktować, nie wahaj się do mnie napisać.
-          Zapraszam do kontaktu!
+          {{ $t('homepage.content_3.header') }}
+          {{ $t('homepage.content_3.content') }}
         </p>
         <transition appear name="homepage-special-slide-reverse">
           <router-link to="/contact" class="btn btn-dark">
-            Przejdź do formularza kontaktowego
+            {{ $t('homepage.content_3.button_text') }}
           </router-link>
         </transition>
       </div>

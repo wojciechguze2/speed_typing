@@ -45,7 +45,7 @@ export default {
   },
   data() {
     return {
-      expectedOutput: 'Lorem ipsum dolor sit amet, consectetur adipisci tempor incidunt ut labore et dolore magna aliqua veniam, quis nostrud exercitation ullamcorpor s commodo consequat. Duis autem vel eum irrure esse molestiae consequat...',
+      expectedOutput: this.$t('homepage.special.expected_output'),
       automaticValue: '',
       finished: false,
       currentCharIndex: 0,

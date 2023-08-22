@@ -34,7 +34,7 @@ import { VueReCaptcha } from 'vue-recaptcha-v3'
 import {
     RECAPTCHA_KEY
 } from '@/plugins/constants'
-import languages from '@/languages'
+import getI18n from '@/languages'
 
 library.add(
     faPlay,
@@ -59,13 +59,16 @@ library.add(
     faTimes
 )
 
-const app = createApp(App)
+const i18n = await getI18n(),
+    app = createApp(App)
 
-app.use(languages)
+
 app.use(router)
 app.use(store)
 
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(VueReCaptcha, { siteKey: RECAPTCHA_KEY })
+
+app.use(i18n)
 
 app.mount('#app')

@@ -24,22 +24,22 @@ export default {
           {
             url: '/account',
             code: 'user-data',
-            name: 'Dane'
+            name: this.$t('account.tabs.data')
           },
           {
             url: '/account/history',
             code: 'account-history',
-            name: 'Historia gier'
+            name: this.$t('account.tabs.games_history')
           },
           {
             url: '/account/statistics',
             code: 'statistics',
-            name: 'Statystyki'
+            name: this.$t('account.tabs.statistics')
           },
           {
             url: '/logout',
             code: 'logout',
-            name: 'Wyloguj się',
+            name: this.$t('messages.logout'),
             additionalClass: 'bg-danger text-white'
           },
       ]

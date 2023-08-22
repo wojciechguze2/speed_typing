@@ -29,10 +29,10 @@
         </div>
         <div class="modal-footer border-0 bg-gray-100">
           <button class="btn btn-secondary" type="button" data-bs-dismiss="modal" @click="onClose">
-            Anuluj
+            {{ $t('messages.cancel') }}
           </button>
           <button class="btn btn-primary" type="submit" @click="onConfirm">
-            Tak
+            {{ $t('messages.confirm') }}
           </button>
         </div>
       </div>
@@ -58,7 +58,7 @@ export default {
     },
     modalTitle: {
       type: String,
-      default: 'Potwierdź'
+      default: 'Confirm'
     },
     modalMessage: {
       type: String,

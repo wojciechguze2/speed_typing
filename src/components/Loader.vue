@@ -5,7 +5,7 @@
         :class="additionalClass"
         role="status"
     >
-      <span class="visually-hidden">Loading...</span>
+      <span class="visually-hidden">{{ $t('messages.loading') }}</span>
     </div>
   </div>
 </template>
