@@ -1,10 +1,12 @@
+@import 'variables.scss';
+
 .current-char {
   background: gray;
 }
 
 .game-expected-output {
   min-height: 10vh;
-  border: 1px dashed rgba(13, 110, 253, 0.5);
+  border: 1px dashed $expected-output-border-color;
   padding: 10px;
 }
 

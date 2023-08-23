@@ -32,3 +32,12 @@ export const AVAILABLE_LOCALES = [
     'de'
 ]
 export const FOOTER_MAX_GAME_MODES = 3
+export const EXPECTED_OUTPUT_TYPE_TEXT = 'text'
+export const EXPECTED_OUTPUT_TYPE_WORD = 'word'
+export const EXPECTED_OUTPUT_TYPE_LETTER = 'letter'
+export const BY_ONE_WORD_GAME_MODES = [
+    'by-one-word'
+]
+export const BY_ONE_LETTER_GAME_MODES = [
+    'by-one-letter'
+]

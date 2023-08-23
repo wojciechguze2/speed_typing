@@ -28,6 +28,11 @@
                   {{ $t('messages.sitemap') }}
                 </router-link>
               </li>
+              <li>
+                <router-link to="/about" class="text-white">
+                  {{ $t('messages.about_site') }}
+                </router-link>
+              </li>
             </ul>
           </div>
           <div class="col-md-4">
@@ -101,7 +106,9 @@ import {
   mapState
 } from 'vuex'
 import axios from '@/plugins/axios'
-import {setFooterLinks} from "@/plugins/helpers";
+import {
+  setFooterLinks
+} from '@/plugins/helpers'
 
 export default {
   name: 'MainFooter',

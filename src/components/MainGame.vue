@@ -37,9 +37,11 @@
         </div>
         <GameExpectedOutput
             v-else
+            :is-by-one-mode="isByOneMode"
+            :expected-output-type="expectedOutputType"
             :game-input-text="gameInputText"
-            :expected-output="expectedOutput"
-            :capital-validation="true"
+            :expected-output="displayedExpectedOutput"
+            :capital-validation="expectedOutputType === EXPECTED_OUTPUT_TYPE_TEXT"
         />
       </div>
       <div class="my-1">
@@ -48,18 +50,22 @@
             @pause-game="pauseGame"
             @continue-game="continueGame"
         />
-        <span v-if="!isGameRunning" @click="continueGame">
+        <span v-if="!isGameRunning" class="mx-2 fs-6" @click="continueGame">
           {{ $t('game.click_to_start') }}
         </span>
       </div>
       <div class="my-3">
         <GameInput
             ref="gameInputContainer"
+            :is-by-one-mode="isByOneMode"
+            :expected-output-type="expectedOutputType"
             :game-input-text="gameInputText"
             :is-game-running="isGameRunning"
+            :expected-value="expectedValue"
             @update-game-input-text="updateGameInputText"
+            @continue-game="continueGame"
         />
-        <div class="d-flex justify-content-end">
+        <div v-if="!isByOneMode" class="d-flex justify-content-end">
           <GameMistakes
               :mistakes-count="mistakesCount"
           />
@@ -78,7 +84,11 @@ import GameButtonClear from '@/components/GameButtonClear'
 import GameMistakes from '@/components/GameMistakes'
 import GameButtonRestart from '@/components/GameButtonRestart'
 import {
-  GAME_MODE_FAST,
+  BY_ONE_LETTER_GAME_MODES,
+  BY_ONE_WORD_GAME_MODES,
+  EXPECTED_OUTPUT_TYPE_LETTER,
+  EXPECTED_OUTPUT_TYPE_TEXT,
+  EXPECTED_OUTPUT_TYPE_WORD,
   GAME_MODE_RANDOM
 } from '@/plugins/constants'
 import Loader from '@/components/Loader'
@@ -117,33 +127,112 @@ export default {
       loadingExpectedOutput: true,
       loadingSavingResult: false,
       expectedOutputId: null,
+      EXPECTED_OUTPUT_TYPE_TEXT,
       GAME_MODE_RANDOM
     }
   },
   computed: {
+    inputControl() {
+      return this.isByOneMode
+          ? this.$refs.gameInputContainer.$refs.byOneControl
+          : this.$refs.gameInputContainer.$refs.gameInputControl
+    },
+    targetExceptedOutput() {
+      return this.isByOneMode ? this.expectedOutputWithoutWhitespaces : this.expectedOutput
+    },
+    expectedValue() {
+      if (BY_ONE_WORD_GAME_MODES.includes(this.gameModeCode)) {
+        return this.currentWord
+      } else if (BY_ONE_LETTER_GAME_MODES.includes(this.gameModeCode)) {
+        return this.currentChar
+      }
+
+      return null
+    },
+    isByOneMode() {
+      return this.expectedOutputType !== EXPECTED_OUTPUT_TYPE_TEXT
+    },
+    displayedExpectedOutput() {
+      if (this.expectedOutputType === EXPECTED_OUTPUT_TYPE_TEXT) {
+        return this.expectedOutput
+      } else if (this.expectedOutputType === EXPECTED_OUTPUT_TYPE_WORD) {
+        return this.currentWord
+      } else if (this.expectedOutputType === EXPECTED_OUTPUT_TYPE_LETTER) {
+        return this.currentChar
+      }
+
+      return this.expectedOutput
+    },
+    expectedOutputType() {
+      if (BY_ONE_WORD_GAME_MODES.includes(this.gameModeCode)) {
+        return EXPECTED_OUTPUT_TYPE_WORD
+      } else if (BY_ONE_LETTER_GAME_MODES.includes(this.gameModeCode)) {
+        return EXPECTED_OUTPUT_TYPE_LETTER
+      }
+
+      return EXPECTED_OUTPUT_TYPE_TEXT
+    },
+    expectedOutputWordsList() {
+      return (this.expectedOutput || '').split(/\s+/g)
+    },
+    currentWordsCharIndex() {
+      return (this.gameInputText || '').replace(/\s+/g, '').length
+    },
+    expectedOutputWithoutWhitespaces() {
+      return (this.expectedOutput || '').replace(/\s+/g, '')
+    },
+    currentChar() {
+      return (this.expectedOutputWithoutWhitespaces || [])[this.currentWordsCharIndex]
+    },
+    currentWord() {
+      let currentIndex = 0
+
+      for (const word of this.expectedOutputWordsList) {
+        const wordLength = word.length
+
+        if (
+            this.currentWordsCharIndex + 1 > currentIndex
+            && this.currentWordsCharIndex + 1 <= currentIndex + wordLength
+        ) {
+          return word
+        }
+
+        currentIndex += wordLength
+      }
+
+      return ''
+    },
     cpm() {
       const cpm = (this.gameInputText.length - this.mistakesCount) / (this.gameTimeMs / 60000)
 
       return !isNaN(cpm) ? cpm.toFixed(2) : 0
     },
     finished() {
-      return this.gameInputText.length === this.expectedOutput.length
-    },
-    countdownSeconds() {
-      return this.gameModeCode === GAME_MODE_FAST ? 3 : 5
+      return this.gameInputText.length === this.targetExceptedOutput.length
     },
   },
   created() {
     this.fetchData()
   },
   mounted() {
+    this.addKeyDownListener()
+
     if (this.isGameRunning) {
       this.continueGame()
     } else {
       this.pauseGame()
     }
   },
+  beforeUnmount() {
+    this.removeKeyDownListener()
+  },
   methods: {
+    removeKeyDownListener() {
+      document.body.removeEventListener('keydown', this.startGameFast)
+    },
+    addKeyDownListener() {
+      document.body.addEventListener('keydown', this.startGameFast)
+    },
     saveResult() {
       this.loadingSavingResult = true
       const url = `${process.env.VUE_APP_BACKEND_URL}/api/game/save`,
@@ -188,13 +277,21 @@ export default {
             console.error(error)
           })
     },
-    updateGameInputText(newText) {
-      this.gameInputText = newText
-      this.checkForGameFinish()
+    updateGameInputText(newText, isFastStart = false) {
+      if (isFastStart && BY_ONE_WORD_GAME_MODES.includes(this.gameModeCode)) {
+        this.$refs.gameInputContainer.byOneInput = newText
+      } else {
+        this.gameInputText = newText
+
+        if (!isFastStart) {
+          this.checkForGameFinish()
+          this.checkForAutomation()
+        }
+      }
+
       this.calculateMistakesCount()
-      this.controlGameInputTimes()
     },
-    controlGameInputTimes() {
+    checkForAutomation() {
       this.gameInputTimeEndings.push(this.gameTimeMs % 100)
 
       if (this.gameInputTimeEndings.length > 150) {
@@ -217,15 +314,20 @@ export default {
       if (this.finished) {
         this.pauseGame()
         this.saveResult()
+        this.addKeyDownListener() // optional (delete if breaks something)
       }
     },
     inputChar(index) {
       return this.gameInputText[index]
     },
     expectedChar(index) {
-      return this.expectedOutput[index]
+      return this.targetExceptedOutput[index]
     },
     calculateMistakesCount() {
+      if (this.isByOneMode) {
+        return 0
+      }
+
       let mistakes = 0
 
       for (let i = 0; i < this.gameInputText.length; i++) {
@@ -255,20 +357,32 @@ export default {
       this.gameTimeMs = 0
     },
     focusGameInput() {
-      this.$refs.gameInputContainer.$refs.gameInputControl.focus()
+      this.inputControl.focus()
     },
     clearGameInput() {
       this.gameInputText = ''
+      this.inputControl.value = ''
       this.mistakesCount = 0
     },
     pauseGame() {
       this.stopGameTimer()
       this.isGameRunning = false
     },
-    continueGame() {
+    startGameFast(event) {  // by char clicked on document
+      if (!this.isGameRunning && event.key && event.key.length === 1 && !event.ctrlKey) {
+        event.preventDefault()
+        this.removeKeyDownListener()
+        this.continueGame(event.key)
+      }
+    },
+    continueGame(key) {
       if (this.finished) {
         this.restartGame()
       } else {
+        if (key) {
+          this.updateGameInputText(key, true)
+        }
+
         this.focusGameInput()
         this.startGameTimer()
         this.isGameRunning = true

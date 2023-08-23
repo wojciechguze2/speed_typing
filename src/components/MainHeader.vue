@@ -6,10 +6,10 @@
       </router-link>
 
       <div class="d-flex align-items-center">
-        <router-link :to="`/game/${GAME_MODE_FAST}`" class="nav-link mx-3">
+        <a :href="`/game/${GAME_MODE_FAST}`" class="nav-link mx-3">
           <font-awesome-icon icon="play" class="me-1" />
           {{ $t(`game_mode.${GAME_MODE_FAST}`) }}
-        </router-link>
+        </a>
         <router-link to="/game-modes" class="nav-link mx-3">
           <font-awesome-icon icon="gamepad" class="me-1" />
           {{ $t('messages.game_modes') }}

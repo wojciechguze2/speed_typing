@@ -44,7 +44,7 @@
             {{ $t('account.statistics.favourite_game_mode') }}
           </td>
           <td>
-            {{ statisticsData.favoriteGameModeCode || '-' }}
+            {{ $t(`game_mode.${statisticsData.favoriteGameModeCode}`) || '-' }}
           </td>
         </tr>
       </tbody>
