@@ -1,53 +1,55 @@
 <template>
   <AccountTabs />
-  <Loader v-if="loading"/>
-  <table
-      v-else
-      class="mx-auto my-5 w-50 table table-responsive table-bordered"
-  >
-    <tbody>
-      <tr>
-        <td>
-          {{ $t('account.statistics.last_cpm') }}
-        </td>
-        <td>
-          {{ statisticsData.lastCpm || '-' }}
-        </td>
-      </tr>
-      <tr>
-        <td>
-          {{ $t('account.statistics.average_cpm') }}
-        </td>
-        <td>
-          {{ statisticsData.averageCpm || '-' }}
-        </td>
-      </tr>
-      <tr>
-        <td>
-          {{ $t('account.statistics.best_cpm') }}
-        </td>
-        <td>
-          {{ statisticsData.bestCpm || '-' }}
-        </td>
-      </tr>
-      <tr>
-        <td>
-          {{ $t('account.statistics.games_played_count') }}
-        </td>
-        <td>
-          {{ statisticsData.gamesPlayedCount || '-' }}
-        </td>
-      </tr>
-      <tr>
-        <td>
-          {{ $t('account.statistics.favourite_game_mode') }}
-        </td>
-        <td>
-          {{ statisticsData.favoriteGameModeCode || '-' }}
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="container py-3">
+    <Loader v-if="loading"/>
+    <table
+        v-else
+        class="mx-auto my-5 table table-responsive table-bordered"
+    >
+      <tbody>
+        <tr>
+          <td>
+            {{ $t('account.statistics.last_cpm') }}
+          </td>
+          <td>
+            {{ statisticsData.lastCpm || '-' }}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {{ $t('account.statistics.average_cpm') }}
+          </td>
+          <td>
+            {{ statisticsData.averageCpm || '-' }}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {{ $t('account.statistics.best_cpm') }}
+          </td>
+          <td>
+            {{ statisticsData.bestCpm || '-' }}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {{ $t('account.statistics.games_played_count') }}
+          </td>
+          <td>
+            {{ statisticsData.gamesPlayedCount || '-' }}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            {{ $t('account.statistics.favourite_game_mode') }}
+          </td>
+          <td>
+            {{ statisticsData.favoriteGameModeCode || '-' }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script>

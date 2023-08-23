@@ -33,6 +33,23 @@ html, body {
   .nav-link {
     color: #fff;
   }
+
+  .languages-dropdown {
+    min-width: 60px;
+    width: 60px;
+
+    .dropdown-menu,
+    .dropdown-toggle {
+      min-width: 60px;
+      width: 60px;
+    }
+  }
+
+  .navbar-container {
+    flex-wrap: inherit;
+    flex: 1;
+    max-width: 50vw;
+  }
 }
 
 .pointer-events-none {
@@ -47,6 +64,22 @@ html, body {
 
 .container {
   flex: 1;
+}
+
+.table {
+  &.table-bordered {
+    thead th {
+      font-size: 20px;
+    }
+
+    tbody td {
+      font-size: 14px;
+    }
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .loader {

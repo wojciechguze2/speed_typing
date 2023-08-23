@@ -1,8 +1,10 @@
 import { createStore } from 'vuex'
 
-const storedState = localStorage.getItem('vuex-state');
+const storedState = sessionStorage.getItem('vuex-state')
 const initialState = storedState ? JSON.parse(storedState) : {
-    token: null
+    token: null,
+    mostPopularGameModes: null,
+    newGameModes: null
 }
 
 const store = createStore({
@@ -13,8 +15,15 @@ const store = createStore({
     mutations: {
         setAuthentication(state, token) {
             state.token = token
+        },
+        setMostPopularGameModes(state, mostPopularGameModes) {
+            state.mostPopularGameModes = mostPopularGameModes
+        },
+        setNewGameModes(state, newGameModes) {
+            state.newGameModes = newGameModes
         }
-    }
+    },
+    actions: {}
 })
 
 export default store

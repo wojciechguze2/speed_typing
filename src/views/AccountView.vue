@@ -1,8 +1,8 @@
 <template>
   <AccountTabs />
-  <Loader v-if="loading"/>
-  <div v-else class="w-50 mx-auto my-5">
-    <div class="account-buttons d-flex justify-content-end my-1">
+  <div class="container mx-auto py-3">
+    <Loader v-if="loading"/>
+    <div v-else class="account-buttons d-flex justify-content-end my-1">
       <button
           class="btn btn-primary mx-1"
           @click="editAccountButtonClick"

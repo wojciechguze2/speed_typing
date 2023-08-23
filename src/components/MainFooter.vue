@@ -19,6 +19,11 @@
                 </router-link>
               </li>
               <li>
+                <router-link to="/texts" class="text-white">
+                  {{ $t('messages.texts_list') }}
+                </router-link>
+              </li>
+              <li>
                 <router-link to="/sitemap" class="text-white">
                   {{ $t('messages.sitemap') }}
                 </router-link>
@@ -28,19 +33,9 @@
           <div class="col-md-4">
             <h5>{{ $t('messages.most_popular_game_modes') }}</h5>
             <ul class="list-unstyled">
-              <li>
-                <router-link to="/popular-mode1" class="text-white">
-                  Tryb 1
-                </router-link>
-              </li>
-              <li>
-                <router-link to="/popular-mode2" class="text-white">
-                  Tryb 2
-                </router-link>
-              </li>
-              <li>
-                <router-link to="/popular-mode3" class="text-white">
-                  Tryb 3
+              <li v-for="popularGameMode in mostPopularGameModes" v-bind:key="popularGameMode.id">
+                <router-link :to="`/game/${popularGameMode.code}`" class="text-white">
+                  {{ $t(`game_mode.${popularGameMode.code}`) }}
                 </router-link>
               </li>
             </ul>
@@ -48,19 +43,9 @@
           <div class="col-md-4">
             <h5>{{ $t('messages.newest_game_modes') }}</h5>
             <ul class="list-unstyled">
-              <li>
-                <router-link to="/popular-mode1" class="text-white">
-                  Tryb 1
-                </router-link>
-              </li>
-              <li>
-                <router-link to="/popular-mode2" class="text-white">
-                  Tryb 2
-                </router-link>
-              </li>
-              <li>
-                <router-link to="/popular-mode3" class="text-white">
-                  Tryb 3
+              <li v-for="newGameMode in newGameModes" v-bind:key="newGameMode.id">
+                <router-link :to="`/game/${newGameMode.code}`" class="text-white">
+                  {{ $t(`game_mode.${newGameMode.code}`) }}
                 </router-link>
               </li>
             </ul>
@@ -106,7 +91,17 @@
 </template>
 
 <script>
-import {GITHUB_LINK, LINKEDIN_LINK, PHONE_LINK, MAIL_LINK} from '@/plugins/constants'
+import {
+  GITHUB_LINK,
+  LINKEDIN_LINK,
+  PHONE_LINK,
+  MAIL_LINK, FOOTER_MAX_GAME_MODES
+} from '@/plugins/constants'
+import {
+  mapState
+} from 'vuex'
+import axios from '@/plugins/axios'
+import {setFooterLinks} from "@/plugins/helpers";
 
 export default {
   name: 'MainFooter',
@@ -116,6 +111,25 @@ export default {
       LINKEDIN_LINK,
       PHONE_LINK,
       MAIL_LINK
+    }
+  },
+  computed: {
+    ...mapState(['mostPopularGameModes', 'newGameModes'])
+  },
+  created() {
+    if (!this.$store.state.newGameModes) {
+      this.fetchFooterLinks()
+    }
+  },
+  methods: {
+    async fetchFooterLinks() {
+      const url = `${process.env.VUE_APP_BACKEND_URL}/api/globals/game-modes-data`,
+          params = {
+            'global_max_game_modes': FOOTER_MAX_GAME_MODES
+          },
+          response = await axios.get(url, {params})
+
+      setFooterLinks(response.data.mostPopularGameModes, response.data.newGameModes)
     }
   }
 }

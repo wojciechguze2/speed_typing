@@ -11,9 +11,10 @@
           </p>
         </div>
         <div class="card-footer">
-          <router-link to="/" class="text-decoration-none link-primary">
+          <!--<router-link to="/" class="text-decoration-none link-primary">
             {{ $t('homepage.cards.card_1.footer') }}
-          </router-link>
+          </router-link>-->
+          <LanguagesDropdown label-type="name" />
         </div>
       </div>
     </transition>
@@ -70,8 +71,12 @@
 </template>
 
 <script>
+import LanguagesDropdown from '@/components/LanguagesDropdown'
 export default {
   name: 'HomeCards',
+  components: {
+    LanguagesDropdown
+  },
   props: [
       'loading'
   ],

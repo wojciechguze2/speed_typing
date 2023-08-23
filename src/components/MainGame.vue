@@ -10,7 +10,12 @@
           />
         </div>
         <div class="col-lg-6">
-          <h4>
+          <div
+            v-if="gameModeCode === GAME_MODE_RANDOM"
+          >
+            {{ $t('messages.loading') }}
+          </div>
+          <h4 v-else>
             {{ $t(`game_mode.${gameModeCode}`) }}
           </h4>
         </div>
@@ -72,7 +77,10 @@ import GameButtonTogglePause from '@/components/GameButtonTogglePause'
 import GameButtonClear from '@/components/GameButtonClear'
 import GameMistakes from '@/components/GameMistakes'
 import GameButtonRestart from '@/components/GameButtonRestart'
-import { GAME_MODE_FAST } from '@/plugins/constants'
+import {
+  GAME_MODE_FAST,
+  GAME_MODE_RANDOM
+} from '@/plugins/constants'
 import Loader from '@/components/Loader'
 import axios from '@/plugins/axios'
 
@@ -88,6 +96,9 @@ export default {
     GameMistakes,
     Loader
   },
+  emits: [
+      'update-game-mode-code'
+  ],
   props: {
     gameModeCode: {
       type: String,
@@ -105,7 +116,8 @@ export default {
       expectedOutput: '',
       loadingExpectedOutput: true,
       loadingSavingResult: false,
-      expectedOutputId: null
+      expectedOutputId: null,
+      GAME_MODE_RANDOM
     }
   },
   computed: {
@@ -155,14 +167,17 @@ export default {
     },
     fetchData() {
       this.loadingExpectedOutput = true
-      const url = `${process.env.VUE_APP_BACKEND_URL}/api/expected-texts/random`,
+      const url = `${process.env.VUE_APP_BACKEND_URL}/api/game/expected-text`,
           params = {
-            locale_iso: window.LOCALE_ISO
+            locale_iso: window.LOCALE_ISO,
+            game_mode_code: this.gameModeCode
           }
 
       axios.get(url, {params})
           .then(response => {
-            const expectedOutputText = response.data
+            const expectedOutputText = response.data.expectedText
+            // const timeLimitSeconds = response.data.timeLimitSeconds
+            this.$emit('update-game-mode-code', response.data.gameModeCode)
             this.expectedOutput = expectedOutputText.text
             this.expectedOutputId = expectedOutputText.id
             this.loadingExpectedOutput = false

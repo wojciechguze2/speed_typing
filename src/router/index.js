@@ -10,9 +10,29 @@ const routes = [
         component: () => import('@/views/HomeView')
     },
     {
-        path: '/fast-game',
-        name: 'FastGameView',
-        component: () => import('@/views/FastGameView')
+        path: '/pl',
+        name: 'ChangeLanguageViewPL',
+        component: () => import('@/views/ChangeLanguageView')
+    },
+    {
+        path: '/en',
+        name: 'ChangeLanguageViewEN',
+        component: () => import('@/views/ChangeLanguageView')
+    },
+    {
+        path: '/de',
+        name: 'ChangeLanguageViewDE',
+        component: () => import('@/views/ChangeLanguageView')
+    },
+    {
+        path: '/game/:gameMode',
+        name: 'GameView',
+        component: () => import('@/views/GameView')
+    },
+    {
+        path: '/game-modes',
+        name: 'GameModesView',
+        component: () => import('@/views/GameModesView')
     },
     {
         path: '/contact',
@@ -73,21 +93,6 @@ const routes = [
         path: '/account/history',
         name: 'AccountHistoryView',
         component: () => import('@/views/AccountHistoryView')
-    },
-    {
-        path: '/pl',
-        name: 'ChangeLanguageViewPL',
-        component: () => import('@/views/ChangeLanguageView')
-    },
-    {
-        path: '/en',
-        name: 'ChangeLanguageViewEN',
-        component: () => import('@/views/ChangeLanguageView')
-    },
-    {
-        path: '/de',
-        name: 'ChangeLanguageViewDE',
-        component: () => import('@/views/ChangeLanguageView')
     }
 ]
 

@@ -1,22 +1,27 @@
 <template>
   <div class="main-bg">
     <MainGame
-        :game-mode-code="GAME_MODE_FAST"
+        :game-mode-code="gameModeCode"
+        @update-game-mode-code="updateGameModeCode"
     />
   </div>
 </template>
 <script>
 import MainGame from '@/components/MainGame'
-import { GAME_MODE_FAST } from '@/plugins/constants'
 
 export default {
-  name: 'FastGameView',
+  name: 'GameView',
   components: {
     MainGame
   },
   data() {
     return {
-      GAME_MODE_FAST
+      gameModeCode: this.$route.params.gameMode.toString()
+    }
+  },
+  methods: {
+    updateGameModeCode(gameModeCode) {
+      this.gameModeCode = gameModeCode
     }
   }
 }

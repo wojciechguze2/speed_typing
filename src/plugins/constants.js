@@ -1,5 +1,6 @@
 export const TITLE = 'Typing speed test'
 export const GAME_MODE_FAST = 'fast-game'
+export const GAME_MODE_RANDOM = 'random'
 export const LINKEDIN_LINK = 'https://www.linkedin.com/in/wojciech-guze/'
 export const GITHUB_LINK = 'https://github.com/wojciechguze2'
 export const MAIL_LINK = 'mailto:wojciechguze2@gmail.com'
@@ -30,3 +31,4 @@ export const AVAILABLE_LOCALES = [
     'en',
     'de'
 ]
+export const FOOTER_MAX_GAME_MODES = 3

@@ -20,6 +20,8 @@ import {
     faTrashCan,
     faPen,
     faTimes,
+    faGamepad,
+    faRandom,
 } from '@fortawesome/free-solid-svg-icons'
 import {
     faLinkedin,
@@ -56,7 +58,9 @@ library.add(
     faUser,
     faTrashCan,
     faPen,
-    faTimes
+    faTimes,
+    faGamepad,
+    faRandom,
 )
 
 const i18n = await getI18n(),

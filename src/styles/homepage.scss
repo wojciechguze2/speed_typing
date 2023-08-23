@@ -1,3 +1,5 @@
+$homepage-primary-light: #1473ff;
+
 .homepage {
   .homepage-special-fade-out-enter-active,
   .homepage-special-fade-out-leave-active {
@@ -5,7 +7,7 @@
   }
 
   .homepage-special-fade-out-leave-active {
-    color: rgba(13, 110, 253, 0.7);
+    color: $homepage-primary-light;
   }
 
   .homepage-special-fade-out-enter,
@@ -14,11 +16,11 @@
   }
 
   .homepage-special-slide-enter-active {
-    animation: homepage-special-slide-animation .4s;
+    animation: homepage-special-slide-animation .5s;
   }
 
   .homepage-special-slide-reverse-enter-active {
-    animation: homepage-special-slide-reverse-animation .4s;
+    animation: homepage-special-slide-reverse-animation .5s;
   }
 
   @keyframes homepage-special-slide-animation {
@@ -42,6 +44,32 @@
     100% {
       opacity: 1;
       transform: translateY(0)
+    }
+  }
+}
+
+.navbar {
+  .link-appear {
+    background: linear-gradient(
+                    to left,
+                    #fff 0%,
+                    #fff 50%,
+                    $homepage-primary-light 50%,
+                    $homepage-primary-light 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: link-appear-animation 1s ease-out alternate;
+  }
+
+  @keyframes link-appear-animation {
+    0% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0 50%;
     }
   }
 }

@@ -1,43 +1,45 @@
 <template>
   <AccountTabs />
-  <Loader v-if="loading"/>
-  <table
-      v-else
-      class="mx-auto my-5 w-50 table table-responsive table-bordered text-center"
-  >
-    <thead>
-      <tr>
-        <th>{{ $t('messages.game_mode') }}</th>
-        <th>{{ $t('messages.cpm') }}</th>
-        <th>{{ $t('game.mistakes_count') }}</th>
-        <th>{{ $t('game.time') }}</th>
-        <th>{{ $t('messages.date') }}</th>
-        <th>{{ $t('game.text_length') }}</th>
-      </tr>
-    </thead>
-    <tbody v-if="historyData.length">
-      <tr
-          v-for="game in historyData"
-          v-bind:key="game.id"
-      >
-        <td>{{ game.gameModeCode }}</td>
-        <td>{{ game.cpm }}</td>
-        <td>{{ game.mistakesCount }}</td>
-        <td>{{ game.timeMs }}</td>
-        <td>{{ game.createDate }}</td>
-        <td>{{ game.expectedTextLength }}</td>
-      </tr>
-    </tbody>
-    <tbody
-      v-else
+  <div class="container py-3">
+    <Loader v-if="loading"/>
+    <table
+        v-else
+        class="mx-auto my-5 table table-responsive table-bordered text-center"
     >
-      <tr>
-        <td colspan="6">
-          {{ $t('account.history.no_games_found') }}
-        </td>
-      </tr>
-    </tbody>
-  </table>
+      <thead>
+        <tr>
+          <th>{{ $t('messages.game_mode') }}</th>
+          <th>{{ $t('messages.cpm') }}</th>
+          <th>{{ $t('game.mistakes_count') }}</th>
+          <th>{{ $t('game.time') }}</th>
+          <th>{{ $t('messages.date') }}</th>
+          <th>{{ $t('game.text_length') }}</th>
+        </tr>
+      </thead>
+      <tbody v-if="historyData.length">
+        <tr
+            v-for="game in historyData"
+            v-bind:key="game.id"
+        >
+          <td>{{ $t(`game_mode.${game.gameModeCode}`) }}</td>
+          <td>{{ game.cpm }}</td>
+          <td>{{ game.mistakesCount }}</td>
+          <td>{{ game.timeMs }}</td>
+          <td>{{ game.createDate }}</td>
+          <td>{{ game.expectedTextLength }}</td>
+        </tr>
+      </tbody>
+      <tbody
+        v-else
+      >
+        <tr>
+          <td colspan="6">
+            {{ $t('account.history.no_games_found') }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script>
