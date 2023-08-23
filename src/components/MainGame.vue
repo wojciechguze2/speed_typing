@@ -301,6 +301,7 @@ export default {
           const occurrenceCount = (obj[item] || 0)
 
           if (occurrenceCount > 100) {
+            // todo: ban user
             throw new Error('Possible automation detected!')
           }
 

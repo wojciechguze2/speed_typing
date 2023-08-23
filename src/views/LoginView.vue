@@ -97,6 +97,7 @@ import { VueReCaptcha } from 'vue-recaptcha-v3'
 import LoginSpecial from '@/components/LoginSpecial'
 import Loader from '@/components/Loader'
 import {
+  scrollToTop,
   setAuthentication
 } from '@/plugins/helpers'
 
@@ -123,6 +124,9 @@ export default {
     if (this.$store.getters.isAuthenticated) {
       this.$router.push(DEFAULT_AUTHENTICATED_REDIRECT_URL)
     }
+  },
+  created() {
+    scrollToTop()
   },
   methods: {
     onRecaptchaVerify(recaptchaToken) {

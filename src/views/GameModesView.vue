@@ -25,6 +25,7 @@
 <script>
 import axios from '@/plugins/axios'
 import Loader from '@/components/Loader'
+import { scrollToTop } from '@/plugins/helpers'
 
 export default {
   name: 'GameModesView',
@@ -39,6 +40,7 @@ export default {
   },
   created() {
     this.fetchData()
+    scrollToTop()
   },
   methods: {
     goToGameMode(code) {

@@ -16,3 +16,7 @@ export function setFooterLinks(mostPopularGameModes, newGameModes) {
 
     sessionStorage.setItem('vuex-state', JSON.stringify(store.state))
 }
+
+export function scrollToTop() {
+    window.scrollTo(0, 0)
+}

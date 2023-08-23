@@ -1,9 +1,12 @@
 <template>
-  <div class="dropdown ms-3 languages-dropdown">
+  <div
+      class="dropdown languages-dropdown"
+      :class="{'ms-3': isoLabels}"
+  >
     <button
-        class="btn btn-sm btn-outline-light dropdown-toggle"
+        class="btn btn-sm dropdown-toggle"
         :class="{
-          'text-uppercase': isoLabels,
+          'text-uppercase btn-outline-light': isoLabels,
           'text-primary': !isoLabels
         }"
         type="button"

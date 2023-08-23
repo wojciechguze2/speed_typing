@@ -1,11 +1,5 @@
 @import 'variables.scss';
 
-.navbar {
-  .link-appear {
-    color: $homepage-primary-light;
-  }
-}
-
 .modal {
   display: flow;
   background: $modal-bg;
@@ -38,6 +32,10 @@ html, body {
 }
 
 .navbar {
+  .link-appear {
+    color: $homepage-primary-light;
+  }
+
   .nav-link {
     color: #fff;
   }
@@ -57,6 +55,24 @@ html, body {
     flex-wrap: inherit;
     flex: 1;
     max-width: 50vw;
+  }
+}
+
+.footer {
+  .list-unstyled {
+    .footer-link {
+      text-decoration: none;
+      font-size: 21px;
+
+      &:hover {
+        color: $footer-link-hover-color !important;
+      }
+    }
+  }
+
+  .footer-section-header {
+    font-size: 24px;
+    font-weight: bold;
   }
 }
 

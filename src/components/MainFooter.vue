@@ -3,53 +3,62 @@
     <div class="flex-grow-1">
       <div class="container py-5">
         <div class="row">
-          <div class="col-md-4">
-            <h5>
+          <div class="col-md-4 text-center">
+            <p class="footer-section-header">
               {{ $t('messages.information') }}
-            </h5>
+            </p>
             <ul class="list-unstyled">
               <li>
-                <router-link to="/regulations" class="text-white">
-                  {{ $t('messages.regulations') }}
+                <router-link to="/about" class="text-white footer-link">
+                  {{ $t('messages.about_site') }}
                 </router-link>
               </li>
               <li>
-                <router-link to="/privacy-policy" class="text-white">
-                  {{ $t('messages.privacy_policy') }}
-                </router-link>
-              </li>
-              <li>
-                <router-link to="/texts" class="text-white">
+                <router-link to="/texts" class="text-white footer-link">
                   {{ $t('messages.texts_list') }}
                 </router-link>
               </li>
               <li>
-                <router-link to="/sitemap" class="text-white">
+                <router-link to="/sitemap" class="text-white footer-link">
                   {{ $t('messages.sitemap') }}
                 </router-link>
               </li>
               <li>
-                <router-link to="/about" class="text-white">
-                  {{ $t('messages.about_site') }}
+                <router-link to="/regulations" class="text-white footer-link">
+                  {{ $t('messages.regulations') }}
+                </router-link>
+              </li>
+              <li>
+                <router-link to="/privacy-policy" class="text-white footer-link">
+                  {{ $t('messages.privacy_policy') }}
+                </router-link>
+              </li>
+              <li>
+                <router-link to="/contact" class="text-white footer-link">
+                  {{ $t('messages.contact') }}
                 </router-link>
               </li>
             </ul>
           </div>
-          <div class="col-md-4">
-            <h5>{{ $t('messages.most_popular_game_modes') }}</h5>
+          <div class="col-md-4 text-center">
+            <p class="footer-section-header">
+              {{ $t('messages.most_popular_game_modes') }}
+            </p>
             <ul class="list-unstyled">
               <li v-for="popularGameMode in mostPopularGameModes" v-bind:key="popularGameMode.id">
-                <router-link :to="`/game/${popularGameMode.code}`" class="text-white">
+                <router-link :to="`/game/${popularGameMode.code}`" class="text-white footer-link">
                   {{ $t(`game_mode.${popularGameMode.code}`) }}
                 </router-link>
               </li>
             </ul>
           </div>
-          <div class="col-md-4">
-            <h5>{{ $t('messages.newest_game_modes') }}</h5>
+          <div class="col-md-4 text-center">
+            <p class="footer-section-header">
+              {{ $t('messages.newest_game_modes') }}
+            </p>
             <ul class="list-unstyled">
               <li v-for="newGameMode in newGameModes" v-bind:key="newGameMode.id">
-                <router-link :to="`/game/${newGameMode.code}`" class="text-white">
+                <router-link :to="`/game/${newGameMode.code}`" class="text-white footer-link">
                   {{ $t(`game_mode.${newGameMode.code}`) }}
                 </router-link>
               </li>
@@ -58,7 +67,7 @@
         </div>
       </div>
     </div>
-    <div class="d-flex justify-content-end align-items-center p-4">
+    <div class="d-flex justify-content-end align-items-center p-3 pb-0">
       <a
           :href="LINKEDIN_LINK"
           target="_blank"
@@ -92,6 +101,9 @@
         <font-awesome-icon icon="phone" class="text-white" size="2x" />
       </a>
     </div>
+    <div class="d-flex justify-content-end align-items-center px-3">
+        <p class="me-4">Wojciech Guze - 08.2023</p>
+    </div>
   </footer>
 </template>
 
@@ -121,7 +133,10 @@ export default {
     }
   },
   computed: {
-    ...mapState(['mostPopularGameModes', 'newGameModes'])
+    ...mapState([
+        'mostPopularGameModes',
+        'newGameModes'
+    ])
   },
   created() {
     if (!this.$store.state.newGameModes) {

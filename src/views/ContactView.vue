@@ -39,6 +39,7 @@
 import { VueReCaptcha } from 'vue-recaptcha-v3'
 import { validateEmail } from '@/plugins/validators'
 import { EMAIL_NOT_VALID_MESSAGE } from '@/plugins/constants'
+import { scrollToTop } from '@/plugins/helpers'
 
 export default {
   name: 'ContactView',
@@ -58,12 +59,9 @@ export default {
     }
   },
   created() {
-    this.scrollToTop()
+    scrollToTop()
   },
   methods: {
-    scrollToTop() {
-      window.scrollTo(0, 0)
-    },
     onRecaptchaVerify(recaptchaToken) {
       this.recaptchaToken = recaptchaToken
     },

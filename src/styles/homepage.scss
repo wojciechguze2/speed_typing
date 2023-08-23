@@ -46,6 +46,26 @@
       transform: translateY(0)
     }
   }
+
+  .homepage-cards {
+    .card-footer {
+      .btn,
+      .link-primary {
+        font-size: 16px;
+        font-weight: bold;
+        color: white !important;
+
+        &:hover, &.show {
+          color: $footer-link-hover-color !important;
+        }
+      }
+
+      .btn {
+        padding: 0;
+        border: 0;
+      }
+    }
+  }
 }
 
 .navbar {
@@ -60,7 +80,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-size: 200% auto;
-    animation: link-appear-animation 1s ease-out alternate;
+    animation: link-appear-animation .8s ease-out alternate;
   }
 
   @keyframes link-appear-animation {

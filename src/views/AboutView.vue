@@ -93,6 +93,7 @@
 
 <script>
 import { TITLE, GITHUB_LINK } from '@/plugins/constants'
+import { scrollToTop } from '@/plugins/helpers'
 
 export default {
   name: 'AboutView',
@@ -101,7 +102,10 @@ export default {
       TITLE,
       GITHUB_LINK
     }
-  }
+  },
+  created() {
+    scrollToTop()
+  },
 }
 </script>
 

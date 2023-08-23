@@ -23,7 +23,7 @@ export const LANGUAGE_CHANGE_REDIRECT_URL = '/'
 export const DEFAULT_NOT_AUTHENTICATED_REDIRECT_URL = '/login'
 export const LOGOUT_URL = '/logout'
 export const ACCOUNT_EMAIL_CHANGE_AVAILABLE = false
-export const HOMEPAGE_SPECIAL_TYPING_SPEED = 75
+export const HOMEPAGE_SPECIAL_TYPING_INTERVAL = 100
 export const HOMEPAGE_SPECIAL_TYPING_COUNTDOWN = 500
 export const DEFAULT_LOCALE_ISO = 'pl'
 export const AVAILABLE_LOCALES = [
@@ -31,7 +31,7 @@ export const AVAILABLE_LOCALES = [
     'en',
     'de'
 ]
-export const FOOTER_MAX_GAME_MODES = 3
+export const FOOTER_MAX_GAME_MODES = 5
 export const EXPECTED_OUTPUT_TYPE_TEXT = 'text'
 export const EXPECTED_OUTPUT_TYPE_WORD = 'word'
 export const EXPECTED_OUTPUT_TYPE_LETTER = 'letter'

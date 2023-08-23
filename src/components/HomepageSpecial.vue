@@ -34,7 +34,7 @@
 <script>
 import Keyboard from '@/components/Keyboard'
 import {
-  HOMEPAGE_SPECIAL_TYPING_SPEED,
+  HOMEPAGE_SPECIAL_TYPING_INTERVAL,
   HOMEPAGE_SPECIAL_TYPING_COUNTDOWN
 } from '@/plugins/constants'
 
@@ -86,7 +86,7 @@ export default {
             this.typeTextAutomatically()
           }, 2500)
         }
-      }, HOMEPAGE_SPECIAL_TYPING_SPEED)
+      }, HOMEPAGE_SPECIAL_TYPING_INTERVAL)
     }
   }
 }

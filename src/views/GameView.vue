@@ -8,11 +8,15 @@
 </template>
 <script>
 import MainGame from '@/components/MainGame'
+import { scrollToTop } from '@/plugins/helpers'
 
 export default {
   name: 'GameView',
   components: {
     MainGame
+  },
+  created() {
+    scrollToTop()
   },
   data() {
     return {

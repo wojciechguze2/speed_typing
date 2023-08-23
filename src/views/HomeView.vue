@@ -16,7 +16,7 @@
         </h2>
         <p v-html="$t('homepage.content_2.content')" /> <!-- todo: change v-html (to avoid xss) -->
       </div>
-      <div class="mt-5 row col-lg-12">
+      <div class="mt-5 row col-lg-12 homepage-cards">
         <HomeCards
             :loading="loading"
         />
