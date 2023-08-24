@@ -31,6 +31,10 @@
         <vue-recaptcha ref="recaptcha" @verify="onRecaptchaVerify" />
       </div>
       <button type="submit" class="btn btn-primary">{{ $t('messages.send') }}</button>
+      <Loader v-if="loading" />
+      <div v-if="alert">
+        {{ alert }}
+      </div>
     </form>
   </div>
 </template>
@@ -40,15 +44,20 @@ import { VueReCaptcha } from 'vue-recaptcha-v3'
 import { validateEmail } from '@/plugins/validators'
 import { EMAIL_NOT_VALID_MESSAGE } from '@/plugins/constants'
 import { scrollToTop } from '@/plugins/helpers'
+import axios from '@/plugins/axios'
+import Loader from '@/components/Loader'
 
 export default {
   name: 'ContactView',
   components: {
     // eslint-disable-next-line vue/no-unused-components
     VueReCaptcha,
+    Loader,
   },
   data() {
     return {
+      loading: false,
+      alert: null,
       firstName: '',
       lastName: '',
       email: '',
@@ -68,16 +77,27 @@ export default {
     submitForm() {
       if (!validateEmail(this.email)) {
         this.errorMessage = EMAIL_NOT_VALID_MESSAGE
+
         return
       }
 
-      console.log('Form submitted')
-      console.log('First Name:', this.firstName)
-      console.log('Last Name:', this.lastName)
-      console.log('Email:', this.email)
-      console.log('Phone:', this.phone)
-      console.log('Message:', this.message)
-      console.log('reCAPTCHA Token:', this.recaptchaToken)
+      this.loading = true
+
+      const url = `${process.env.VUE_APP_BACKEND_URL}/api/globals/contact`,
+          postData = {
+            firstName: this.firstName,
+            lastName: this.lastName,
+            email: this.email,
+            phone: this.phone,
+            message: this.message
+        }
+
+      axios.post(url, postData).then(() => {
+        // todo: add alert
+        this.alert = 'Wysłano pomyślnie!'
+        this.loading = false
+        this.$router.push('/')
+      })
     },
   },
 };

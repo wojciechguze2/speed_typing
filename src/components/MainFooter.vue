@@ -19,19 +19,14 @@
                 </router-link>
               </li>
               <li>
-                <router-link to="/sitemap" class="text-white footer-link">
-                  {{ $t('messages.sitemap') }}
-                </router-link>
-              </li>
-              <li>
-                <router-link to="/regulations" class="text-white footer-link">
+                <a href="/regulations" class="text-white footer-link">
                   {{ $t('messages.regulations') }}
-                </router-link>
+                </a>
               </li>
               <li>
-                <router-link to="/privacy-policy" class="text-white footer-link">
+                <a href="/privacy-policy" class="text-white footer-link">
                   {{ $t('messages.privacy_policy') }}
-                </router-link>
+                </a>
               </li>
               <li>
                 <router-link to="/contact" class="text-white footer-link">

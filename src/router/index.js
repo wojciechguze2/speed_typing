@@ -98,11 +98,6 @@ const routes = [
         name: 'AccountHistoryView',
         component: () => import('@/views/AccountHistoryView')
     },
-    {
-        path: '/sitemap',
-        name: 'SitemapView',
-        component: () => import('@/views/SitemapView')
-    },
     ...staticPages
 ]
 

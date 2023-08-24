@@ -35,6 +35,8 @@ export default {
   },
   methods: {
     async fetchData() {
+      this.loading = true
+
       const url = `${process.env.VUE_APP_BACKEND_URL}/api/globals/static-page/${this.staticPageKey}`,
           params = {
             locale_iso: window.LOCALE_ISO
@@ -49,5 +51,8 @@ export default {
   created() {
     this.fetchData()
   },
+  watch: {
+    $route: 'fetchData'
+  }
 }
 </script>
