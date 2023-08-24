@@ -1,80 +1,82 @@
 <template>
-  <AccountTabs />
-  <div class="container mx-auto py-3">
-    <Loader v-if="loading"/>
-    <div v-else class="account-buttons d-flex justify-content-end my-1">
-      <button
-          class="btn btn-primary mx-1"
-          @click="editAccountButtonClick"
-          data-bs-toggle="tooltip"
-          data-bs-placement="top"
-          :title="$t('account.edit_account')"
+  <div class="container">
+    <AccountTabs />
+    <div class="mx-auto py-3">
+      <Loader v-if="loading"/>
+      <div v-else class="account-buttons d-flex justify-content-end my-1">
+        <button
+            class="btn btn-primary mx-1"
+            @click="editAccountButtonClick"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            :title="$t('account.edit_account')"
+        >
+          <font-awesome-icon icon="pen" />
+        </button>
+        <button
+            class="btn btn-danger"
+            @click="deleteAccountButtonClick"
+            data-bs-toggle="tooltip"
+            data-bs-placement="top"
+            :title="$t('account.delete_account')"
+        >
+          <font-awesome-icon icon="trash-can" />
+        </button>
+      </div>
+      <table
+          class="table table-responsive table-bordered"
       >
-        <font-awesome-icon icon="pen" />
-      </button>
-      <button
-          class="btn btn-danger"
-          @click="deleteAccountButtonClick"
-          data-bs-toggle="tooltip"
-          data-bs-placement="top"
-          :title="$t('account.delete_account')"
-      >
-        <font-awesome-icon icon="trash-can" />
-      </button>
+        <tbody>
+          <tr>
+            <td>
+              {{ $t('messages.email') }}
+            </td>
+            <td>
+              {{ userData.email }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{ $t('account.last_login_date') }}
+            </td>
+            <td>
+              {{ userData.lastLoginDate }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{ $t('account.join_date') }}
+            </td>
+            <td>
+              {{ userData.createDate }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{ $t('account.last_game_mode') }}
+            </td>
+            <td>
+              {{ $t(`game_mode.${userData.lastGameModeCode}`) }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <table
-        class="table table-responsive table-bordered"
-    >
-      <tbody>
-        <tr>
-          <td>
-            {{ $t('messages.email') }}
-          </td>
-          <td>
-            {{ userData.email }}
-          </td>
-        </tr>
-        <tr>
-          <td>
-            {{ $t('account.last_login_date') }}
-          </td>
-          <td>
-            {{ userData.lastLoginDate }}
-          </td>
-        </tr>
-        <tr>
-          <td>
-            {{ $t('account.join_date') }}
-          </td>
-          <td>
-            {{ userData.createDate }}
-          </td>
-        </tr>
-        <tr>
-          <td>
-            {{ $t('account.last_game_mode') }}
-          </td>
-          <td>
-            {{ userData.lastGameModeCode }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <ModalConfirm
+        :is-opened="deleteModalOpened"
+        modal-id="account-delete-modal"
+        :modal-title="$t('account.delete_account')"
+        :modal-message="$t('account.delete_account_confirm')"
+        @confirm="deleteAccount"
+        @close="hideDeleteModal"
+    />
+    <AccountEditModal
+        :current-email="userData.email"
+        :is-opened="editModalOpened"
+        @confirm="editAccount"
+        @close="hideEditModal"
+    />
   </div>
-  <ModalConfirm
-      :is-opened="deleteModalOpened"
-      modal-id="account-delete-modal"
-      :modal-title="$t('account.delete_account')"
-      :modal-message="$t('account.delete_account_confirm')"
-      @confirm="deleteAccount"
-      @close="hideDeleteModal"
-  />
-  <AccountEditModal
-      :current-email="userData.email"
-      :is-opened="editModalOpened"
-      @confirm="editAccount"
-      @close="hideEditModal"
-  />
 </template>
 
 <script>

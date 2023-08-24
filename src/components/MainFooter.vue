@@ -1,9 +1,9 @@
 <template>
-  <footer class="footer bg-dark text-white w-100 mt-auto mb-0">
+  <footer ref="mainFooter" class="footer footer-animation bg-dark text-white w-100 mt-auto mb-0">
     <div class="flex-grow-1">
       <div class="container py-5">
         <div class="row">
-          <div class="col-md-4 text-center">
+          <div class="col-md-4 text-center footer-start">
             <p class="footer-section-header">
               {{ $t('messages.information') }}
             </p>
@@ -40,7 +40,7 @@
               </li>
             </ul>
           </div>
-          <div class="col-md-4 text-center">
+          <div class="col-md-4 text-center footer-middle">
             <p class="footer-section-header">
               {{ $t('messages.most_popular_game_modes') }}
             </p>
@@ -52,7 +52,7 @@
               </li>
             </ul>
           </div>
-          <div class="col-md-4 text-center">
+          <div class="col-md-4 text-center footer-end">
             <p class="footer-section-header">
               {{ $t('messages.newest_game_modes') }}
             </p>
@@ -139,6 +139,10 @@ export default {
     ])
   },
   created() {
+    setTimeout(() => {
+      this.$refs.mainFooter.classList.remove('footer-animation')
+    }, 2250)
+
     if (!this.$store.state.newGameModes) {
       this.fetchFooterLinks()
     }

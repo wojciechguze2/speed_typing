@@ -69,6 +69,16 @@
 }
 
 .navbar {
+  @keyframes link-appear-animation {
+    0% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0 50%;
+    }
+  }
+
   .link-appear {
     background: linear-gradient(
                     to left,
@@ -82,14 +92,38 @@
     background-size: 200% auto;
     animation: link-appear-animation .8s ease-out alternate;
   }
+}
 
-  @keyframes link-appear-animation {
+.footer {
+  @keyframes link-appear-animation-vertical {
     0% {
-      background-position: 100% 50%;
+      background-position: 0 100%;
     }
 
     100% {
-      background-position: 0 50%;
+      background-position: 0 0;
+    }
+  }
+
+  &.footer-animation {
+    background-color: $dark;
+    color: transparent;
+
+    .footer-start,
+    .footer-middle,
+    .footer-end {
+      background: linear-gradient(
+                      to top,
+                      $homepage-primary-light 0,
+                      $homepage-primary-light 50%,
+                      white 50%,
+                      white 100%,
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: link-appear-animation-vertical 4s ease-out alternate;
+      background-size: 100% 300%;
+      animation-fill-mode: forwards;
     }
   }
 }

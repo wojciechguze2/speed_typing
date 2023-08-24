@@ -1,6 +1,6 @@
 <template>
-  <AccountTabs />
-  <div class="container py-3">
+  <div class="container">
+    <AccountTabs />
     <Loader v-if="loading"/>
     <table
         v-else

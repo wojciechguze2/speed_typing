@@ -62,7 +62,8 @@ html, body {
   .list-unstyled {
     .footer-link {
       text-decoration: none;
-      font-size: 21px;
+      font-size: 19px;
+      font-weight: bold;
 
       &:hover {
         color: $footer-link-hover-color !important;

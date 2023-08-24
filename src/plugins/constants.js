@@ -41,3 +41,4 @@ export const BY_ONE_WORD_GAME_MODES = [
 export const BY_ONE_LETTER_GAME_MODES = [
     'by-one-letter'
 ]
+export const GAME_MODE_TYPE_TIME = 'time'

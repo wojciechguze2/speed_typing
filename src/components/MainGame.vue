@@ -7,6 +7,8 @@
             :game-time-ms="gameTimeMs"
             :is-game-running="isGameRunning"
             :cpm="cpm"
+            :time-limit-seconds="timeLimitSeconds"
+            :remain-time-ms="remainTimeMs"
           />
         </div>
         <div class="col-lg-6">
@@ -18,6 +20,9 @@
           <h4 v-else>
             {{ $t(`game_mode.${gameModeCode}`) }}
           </h4>
+          <div v-if="remainTimeSeconds" class="fs-3 text-primary font-weight-bold">
+            {{ remainTimeSeconds }}
+          </div>
         </div>
         <div class="col-lg-3">
           <div>
@@ -89,7 +94,8 @@ import {
   EXPECTED_OUTPUT_TYPE_LETTER,
   EXPECTED_OUTPUT_TYPE_TEXT,
   EXPECTED_OUTPUT_TYPE_WORD,
-  GAME_MODE_RANDOM
+  GAME_MODE_RANDOM,
+  GAME_MODE_TYPE_TIME
 } from '@/plugins/constants'
 import Loader from '@/components/Loader'
 import axios from '@/plugins/axios'
@@ -117,21 +123,33 @@ export default {
   },
   data() {
     return {
+      gameModeTypeCodes: [],
       mistakesCount: 0,
+      loadingExpectedOutput: true,
+      loadingSavingResult: false,
       isGameRunning: false,
       gameTimerInterval: null,
       gameTimeMs: 0,
-      gameInputText: '',
+      timeLimitSeconds: 0,
       gameInputTimeEndings: [],
+      gameInputText: '',
       expectedOutput: '',
-      loadingExpectedOutput: true,
-      loadingSavingResult: false,
       expectedOutputId: null,
       EXPECTED_OUTPUT_TYPE_TEXT,
       GAME_MODE_RANDOM
     }
   },
   computed: {
+    remainTimeSeconds() {
+      const remainTime = this.timeLimitSeconds - (this.gameTimeMs / 1000)
+
+      return !isNaN(remainTime) && remainTime >= 0  ? parseInt(remainTime) : 0
+    },
+    remainTimeMs() {
+      const remainTime = (this.timeLimitSeconds * 1000) - this.gameTimeMs
+
+      return remainTime >= 0 ? remainTime : 0
+    },
     inputControl() {
       return this.isByOneMode
           ? this.$refs.gameInputContainer.$refs.byOneControl
@@ -148,6 +166,9 @@ export default {
       }
 
       return null
+    },
+    isTimeLimitModeType() {
+      return this.gameModeTypeCodes.includes(GAME_MODE_TYPE_TIME)
     },
     isByOneMode() {
       return this.expectedOutputType !== EXPECTED_OUTPUT_TYPE_TEXT
@@ -207,8 +228,15 @@ export default {
 
       return !isNaN(cpm) ? cpm.toFixed(2) : 0
     },
-    finished() {
+    finishedSuccessFully() {
       return this.gameInputText.length === this.targetExceptedOutput.length
+    },
+    finished() {
+      if (this.isTimeLimitModeType) {
+        return !this.remainTimeMs || this.gameInputText.length === this.targetExceptedOutput.length
+      } else {  // textLengthModeType
+        return this.gameInputText.length === this.targetExceptedOutput.length
+      }
     },
   },
   created() {
@@ -234,6 +262,11 @@ export default {
       document.body.addEventListener('keydown', this.startGameFast)
     },
     saveResult() {
+      if (!this.finishedSuccessFully) {
+        // todo: alert (loss)
+        return
+      }
+
       this.loadingSavingResult = true
       const url = `${process.env.VUE_APP_BACKEND_URL}/api/game/save`,
           postData = {
@@ -264,11 +297,18 @@ export default {
 
       axios.get(url, {params})
           .then(response => {
+            this.gameModeTypeCodes = response.data.gameMode.typeCodes
+
+            if (this.isTimeLimitModeType) {
+              this.timeLimitSeconds = response.data.timeLimitSeconds
+            }
+
+            this.$emit('update-game-mode-code', response.data.gameMode.code)
+
             const expectedOutputText = response.data.expectedText
-            // const timeLimitSeconds = response.data.timeLimitSeconds
-            this.$emit('update-game-mode-code', response.data.gameModeCode)
             this.expectedOutput = expectedOutputText.text
             this.expectedOutputId = expectedOutputText.id
+
             this.loadingExpectedOutput = false
             // todo: alert
           })

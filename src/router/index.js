@@ -3,6 +3,25 @@ import {
     createWebHistory
 } from 'vue-router'
 
+const staticPages = [
+    {
+        path: '/regulations',
+        name: 'RegulationsView',
+        component: () => import('@/views/StaticPageView'),
+        props: {
+            staticPageKey: 'regulations'
+        }
+    },
+    {
+        path: '/privacy-policy',
+        name: 'PrivacyPolicyView',
+        component: () => import('@/views/StaticPageView'),
+        props: {
+            staticPageKey: 'privacy-policy'
+        }
+    },
+]
+
 const routes = [
     {
         path: '/',
@@ -45,21 +64,6 @@ const routes = [
         component: () => import('@/views/AboutView')
     },
     {
-        path: '/regulations',
-        name: 'RegulationsView',
-        component: () => import('@/views/RegulationsView')
-    },
-    {
-        path: '/privacy-policy',
-        name: 'PrivacyPolicyView',
-        component: () => import('@/views/PrivacyPolicyView')
-    },
-    {
-        path: '/sitemap',
-        name: 'SitemapView',
-        component: () => import('@/views/SitemapView')
-    },
-    {
         path: '/texts',
         name: 'TextsView',
         component: () => import('@/views/TextsView')
@@ -93,7 +97,13 @@ const routes = [
         path: '/account/history',
         name: 'AccountHistoryView',
         component: () => import('@/views/AccountHistoryView')
-    }
+    },
+    {
+        path: '/sitemap',
+        name: 'SitemapView',
+        component: () => import('@/views/SitemapView')
+    },
+    ...staticPages
 ]
 
 const router = createRouter({

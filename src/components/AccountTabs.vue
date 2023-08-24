@@ -1,17 +1,15 @@
 <template>
-  <div>
-    <nav class="nav nav-tabs">
-      <router-link
+  <nav class="nav nav-tabs">
+    <router-link
         v-for="tab in tabs"
         v-bind:key="tab.code"
         :to="tab.url"
         class="nav-link"
         :class="[{'active': isActiveTab(tab.url)}, tab.additionalClass ?? '']"
-      >
-        {{ tab.name }}
-      </router-link>
-    </nav>
-  </div>
+    >
+      {{ tab.name }}
+    </router-link>
+  </nav>
 </template>
 
 
