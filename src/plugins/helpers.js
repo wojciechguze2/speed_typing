@@ -20,3 +20,16 @@ export function setFooterLinks(mostPopularGameModes, newGameModes) {
 export function scrollToTop() {
     window.scrollTo(0, 0)
 }
+
+export function generateRandomString(length = 8) {
+    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+
+    let randomString = ''
+
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * chars.length)
+        randomString += chars.charAt(randomIndex)
+    }
+
+    return randomString
+}

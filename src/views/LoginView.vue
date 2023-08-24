@@ -84,6 +84,8 @@
 import axios from '@/plugins/axios'
 import { validateEmail } from '@/plugins/validators'
 import {
+  ALERT_EMAIL_VALIDATION_ERROR_MESSAGE_CODE,
+  ALERT_TYPE_DANGER,
   DEFAULT_AUTHENTICATED_REDIRECT_URL,
   EMAIL_NOT_VALID_MESSAGE,
   LOGIN_ERROR_MESSAGE,
@@ -136,7 +138,11 @@ export default {
       this.errorMessage = ''
 
       if (!validateEmail(this.email)) {
-        this.errorMessage = EMAIL_NOT_VALID_MESSAGE
+        this.errorMessage = this.$t(EMAIL_NOT_VALID_MESSAGE)
+        this.$emit('flash-alert', {
+          type: ALERT_TYPE_DANGER,
+          message: this.$t(`${ALERT_EMAIL_VALIDATION_ERROR_MESSAGE_CODE}`),
+        })
 
         return
       }
@@ -156,8 +162,8 @@ export default {
         this.$router.push(LOGIN_SUCCESS_REDIRECT_URL)
       } catch (error) {
         this.errorMessage = error.response && error.response.status === 406
-            ? USER_IS_NOT_ACTIVE_MESSAGE
-            : LOGIN_ERROR_MESSAGE
+            ? this.$t(USER_IS_NOT_ACTIVE_MESSAGE)
+            : this.$t(LOGIN_ERROR_MESSAGE)
 
         console.error(error)
       }

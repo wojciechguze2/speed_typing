@@ -26,6 +26,11 @@
 import axios from '@/plugins/axios'
 import Loader from '@/components/Loader'
 import { scrollToTop } from '@/plugins/helpers'
+import {
+  ALERT_LOAD_DATA_ERROR_MESSAGE_CODE,
+  ALERT_LOAD_DATA_ERROR_TITLE_CODE,
+  ALERT_TYPE_DANGER,
+} from '@/plugins/constants'
 
 export default {
   name: 'GameModesView',
@@ -59,10 +64,13 @@ export default {
           .then(response => {
             this.gameModes = response.data
             this.loading = false
-            // todo: alert
           })
           .catch(error => {
-            // todo: alert
+            this.$emit('flash-alert', {
+              type: ALERT_TYPE_DANGER,
+              title: this.$t(`${ALERT_LOAD_DATA_ERROR_TITLE_CODE}`),
+              message: this.$t(`${ALERT_LOAD_DATA_ERROR_MESSAGE_CODE}`),
+            })
             console.error(error)
           })
     },

@@ -22,6 +22,7 @@ import {
     faTimes,
     faGamepad,
     faRandom,
+    faCircle
 } from '@fortawesome/free-solid-svg-icons'
 import {
     faLinkedin,
@@ -61,6 +62,7 @@ library.add(
     faTimes,
     faGamepad,
     faRandom,
+    faCircle
 )
 
 const i18n = await getI18n(),

@@ -47,6 +47,9 @@ import AccountTabs from '@/components/AccountTabs'
 import axios from '@/plugins/axios'
 import Loader from '@/components/Loader'
 import {
+  ALERT_LOAD_DATA_ERROR_MESSAGE_CODE,
+  ALERT_LOAD_DATA_ERROR_TITLE_CODE,
+  ALERT_TYPE_DANGER,
   DEFAULT_NOT_AUTHENTICATED_REDIRECT_URL
 } from '@/plugins/constants'
 
@@ -78,8 +81,15 @@ export default {
           .then(response => {
             this.historyData = response.data
             this.loading = false
+            throw new Error('test')
           })
           .catch(error => {
+            this.$emit('flash-alert', {
+              type: ALERT_TYPE_DANGER,
+              title: this.$t(`${ALERT_LOAD_DATA_ERROR_TITLE_CODE}`),
+              message: this.$t(`${ALERT_LOAD_DATA_ERROR_MESSAGE_CODE}`),
+            })
+
             console.error(error)
           })
     }

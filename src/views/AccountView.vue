@@ -89,6 +89,12 @@ import { validateEmail } from '@/plugins/validators'
 import AccountEditModal from '@/components/AccountEditModal'
 import {
   ACCOUNT_EMAIL_CHANGE_AVAILABLE,
+  ALERT_DEFAULT_SUCCESS_MESSAGE_CODE,
+  ALERT_DEFAULT_SUCCESS_TITLE_CODE,
+  ALERT_EMAIL_VALIDATION_ERROR_MESSAGE_CODE,
+  ALERT_LOAD_DATA_ERROR_MESSAGE_CODE,
+  ALERT_LOAD_DATA_ERROR_TITLE_CODE,
+  ALERT_TYPE_DANGER, ALERT_TYPE_SUCCESS,
   DEFAULT_AUTHENTICATED_REDIRECT_URL,
   DEFAULT_NOT_AUTHENTICATED_REDIRECT_URL,
   LOGOUT_URL
@@ -144,12 +150,20 @@ export default {
             const deleted = response.data
 
             if (deleted) {
-              // todo: alert, confirmation
+              this.$emit('flash-alert', {
+                type: 'success',
+                title: this.$t(`${ALERT_DEFAULT_SUCCESS_TITLE_CODE}`),
+                message: this.$t(`${ALERT_DEFAULT_SUCCESS_MESSAGE_CODE}`),
+              })
               this.$router.push(DEFAULT_NOT_AUTHENTICATED_REDIRECT_URL)
             }
           })
           .catch(error => {
-            // todo: alert
+            this.$emit('flash-alert', {
+              type: ALERT_TYPE_DANGER,
+              title: this.$t(`${ALERT_LOAD_DATA_ERROR_TITLE_CODE}`),
+              message: this.$t(`${ALERT_LOAD_DATA_ERROR_MESSAGE_CODE}`),
+            })
             console.error(error)
           })
 
@@ -168,7 +182,10 @@ export default {
       const url = `${process.env.VUE_APP_BACKEND_URL}/api/user`
 
       if (!validateEmail(email)) {
-        // todo: alert
+        this.$emit('flash-alert', {
+          type: ALERT_TYPE_DANGER,
+          message: this.$t(`${ALERT_EMAIL_VALIDATION_ERROR_MESSAGE_CODE}`),
+        })
 
         return
       }
@@ -185,13 +202,21 @@ export default {
 
       axios.patch(url, patchData)
           .then(response => {
-            // todo: alert, confirmation
+            this.$emit('flash-alert', {
+              type: ALERT_TYPE_SUCCESS,
+              title: this.$t(`${ALERT_DEFAULT_SUCCESS_TITLE_CODE}`),
+              message: this.$t(`${ALERT_DEFAULT_SUCCESS_MESSAGE_CODE}`),
+            })
             this.userData = response.data
             this.hideEditModal()
             this.$router.push(LOGOUT_URL)
           })
           .catch(error => {
-            // todo: alert
+            this.$emit('flash-alert', {
+              type: ALERT_TYPE_DANGER,
+              title: this.$t(`${ALERT_LOAD_DATA_ERROR_TITLE_CODE}`),
+              message: this.$t(`${ALERT_LOAD_DATA_ERROR_MESSAGE_CODE}`),
+            })
             console.error(error)
           })
 
@@ -206,10 +231,16 @@ export default {
             this.loading = false
           })
           .catch(error => {
-            // todo: alert
             if (error.response && error.response.status === 403) {
               this.$router.push(LOGOUT_URL)
+            } else {
+              this.$emit('flash-alert', {
+                type: ALERT_TYPE_DANGER,
+                title: this.$t(`${ALERT_LOAD_DATA_ERROR_TITLE_CODE}`),
+                message: this.$t(`${ALERT_LOAD_DATA_ERROR_MESSAGE_CODE}`),
+              })
             }
+
             console.error(error)
           })
     }

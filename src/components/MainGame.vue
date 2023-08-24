@@ -89,6 +89,11 @@ import GameButtonClear from '@/components/GameButtonClear'
 import GameMistakes from '@/components/GameMistakes'
 import GameButtonRestart from '@/components/GameButtonRestart'
 import {
+  ALERT_LOAD_DATA_ERROR_MESSAGE_CODE,
+  ALERT_LOAD_DATA_ERROR_TITLE_CODE,
+  ALERT_SAVE_GAME_SUCCESS_MESSAGE_CODE,
+  ALERT_SAVE_GAME_SUCCESS_TITLE_CODE,
+  ALERT_TYPE_DANGER,
   BY_ONE_LETTER_GAME_MODES,
   BY_ONE_WORD_GAME_MODES,
   EXPECTED_OUTPUT_TYPE_LETTER,
@@ -279,11 +284,19 @@ export default {
 
       axios.post(url, postData)
           .then(() => {
-            // todo: alert
+            this.$emit('flash-alert', {
+              type: 'success',
+              title: this.$t(`${ALERT_SAVE_GAME_SUCCESS_TITLE_CODE}`),
+              message: this.$t(`${ALERT_SAVE_GAME_SUCCESS_MESSAGE_CODE}`),
+            })
             this.loadingSavingResult = false
           })
           .catch(error => {
-            // todo: alert
+            this.$emit('flash-alert', {
+              type: ALERT_TYPE_DANGER,
+              title: this.$t(`${ALERT_LOAD_DATA_ERROR_TITLE_CODE}`),
+              message: this.$t(`${ALERT_LOAD_DATA_ERROR_MESSAGE_CODE}`),
+            })
             console.error(error)
           })
     },
@@ -310,10 +323,13 @@ export default {
             this.expectedOutputId = expectedOutputText.id
 
             this.loadingExpectedOutput = false
-            // todo: alert
           })
           .catch(error => {
-            // todo: alert
+            this.$emit('flash-alert', {
+              type: ALERT_TYPE_DANGER,
+              title: this.$t(`${ALERT_LOAD_DATA_ERROR_TITLE_CODE}`),
+              message: this.$t(`${ALERT_LOAD_DATA_ERROR_MESSAGE_CODE}`),
+            })
             console.error(error)
           })
     },

@@ -89,7 +89,12 @@ import {
   USER_ALREADY_EXISTS_MESSAGE,
   TITLE,
   REGISTER_SUCCESS_REDIRECT_URL,
-  DEFAULT_AUTHENTICATED_REDIRECT_URL
+  DEFAULT_AUTHENTICATED_REDIRECT_URL,
+  ALERT_TYPE_DANGER,
+  ALERT_EMAIL_VALIDATION_ERROR_MESSAGE_CODE,
+  ALERT_TYPE_SUCCESS,
+  ALERT_DEFAULT_SUCCESS_TITLE_CODE,
+  ALERT_DEFAULT_SUCCESS_MESSAGE_CODE
 } from '@/plugins/constants'
 import { validateEmail } from '@/plugins/validators'
 import { VueReCaptcha } from 'vue-recaptcha-v3'
@@ -128,7 +133,12 @@ export default {
       this.errorMessage = ''
 
       if (!validateEmail(this.email)) {
-        this.errorMessage = EMAIL_NOT_VALID_MESSAGE
+        this.errorMessage = this.$t(EMAIL_NOT_VALID_MESSAGE)
+        this.$emit('flash-alert', {
+          type: ALERT_TYPE_DANGER,
+          message: this.$t(`${ALERT_EMAIL_VALIDATION_ERROR_MESSAGE_CODE}`),
+        })
+
         return
       }
 
@@ -141,12 +151,20 @@ export default {
 
       try {
         const url = `${process.env.VUE_APP_BACKEND_URL}/api/users/register`,
-            response = await axios.post(url, registerData) // todo: alert, confirmation
+            response = await axios.post(url, registerData) // todo: confirmation
+
+        this.$emit('flash-alert', {
+          type: ALERT_TYPE_SUCCESS,
+          title: this.$t(`${ALERT_DEFAULT_SUCCESS_TITLE_CODE}`),
+          message: this.$t(`${ALERT_DEFAULT_SUCCESS_MESSAGE_CODE}`),
+        })
 
         setAuthentication(response.data.token)
         this.$router.push(REGISTER_SUCCESS_REDIRECT_URL)
       } catch (error) {
-        this.errorMessage = error.response && error.response.status === 409 ? USER_ALREADY_EXISTS_MESSAGE : REGISTER_ERROR_MESSAGE
+        this.errorMessage = error.response && error.response.status === 409
+            ? this.$t(USER_ALREADY_EXISTS_MESSAGE)
+            : this.$t(REGISTER_ERROR_MESSAGE)
 
         console.error(error)
       }
