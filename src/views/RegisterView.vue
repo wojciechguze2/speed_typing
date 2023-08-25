@@ -65,12 +65,12 @@
             </div>
             <div class="card-footer px-lg-5 py-lg-4">
               <div class="text-sm text-muted">
-                <router-link to="/login" class="text-decoration-none text-dark">
+                <a href="/login" class="text-decoration-none text-dark">
                   {{ $t('register.already_have_an_account') }}
                   <span class="link-primary">
                     {{ $t('messages.login') }}
                   </span>
-                </router-link>
+                </a>
               </div>
             </div>
           </div>

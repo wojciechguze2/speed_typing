@@ -19,14 +19,14 @@
     </button>
     <ul class="dropdown-menu" aria-labelledby="game-mode-dropdown">
       <li v-for="(language, index) in languageChoices" :key="index">
-        <router-link
-            :to="`/${language.iso}`"
+        <a
+            :href="`/${language.iso}`"
             class="dropdown-item"
             :class="{'text-uppercase': isoLabels}"
             :aria-label="language.name"
         >
           {{ isoLabels ? language.iso : language.name }}
-        </router-link>
+        </a>
       </li>
     </ul>
   </div>

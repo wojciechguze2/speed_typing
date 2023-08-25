@@ -1,14 +1,14 @@
 <template>
   <nav class="nav nav-tabs">
-    <router-link
+    <a
         v-for="tab in tabs"
         v-bind:key="tab.code"
-        :to="tab.url"
+        :href="tab.url"
         class="nav-link"
         :class="[{'active': isActiveTab(tab.url)}, tab.additionalClass ?? '']"
     >
       {{ tab.name }}
-    </router-link>
+    </a>
   </nav>
 </template>
 

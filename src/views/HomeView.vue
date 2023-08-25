@@ -27,9 +27,9 @@
           {{ $t('homepage.content_3.content') }}
         </p>
         <transition appear name="homepage-special-slide-reverse">
-          <router-link to="/contact" class="btn btn-dark">
+          <a href="/contact" class="btn btn-dark">
             {{ $t('homepage.content_3.button_text') }}
-          </router-link>
+          </a>
         </transition>
       </div>
     </div>
