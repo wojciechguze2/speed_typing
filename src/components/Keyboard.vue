@@ -5,7 +5,7 @@
       <span
           v-else
           class="text-white keyboard-button rounded-0 m-1 pointer-events-none btn"
-          :class="isCurrentChar(char) ? 'btn-primary' : 'btn-dark'"
+          :class="[{'font-size-small p-1': isMobile}, isCurrentChar(char) ? 'btn-primary' : 'btn-dark']"
       >
         {{ char }}
       </span>

@@ -1,7 +1,7 @@
 <template>
   <div class="homepage">
-    <div class="container text-center py-5">
-      <h1 class="display-4">
+    <div class="container text-center" :class="isMobile ? 'py-3' : 'py-5'">
+      <h1 class="display-4 font-weight-bold">
         {{ TITLE }}
       </h1>
       <p class="lead mt-1">
@@ -16,7 +16,7 @@
         </h2>
         <p v-html="$t('homepage.content_2.content')" /> <!-- todo: change v-html (to avoid xss) -->
       </div>
-      <div class="mt-5 row col-lg-12 homepage-cards">
+      <div class="mt-3 row col-lg-12 homepage-cards">
         <HomeCards
             :loading="loading"
         />

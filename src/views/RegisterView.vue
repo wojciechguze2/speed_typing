@@ -93,7 +93,6 @@ import {
   ALERT_TYPE_DANGER,
   ALERT_EMAIL_VALIDATION_ERROR_MESSAGE_CODE,
   ALERT_TYPE_SUCCESS,
-  ALERT_DEFAULT_SUCCESS_TITLE_CODE,
   ALERT_DEFAULT_SUCCESS_MESSAGE_CODE
 } from '@/plugins/constants'
 import { validateEmail } from '@/plugins/validators'
@@ -155,7 +154,6 @@ export default {
 
         this.$emit('flash-alert', {
           type: ALERT_TYPE_SUCCESS,
-          title: this.$t(`${ALERT_DEFAULT_SUCCESS_TITLE_CODE}`),
           message: this.$t(`${ALERT_DEFAULT_SUCCESS_MESSAGE_CODE}`),
         })
 

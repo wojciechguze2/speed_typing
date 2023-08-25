@@ -11,8 +11,10 @@
           <th>{{ $t('messages.game_mode') }}</th>
           <th>{{ $t('messages.cpm') }}</th>
           <th>{{ $t('game.mistakes_count') }}</th>
-          <th>{{ $t('game.time') }}</th>
-          <th>{{ $t('messages.date') }}</th>
+          <template v-if="!isMobile">
+            <th>{{ $t('game.time') }}</th>
+            <th>{{ $t('messages.date') }}</th>
+          </template>
           <th>{{ $t('game.text_length') }}</th>
         </tr>
       </thead>
@@ -24,8 +26,10 @@
           <td>{{ $t(`game_mode.${game.gameModeCode}`) }}</td>
           <td>{{ game.cpm }}</td>
           <td>{{ game.mistakesCount }}</td>
-          <td>{{ game.timeMs }}</td>
-          <td>{{ game.createDate }}</td>
+          <template v-if="!isMobile">
+            <td>{{ game.timeMs }}</td>
+            <td>{{ game.createDate }}</td>
+          </template>
           <td>{{ game.expectedTextLength }}</td>
         </tr>
       </tbody>
@@ -81,7 +85,6 @@ export default {
           .then(response => {
             this.historyData = response.data
             this.loading = false
-            throw new Error('test')
           })
           .catch(error => {
             this.$emit('flash-alert', {

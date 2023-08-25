@@ -1,5 +1,5 @@
 <template>
-  <div class="col-lg-4">
+  <div class="col-lg-4 my-2">
     <transition name="homepage-special-slide-reverse">
       <div v-if="!loading" class="card bg-dark text-white p-3">
         <div class="card-title">
@@ -19,7 +19,7 @@
       </div>
     </transition>
   </div>
-  <div class="col-lg-4">
+  <div class="col-lg-4 my-2">
     <transition name="homepage-special-slide-reverse">
       <div v-if="!loading" class="card bg-dark text-white p-3">
         <div class="card-title">
@@ -38,7 +38,7 @@
       </div>
     </transition>
   </div>
-  <div class="col-lg-4">
+  <div class="col-lg-4 my-2">
     <transition name="homepage-special-slide-reverse">
       <div v-if="!loading" class="card bg-dark text-white p-3">
         <div class="card-title">

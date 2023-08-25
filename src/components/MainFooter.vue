@@ -1,7 +1,7 @@
 <template>
   <footer ref="mainFooter" class="footer footer-animation bg-dark text-white w-100 mt-auto mb-0">
     <div class="flex-grow-1">
-      <div class="container py-5">
+      <div class="container" :class="isMobile ? 'pt-5 pb-3' : 'py-5'">
         <div class="row">
           <div class="col-md-4 text-center footer-start">
             <p class="footer-section-header">
@@ -107,7 +107,9 @@ import {
   GITHUB_LINK,
   LINKEDIN_LINK,
   PHONE_LINK,
-  MAIL_LINK, FOOTER_MAX_GAME_MODES
+  MAIL_LINK,
+  FOOTER_MAX_GAME_MODES,
+  FOOTER_ANIMATION_TIMEOUT
 } from '@/plugins/constants'
 import {
   mapState
@@ -136,7 +138,7 @@ export default {
   created() {
     setTimeout(() => {
       this.$refs.mainFooter.classList.remove('footer-animation')
-    }, 2250)
+    }, FOOTER_ANIMATION_TIMEOUT)
 
     if (!this.$store.state.newGameModes) {
       this.fetchFooterLinks()

@@ -1,5 +1,5 @@
 <template>
-  <div class="w-75 m-auto">
+  <div class="m-auto" :class="{'w-75': !isMobile}">
     <transition appear name="homepage-special-slide">
       <div ref="homepageSpecialExpectedOutput" class="bg-dark text-light p-2 disabled">
         <span
@@ -35,7 +35,8 @@
 import Keyboard from '@/components/Keyboard'
 import {
   HOMEPAGE_SPECIAL_TYPING_INTERVAL,
-  HOMEPAGE_SPECIAL_TYPING_COUNTDOWN
+  HOMEPAGE_SPECIAL_TYPING_COUNTDOWN,
+  HOMEPAGE_SPECIAL_ANIMATION_REFRESH_TIMEOUT
 } from '@/plugins/constants'
 
 export default {
@@ -53,6 +54,11 @@ export default {
     }
   },
   mounted() {
+    if (this.isMobile) {
+      this.expectedOutput = this.expectedOutput.slice(0, 97)
+      this.expectedOutput += '...'
+    }
+
     setTimeout(() => {
       this.typeTextAutomatically()
     }, HOMEPAGE_SPECIAL_TYPING_COUNTDOWN)
@@ -84,7 +90,7 @@ export default {
             this.automaticValue = ''
             this.finished = false
             this.typeTextAutomatically()
-          }, 2500)
+          }, HOMEPAGE_SPECIAL_ANIMATION_REFRESH_TIMEOUT)
         }
       }, HOMEPAGE_SPECIAL_TYPING_INTERVAL)
     }

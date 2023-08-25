@@ -1,42 +1,75 @@
 <template>
   <header class="navbar navbar-dark bg-dark">
+    <button
+        class="hamburger-btn d-sm-block d-md-none align-self-start btn btn-dark"
+        @click="toggleMenu"
+    >
+      <font-awesome-icon icon="bars" />
+    </button>
     <div class="navbar-container mx-auto d-flex justify-content-between align-items-center">
-      <router-link to="/" class="navbar-brand link-appear font-weight-bold">
+      <router-link
+          to="/"
+          class="navbar-brand link-appear font-weight-bold"
+          :class="{'m-auto': isMobile}"
+      >
         {{ TITLE }}
       </router-link>
 
-      <div class="d-flex align-items-center">
-        <a :href="`/game/${GAME_MODE_FAST}`" class="nav-link mx-3">
+      <div
+          class="align-items-center navbar-links--1"
+          :class="{
+            'd-flex': !isMobile,
+            'd-none': !isMenuOpen && isMobile,
+            'text-center m-auto': isMobile
+          }"
+      >
+        <a :href="`/game/${GAME_MODE_FAST}`" class="nav-link mx-3" :class="{'py-1': isMobile}">
           <font-awesome-icon icon="play" class="me-1" />
           {{ $t(`game_mode.${GAME_MODE_FAST}`) }}
         </a>
-        <router-link to="/game-modes" class="nav-link mx-3">
+        <router-link to="/game-modes" class="nav-link mx-3" :class="{'py-1': isMobile}">
           <font-awesome-icon icon="gamepad" class="me-1" />
           {{ $t('messages.game_modes') }}
         </router-link>
-        <a :href="`/game/${GAME_MODE_RANDOM}`" class="nav-link mx-3">
+        <a :href="`/game/${GAME_MODE_RANDOM}`" class="nav-link mx-3" :class="{'py-1': isMobile}">
           <font-awesome-icon icon="random" class="me-1" />
           {{ $t(`game_mode.${GAME_MODE_RANDOM}`) }}
         </a>
       </div>
-      <div class="d-flex align-items-center">
+      <div
+          class="align-items-center navbar-links--2"
+          :class="{
+            'd-flex': !isMobile,
+            'd-none': !isMenuOpen && isMobile,
+            'text-center m-auto': isMobile
+          }"
+      >
         <router-link
             v-if="isAuthenticated"
             to="/account"
             class="nav-link mx-3 text-primary"
+            :class="{'py-1': isMobile}"
         >
           <font-awesome-icon icon="user" size="lg" />
+          <span v-if="isMobile" class="mx-2">
+            {{ $t(`messages.account`) }}
+          </span>
         </router-link>
         <router-link
             v-else
             to="/login"
             class="nav-link mx-3"
+            :class="{'py-1': isMobile}"
         >
           <font-awesome-icon icon="user" size="lg" />
+          <span v-if="isMobile" class="mx-2">
+            {{ $t(`messages.login`) }}
+          </span>
         </router-link>
-        <LanguagesDropdown />
+        <LanguagesDropdown v-if="!isMobile" />
       </div>
     </div>
+    <LanguagesDropdown v-if="isMobile" additional-class="me-1 my-1 align-self-start" />
   </header>
 </template>
 
@@ -55,6 +88,7 @@ export default {
   },
   data() {
     return {
+      isMenuOpen: false,
       GAME_MODE_FAST,
       GAME_MODE_RANDOM,
       TITLE
@@ -63,6 +97,11 @@ export default {
   computed: {
     isAuthenticated() {
       return this.$store.getters.isAuthenticated
+    }
+  },
+  methods: {
+    toggleMenu() {
+      this.isMenuOpen = !this.isMenuOpen
     }
   }
 }

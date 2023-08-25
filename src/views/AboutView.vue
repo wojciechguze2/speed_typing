@@ -69,7 +69,7 @@
       </div>
       <div class="fs-5">
         <p>{{ $t('messages.site') }} "{{ TITLE }}" {{ $t('about.my_first_project')}}</p>
-        <!--<p>{{ $t('about.execution_time') }}</p> 2/3 days but i still make changes in it-->
+        <!--<p>{{ $t('about.execution_time') }}</p> 4/5 days but i still develop it-->
         <p>{{ $t('about.site_goal') }}</p>
         <p>
           {{ $t('about.more_projects.before_link') }}

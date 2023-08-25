@@ -1,7 +1,7 @@
 <template>
   <div
       class="dropdown languages-dropdown"
-      :class="{'ms-3': isoLabels}"
+      :class="[{'ms-3': isoLabels}, additionalClass]"
   >
     <button
         class="btn btn-sm dropdown-toggle"
@@ -41,6 +41,10 @@ export default {
     labelType: {
       type: String,
       default: 'iso'
+    },
+    additionalClass: {
+      type: String,
+      required: false
     }
   },
   data() {

@@ -90,7 +90,6 @@ import AccountEditModal from '@/components/AccountEditModal'
 import {
   ACCOUNT_EMAIL_CHANGE_AVAILABLE,
   ALERT_DEFAULT_SUCCESS_MESSAGE_CODE,
-  ALERT_DEFAULT_SUCCESS_TITLE_CODE,
   ALERT_EMAIL_VALIDATION_ERROR_MESSAGE_CODE,
   ALERT_LOAD_DATA_ERROR_MESSAGE_CODE,
   ALERT_LOAD_DATA_ERROR_TITLE_CODE,
@@ -152,7 +151,6 @@ export default {
             if (deleted) {
               this.$emit('flash-alert', {
                 type: 'success',
-                title: this.$t(`${ALERT_DEFAULT_SUCCESS_TITLE_CODE}`),
                 message: this.$t(`${ALERT_DEFAULT_SUCCESS_MESSAGE_CODE}`),
               })
               this.$router.push(DEFAULT_NOT_AUTHENTICATED_REDIRECT_URL)
@@ -204,7 +202,6 @@ export default {
           .then(response => {
             this.$emit('flash-alert', {
               type: ALERT_TYPE_SUCCESS,
-              title: this.$t(`${ALERT_DEFAULT_SUCCESS_TITLE_CODE}`),
               message: this.$t(`${ALERT_DEFAULT_SUCCESS_MESSAGE_CODE}`),
             })
             this.userData = response.data

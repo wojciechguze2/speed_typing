@@ -1,4 +1,4 @@
-@import 'variables.scss';
+@import '@/styles/variables.scss';
 
 .modal {
   display: flow;
@@ -21,6 +21,10 @@ html, body {
 
 .font-weight-bold {
   font-weight: bold;
+}
+
+.font-size-small {
+  font-size: 13px;
 }
 
 .mr-10px {
@@ -76,12 +80,22 @@ html, body {
       &:hover {
         color: $footer-link-hover-color !important;
       }
+
+      @media(max-width: $max-mobile-width) {
+        font-weight: normal;
+        font-size: 19px;
+      }
     }
   }
 
   .footer-section-header {
     font-size: 24px;
     font-weight: bold;
+
+    @media(max-width: $max-mobile-width) {
+      margin-bottom: 0.75rem;
+      font-size: 21px;
+    }
   }
 }
 
@@ -103,10 +117,18 @@ html, body {
   &.table-bordered {
     thead th {
       font-size: 20px;
+
+      @media(max-width: $max-mobile-width) {
+        font-size: 17px;
+      }
     }
 
     tbody td {
       font-size: 14px;
+
+      @media(max-width: $max-mobile-width) {
+        font-size: 13px;
+      }
     }
   }
 }
@@ -127,5 +149,14 @@ html, body {
   &.lg {
     width: 3rem;
     height: 3rem;
+  }
+}
+
+.nav-tabs {
+  .nav-link {
+    @media(max-width: $max-mobile-width) {
+      padding-left: 8px;
+      padding-right: 8px;
+    }
   }
 }

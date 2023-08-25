@@ -3,14 +3,14 @@
     <h1 class="display-4 text-center">
       {{ $t('contact.contact_form') }}
     </h1>
-    <form @submit.prevent="submitForm" class="w-50 m-auto">
+    <form @submit.prevent="submitForm" class="m-auto" :class="{'w-50': !isMobile}">
       <div class="mb-3">
         <label for="firstname" class="form-label">{{ $t('contact.firstname') }}</label>
         <input v-model="firstname" type="text" class="form-control" id="firstname" />
       </div>
       <div class="mb-3">
         <label for="lastname" class="form-label">{{ $t('contact.lastname') }}</label>
-        <input v-model="firstname" type="text" class="form-control" id="lastname" />
+        <input v-model="lastname" type="text" class="form-control" id="lastname" />
       </div>
       <div class="mb-3">
         <label for="email" class="form-label">{{ $t('messages.email') }}</label>
@@ -44,7 +44,6 @@ import { VueReCaptcha } from 'vue-recaptcha-v3'
 import { validateEmail } from '@/plugins/validators'
 import {
   ALERT_DEFAULT_SUCCESS_MESSAGE_CODE,
-  ALERT_DEFAULT_SUCCESS_TITLE_CODE,
   ALERT_EMAIL_VALIDATION_ERROR_MESSAGE_CODE,
   ALERT_TYPE_DANGER, ALERT_TYPE_SUCCESS,
   EMAIL_NOT_VALID_MESSAGE
@@ -105,7 +104,6 @@ export default {
       axios.post(url, postData).then(() => {
         this.$emit('flash-alert', {
           type: ALERT_TYPE_SUCCESS,
-          title: this.$t(`${ALERT_DEFAULT_SUCCESS_TITLE_CODE}`),
           message: this.$t(`${ALERT_DEFAULT_SUCCESS_MESSAGE_CODE}`),
         })
         this.formMessage = this.$t('messages.send_success')

@@ -52,7 +52,7 @@
               <vue-recaptcha ref="recaptcha" @verify="onRecaptchaVerify" />
             </div>
             <div class="d-grid mb-5">
-              <input type="submit" value="Zaloguj się" class="btn btn-primary btn-xl" data-dismiss="modal" />
+              <input type="submit" :value="$t('messages.login')" class="btn btn-primary btn-xl" data-dismiss="modal" />
             </div>
           </form>
           <div v-if="REGISTER_ENABLED" class="text-center">
