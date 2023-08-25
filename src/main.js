@@ -73,11 +73,7 @@ app.use(store)
 
 app.component('font-awesome-icon', FontAwesomeIcon)
 
-if (process.env.VUE_RECAPTCHA_KEY) {
-    app.use(VueReCaptcha, {siteKey: process.env.VUE_RECAPTCHA_KEY})
-} else {
-    console.warn('Recaptcha key not provided')
-}
+app.use(VueReCaptcha, {siteKey: process.env.VUE_RECAPTCHA_KEY})
 
 app.use(i18n)
 
