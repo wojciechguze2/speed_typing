@@ -38,9 +38,9 @@
             </div>
           </form>
           <div class="text-center">
-            <a href="/login" class="text-decoration-none link-primary">
+            <router-link to="/login" class="text-decoration-none link-primary">
               {{ $t('messages.login') }}
-            </a>
+            </router-link>
           </div>
         </div>
       </div>

@@ -11,9 +11,9 @@
         <tbody>
           <tr v-for="gameMode in gameModes" v-bind:key="gameMode.id">
             <td class="cursor-pointer p-3" @click="goToGameMode(gameMode.code)">
-              <a :href="`/game/${gameMode.code}`" class="text-dark font-weight-bold text-decoration-none">
+              <router-link :to="`/game/${gameMode.code}`" class="text-dark font-weight-bold text-decoration-none">
                 {{ $t(`game_mode.${gameMode.code}`) }}
-              </a>
+              </router-link>
             </td>
           </tr>
         </tbody>

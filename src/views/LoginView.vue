@@ -56,20 +56,20 @@
             </div>
           </form>
           <div v-if="REGISTER_ENABLED" class="text-center">
-            <a href="/register" class="text-dark text-decoration-none">
+            <router-link to="/register" class="text-dark text-decoration-none">
               {{ $t('login.no_account') }}
               <span class="link-primary">
                 {{ $t('messages.register') }}
               </span>
-            </a>
+            </router-link>
           </div>
           <div v-if="PASSWORD_REMINDER_ENABLED" class="text-center">
-            <a href="/password-reminder" class="text-dark text-decoration-none">
+            <router-link to="/password-reminder" class="text-dark text-decoration-none">
               {{ $t('login.no_password') }}
               <span class="link-primary">
                 {{ $t('login.remind') }}
               </span>
-            </a>
+            </router-link>
           </div>
         </div>
       </div>

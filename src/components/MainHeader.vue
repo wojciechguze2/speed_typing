@@ -7,13 +7,13 @@
       <font-awesome-icon icon="bars" />
     </button>
     <div class="navbar-container mx-auto d-flex justify-content-between align-items-center">
-      <a
+      <router-link
           to="/"
           class="navbar-brand link-appear font-weight-bold"
           :class="{'m-auto': isMobile}"
       >
         {{ TITLE }}
-      </a>
+      </router-link>
 
       <div
           class="align-items-center navbar-links--1"
@@ -27,10 +27,10 @@
           <font-awesome-icon icon="play" class="me-1" />
           {{ $t(`game_mode.${GAME_MODE_FAST}`) }}
         </a>
-        <a href="/game-modes" class="nav-link mx-3" :class="{'py-1': isMobile}">
+        <router-link to="/game-modes" class="nav-link mx-3" :class="{'py-1': isMobile}">
           <font-awesome-icon icon="gamepad" class="me-1" />
           {{ $t('messages.game_modes') }}
-        </a>
+        </router-link>
         <a :href="`/game/${GAME_MODE_RANDOM}`" class="nav-link mx-3" :class="{'py-1': isMobile}">
           <font-awesome-icon icon="random" class="me-1" />
           {{ $t(`game_mode.${GAME_MODE_RANDOM}`) }}
@@ -44,7 +44,7 @@
             'text-center m-auto': isMobile
           }"
       >
-        <a
+        <router-link
             v-if="isAuthenticated"
             to="/account"
             class="nav-link mx-3 text-primary"
@@ -54,8 +54,8 @@
           <span v-if="isMobile" class="mx-2">
             {{ $t(`messages.account`) }}
           </span>
-        </a>
-        <a
+        </router-link>
+        <router-link
             v-else
             to="/login"
             class="nav-link mx-3"
@@ -65,7 +65,7 @@
           <span v-if="isMobile" class="mx-2">
             {{ $t(`messages.login`) }}
           </span>
-        </a>
+        </router-link>
         <LanguagesDropdown v-if="!isMobile" />
       </div>
     </div>

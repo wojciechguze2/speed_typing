@@ -11,9 +11,9 @@
           </p>
         </div>
         <div class="card-footer">
-          <!--<a href="/" class="text-decoration-none link-primary">
+          <!--<router-link to="/" class="text-decoration-none link-primary">
             {{ $t('homepage.cards.card_1.footer') }}
-          </a>-->
+          </router-link>-->
           <LanguagesDropdown label-type="name" />
         </div>
       </div>
@@ -31,9 +31,9 @@
           </p>
         </div>
         <div class="card-footer">
-          <a href="/texts" class="text-decoration-none link-primary">
+          <router-link to="/texts" class="text-decoration-none link-primary">
             {{ $t('homepage.cards.card_2.footer') }}
-          </a>
+          </router-link>
         </div>
       </div>
     </transition>
@@ -50,20 +50,20 @@
           </p>
         </div>
         <div class="card-footer">
-          <a
+          <router-link
               v-if="isAuthenticated"
               to="/account/statistics"
               class="text-decoration-none link-primary"
           >
             {{ $t('homepage.cards.card_3.footer') }}
-          </a>
-          <a
+          </router-link>
+          <router-link
               v-else
               to="/login"
               class="text-decoration-none link-primary"
           >
             {{ $t('homepage.cards.card_3.footer_not_authenticated') }}
-          </a>
+          </router-link>
         </div>
       </div>
     </transition>
