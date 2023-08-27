@@ -77,6 +77,6 @@ app.use(VueReCaptcha, {siteKey: process.env.VUE_RECAPTCHA_KEY})
 
 app.use(i18n)
 
-app.config.globalProperties.isMobile = window.matchMedia('(max-width: 520px)').matches
+app.config.globalProperties.isMobile = window.matchMedia('(max-width: 767px)').matches
 
 app.mount('#app')
