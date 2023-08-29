@@ -16,21 +16,30 @@
   }
 
   .homepage-special-slide-enter-active {
-    @media (min-width: $max-mobile-width) {
-      animation: homepage-special-slide-animation .5s;
+    animation: homepage-special-slide-animation .5s;
+
+    @media (max-width: $max-mobile-width) {
+      animation: homepage-special-slide-animation .2s;
     }
   }
 
   .homepage-special-slide-reverse-enter-active {
-    @media (min-width: $max-mobile-width) {
-      animation: homepage-special-slide-reverse-animation .5s;
+    animation: homepage-special-slide-reverse-animation .5s;
+
+    @media (max-width: $max-mobile-width) {
+      animation: homepage-special-slide-reverse-animation .2s;
     }
   }
 
   @keyframes homepage-special-slide-animation {
     0% {
       opacity: 0;
-      transform: translateY(-50%)
+      transform: translateY(-50%);
+
+      @media (max-width: $max-mobile-width) {
+        opacity: 0.5;
+        transform: translateY(-20%);
+      }
     }
 
     100% {
