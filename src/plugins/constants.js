@@ -73,6 +73,7 @@ export const ALERT_SAVE_GAME_USER_NOT_LOGGED_ERROR_TITLE_CODE = 'alert.save_game
 export const ALERT_SAVE_GAME_USER_NOT_LOGGED_ERROR_MESSAGE_CODE = 'alert.save_game.not_authenticated.message'
 export const ALERT_EMAIL_VALIDATION_ERROR_MESSAGE_CODE = 'alert.email_validation_error.title'
 export const ALERT_DEFAULT_SUCCESS_MESSAGE_CODE = 'alert.success.message'
+export const ALERT_DEFAULT_ERROR_MESSAGE_CODE = 'alert.error.message'
 export const EMAIL_NOT_VALID_MESSAGE = 'messages.email_validation_error'
 export const LOGIN_ERROR_MESSAGE = 'messages.login_error'
 export const USER_IS_NOT_ACTIVE_MESSAGE = 'messages.user_inactive'

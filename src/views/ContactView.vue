@@ -30,11 +30,8 @@
       <div class="mb-3">
         <vue-recaptcha ref="recaptcha" @verify="onRecaptchaVerify" />
       </div>
-      <button type="submit" class="btn btn-primary">{{ $t('messages.send') }}</button>
+      <button type="submit" class="btn btn-primary" :class="{'disabled': !isContactAvailable}">{{ $t('messages.send') }}</button>
       <Loader v-if="loading" />
-      <div v-if="alert">
-        {{ alert }}
-      </div>
     </form>
   </div>
 </template>
@@ -43,9 +40,11 @@
 import { VueReCaptcha } from 'vue-recaptcha-v3'
 import { validateEmail } from '@/plugins/validators'
 import {
+  ALERT_DEFAULT_ERROR_MESSAGE_CODE,
   ALERT_DEFAULT_SUCCESS_MESSAGE_CODE,
   ALERT_EMAIL_VALIDATION_ERROR_MESSAGE_CODE,
-  ALERT_TYPE_DANGER, ALERT_TYPE_SUCCESS,
+  ALERT_TYPE_DANGER,
+  ALERT_TYPE_SUCCESS,
   EMAIL_NOT_VALID_MESSAGE
 } from '@/plugins/constants'
 import { scrollToTop } from '@/plugins/helpers'
@@ -69,13 +68,26 @@ export default {
       phone: '',
       message: '',
       recaptchaToken: null,
-      errorMessage: ''
+      errorMessage: '',
+      isContactAvailable: true
     }
   },
   created() {
     scrollToTop()
+    this.getLoggedUserEmail()
   },
   methods: {
+    getLoggedUserEmail() {
+      const url = `${process.env.VUE_APP_BACKEND_URL}/api/user`
+
+      axios.get(url)
+          .then(response => {
+            this.email = response.data.email
+          })
+          .catch(() => {
+            console.log('User is not logged in.')
+          })
+    },
     onRecaptchaVerify(recaptchaToken) {
       this.recaptchaToken = recaptchaToken
     },
@@ -85,6 +97,15 @@ export default {
         this.$emit('flash-alert', {
           type: ALERT_TYPE_DANGER,
           message: this.$t(`${ALERT_EMAIL_VALIDATION_ERROR_MESSAGE_CODE}`),
+        })
+
+        return
+      }
+
+      if (!this.isContactAvailable) {
+        this.$emit('flash-alert', {
+          type: ALERT_TYPE_DANGER,
+          message: this.$t(`${ALERT_DEFAULT_ERROR_MESSAGE_CODE}`),
         })
 
         return
@@ -101,15 +122,29 @@ export default {
             message: this.message
         }
 
-      axios.post(url, postData).then(() => {
-        this.$emit('flash-alert', {
-          type: ALERT_TYPE_SUCCESS,
-          message: this.$t(`${ALERT_DEFAULT_SUCCESS_MESSAGE_CODE}`),
-        })
-        this.formMessage = this.$t('messages.send_success')
-        this.loading = false
-      })
+      axios.post(url, postData)
+          .then(() => {
+            this.formMessage = this.$t('messages.send_success')
+
+            this.$emit('flash-alert', {
+              type: ALERT_TYPE_SUCCESS,
+              message: this.$t(`${ALERT_DEFAULT_SUCCESS_MESSAGE_CODE}`),
+            })
+
+            this.loading = false
+            this.isContactAvailable = false
+          })
+          .catch((err) => {
+            console.error(err)
+
+            this.$emit('flash-alert', {
+              type: ALERT_TYPE_DANGER,
+              message: this.$t(`${ALERT_DEFAULT_ERROR_MESSAGE_CODE}`),
+            })
+
+            this.loading = false
+          })
     },
   },
-};
+}
 </script>
