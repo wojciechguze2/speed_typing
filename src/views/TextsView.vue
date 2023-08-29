@@ -18,6 +18,10 @@
           </tr>
         </tbody>
       </table>
+      <Pagination
+          :count="expectedTextsCount"
+          :limit="DEFAULT_PAGINATION_LIMIT"
+      />
     </div>
   </div>
 </template>
@@ -25,11 +29,14 @@
 <script>
 import axios from '@/plugins/axios'
 import Loader from '@/components/Loader'
+import Pagination from '@/components/Pagination'
+import { DEFAULT_PAGINATION_LIMIT } from '@/plugins/constants'
 
 export default {
   name: 'TextsView',
   components: {
-    Loader
+    Loader,
+    Pagination
   },
   created() {
     this.fetchData()
@@ -37,19 +44,35 @@ export default {
   data() {
     return {
       expectedTexts: [],
+      expectedTextsCount: 0,
       loading: true,
+      DEFAULT_PAGINATION_LIMIT
     }
+  },
+  watch: {
+    '$route.query'() {
+      this.fetchData()
+    },
   },
   methods: {
     fetchData() {
-      const url = `${process.env.VUE_APP_BACKEND_URL}/api/expected-texts`,
+      this.loading = true
+
+      const page = parseInt(this.$route.query.page || 1),
+          limit = parseInt(this.$route.query.limit || DEFAULT_PAGINATION_LIMIT),
+          offset = (page - 1) * limit,
+          url = `${process.env.VUE_APP_BACKEND_URL}/api/expected-texts`,
           params = {
-            locale_iso: window.LOCALE_ISO
+            locale_iso: window.LOCALE_ISO,
+            page,
+            offset,
+            limit
           }
 
-      axios.get(url, {params})
+      axios.get(url, { params })
           .then(response => {
-            this.expectedTexts = response.data
+            this.expectedTexts = response.data.expectedTexts
+            this.expectedTextsCount = response.data.count
             this.loading = false
           })
           .catch(error => {
