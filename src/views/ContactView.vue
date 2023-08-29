@@ -78,15 +78,17 @@ export default {
   },
   methods: {
     getLoggedUserEmail() {
-      const url = `${process.env.VUE_APP_BACKEND_URL}/api/user`
+      if (this.$store.getters.isAuthenticated) {
+        const url = `${process.env.VUE_APP_BACKEND_URL}/api/user`
 
-      axios.get(url)
-          .then(response => {
-            this.email = response.data.email
-          })
-          .catch(() => {
-            console.log('User is not logged in.')
-          })
+        axios.get(url)
+            .then(response => {
+              this.email = response.data.email
+            })
+            .catch(() => {
+              console.log('User is not logged in.')
+            })
+      }
     },
     onRecaptchaVerify(recaptchaToken) {
       this.recaptchaToken = recaptchaToken
