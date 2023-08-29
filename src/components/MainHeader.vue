@@ -1,7 +1,7 @@
 <template>
   <header class="navbar navbar-dark bg-dark">
     <button
-        class="hamburger-btn d-sm-block d-md-none align-self-start btn btn-dark"
+        class="d-sm-block d-md-none align-self-start btn btn-dark"
         @click="toggleMenu"
     >
       <font-awesome-icon icon="bars" />

@@ -453,7 +453,7 @@ export default {
       if (this.finished) {
         this.restartGame()
       } else {
-        if (key) {
+        if (key && key.length === 1 && typeof key === 'string') {
           this.updateGameInputText(key, true)
         }
 

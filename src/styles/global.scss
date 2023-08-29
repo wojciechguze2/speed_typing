@@ -25,6 +25,10 @@ html, body {
 
 .font-size-small {
   font-size: 13px;
+
+  @media(max-width: $max-small-mobile-width) {
+    font-size: 12px;
+  }
 }
 
 .mr-10px {
