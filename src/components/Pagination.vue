@@ -37,6 +37,8 @@
 </template>
 
 <script>
+import { scrollToTop } from '@/plugins/helpers'
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Pagination',
@@ -69,11 +71,8 @@ export default {
     },
   },
   methods: {
-    scroll() {
-
-    },
     goToPage(page) {
-      this.scroll()
+      scrollToTop()
 
       this.$router.push({
         query: {
