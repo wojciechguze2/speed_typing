@@ -5,9 +5,7 @@
       <h3>
         {{ pageData.title }}
       </h3>
-      <div>
-        {{ pageData.content }}
-      </div>
+      <div v-html="pageData.content" />
     </div>
   </div>
 </template>
