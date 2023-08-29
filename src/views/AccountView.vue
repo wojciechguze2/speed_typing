@@ -56,7 +56,7 @@
               {{ $t('account.last_game_mode') }}
             </td>
             <td>
-              {{ $t(`game_mode.${userData.lastGameModeCode}`) }}
+              {{ userData.lastGameModeCode ? $t(`game_mode.${userData.lastGameModeCode}`) : '-' }}
             </td>
           </tr>
         </tbody>
