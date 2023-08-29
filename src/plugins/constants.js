@@ -5,6 +5,7 @@ export const REGISTER_NEED_ADMIN_ACCEPT = false
 export const ACCOUNT_EMAIL_CHANGE_AVAILABLE = false
 export const FOOTER_MAX_GAME_MODES = 5
 export const DEFAULT_PAGINATION_LIMIT = 10
+export const MOBILE_MAX_WIDTH_PX = 767
 
 // default routes
 export const LOGIN_SUCCESS_REDIRECT_URL = '/'

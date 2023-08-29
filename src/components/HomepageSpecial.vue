@@ -1,5 +1,5 @@
 <template>
-  <div class="m-auto" :class="{'w-75': !isMobile}">
+  <div class="m-auto">
     <transition appear name="homepage-special-slide">
       <div ref="homepageSpecialExpectedOutput" class="bg-dark text-light p-2 disabled">
         <span

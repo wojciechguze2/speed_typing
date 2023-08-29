@@ -1,6 +1,8 @@
 <template>
   <div class="wrapper">
-    <MainHeader />
+    <MainHeader
+        :key="mainHeaderKey"
+    />
     <router-view
         @flash-alert="flashAlert"
     />
@@ -26,7 +28,6 @@ import MainFooter from '@/components/MainFooter'
 import { defineAsyncComponent } from 'vue'
 import {
   ALERT_TIMEOUT,
-  ALERT_TYPE_INFO
 } from '@/plugins/constants'
 import { generateRandomString } from '@/plugins/helpers'
 
@@ -44,6 +45,7 @@ export default {
       windowWidth: window.innerWidth,
       windowHeight: window.innerHeight,
       alerts: [],
+      mainHeaderKey: 0
     }
   },
   mounted() {
@@ -53,6 +55,9 @@ export default {
     window.removeEventListener('resize', this.resizeAlert)
   },
   methods: {
+    /**
+     * todo: make navbar responsive (not like this)
+     */
     resizeAlert() {
       const windowWidth = window.innerWidth,
           windowHeight = window.innerHeight
@@ -60,15 +65,8 @@ export default {
       const widthDifference = Math.abs(windowWidth - this.windowWidth)
       const heightDifference = Math.abs(windowHeight - this.windowHeight)
 
-      if (widthDifference >= 50 && heightDifference >= 50) {  // todo: maybe take it from constants
-        this.windowWidth = windowWidth
-        this.windowHeight = windowHeight
-
-        this.flashAlert({ // todo: maybe add translation
-          'type': ALERT_TYPE_INFO,
-          'title': 'Screen size changed',
-          'message': 'Hit ctrl + R to refresh the page.'
-        })
+      if (widthDifference >= 25 && heightDifference >= 25) {
+        this.mainHeaderKey += 1
       }
     },
     /**
