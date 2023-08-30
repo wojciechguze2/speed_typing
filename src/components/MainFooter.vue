@@ -14,22 +14,22 @@
                 </router-link>
               </li>
               <li>
-                <router-link to="/texts" class="text-white footer-link" aria-label="Texts">
+                <router-link to="/texts" class="text-white footer-link">
                   {{ $t('messages.texts_list') }}
                 </router-link>
               </li>
               <li>
-                <a href="/regulations" class="text-white footer-link" aria-label="Regulations">
+                <a href="/regulations" class="text-white footer-link">
                   {{ $t('messages.regulations') }}
                 </a>
               </li>
               <li>
-                <a href="/privacy-policy" class="text-white footer-link" aria-label="Privacy policy">
+                <a href="/privacy-policy" class="text-white footer-link">
                   {{ $t('messages.privacy_policy') }}
                 </a>
               </li>
               <li>
-                <router-link to="/contact" class="text-white footer-link" aria-label="Contact form">
+                <router-link to="/contact" class="text-white footer-link">
                   {{ $t('messages.contact') }}
                 </router-link>
               </li>
