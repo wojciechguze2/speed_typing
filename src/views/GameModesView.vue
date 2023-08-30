@@ -37,6 +37,9 @@ export default {
   components: {
     Loader
   },
+  emits: [
+    'flash-alert'
+  ],
   data() {
     return {
       loading: true,

@@ -1,5 +1,5 @@
 <template>
-  <div class="col-lg-4 my-2">
+  <div class="col-lg-4 my-2" role="presentation">
     <transition name="homepage-special-slide-reverse">
       <div v-if="!loading" class="card bg-dark text-white p-3">
         <div class="card-title">
@@ -14,7 +14,10 @@
           <!--<router-link to="/" class="text-decoration-none link-primary">
             {{ $t('homepage.cards.card_1.footer') }}
           </router-link>-->
-          <LanguagesDropdown label-type="name" />
+          <LanguagesDropdown
+              label-type="name"
+              id-postfix="homepage-cards"
+          />
         </div>
       </div>
     </transition>

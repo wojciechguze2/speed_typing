@@ -16,7 +16,7 @@
   }
 
   .homepage-special-slide-enter-active {
-    animation: homepage-special-slide-animation .5s;
+    animation: homepage-special-slide-animation .4s;
 
     @media (max-width: $max-mobile-width) {
       animation: homepage-special-slide-animation .2s;
@@ -24,7 +24,7 @@
   }
 
   .homepage-special-slide-reverse-enter-active {
-    animation: homepage-special-slide-reverse-animation .5s;
+    animation: homepage-special-slide-reverse-animation .4s;
 
     @media (max-width: $max-mobile-width) {
       animation: homepage-special-slide-reverse-animation .2s;
@@ -103,7 +103,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-size: 200% auto;
-    animation: link-appear-animation .8s ease-out alternate;
+    animation: link-appear-animation .6s ease-out alternate;
   }
 }
 

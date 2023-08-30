@@ -10,11 +10,10 @@
           'text-primary': !isoLabels
         }"
         type="button"
-        id="language-dropdown"
+        :id="`language-dropdown-${idPostfix}`"
         data-bs-toggle="dropdown"
         aria-expanded="false"
     >
-      <!--{{ $t('messages.change_language') }}-->
       {{ isoLabels ? currentLocaleIso : currentLocale.name }}
     </button>
     <ul class="dropdown-menu" aria-labelledby="game-mode-dropdown">
@@ -45,6 +44,10 @@ export default {
     additionalClass: {
       type: String,
       required: false
+    },
+    idPostfix: {
+      type: String,
+      default: '0'
     }
   },
   data() {

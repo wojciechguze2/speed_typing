@@ -1,5 +1,5 @@
 <template>
-  <div class="homepage">
+  <div class="homepage" role="main">
     <div class="container text-center" :class="isMobile ? 'py-3' : 'py-5'">
       <h1 class="display-4 font-weight-bold">
         {{ TITLE }}

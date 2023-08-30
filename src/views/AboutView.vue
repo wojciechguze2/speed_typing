@@ -12,7 +12,7 @@
             <ul>
               <li>
                 Vue.js
-                <a href="https://vuejs.org/">
+                <a href="https://vuejs.org/" aria-label="Vue.js Webiste">
                   <transition appear name="about-slide">
                     <font-awesome-icon :icon="['fab', 'vuejs']" />
                   </transition>
@@ -20,7 +20,7 @@
               </li>
               <li>
                 Bootstrap
-                <a href="https://getbootstrap.com/">
+                <a href="https://getbootstrap.com/" aria-label="Bootstrap Webiste">
                   <transition appear name="about-slide">
                     <font-awesome-icon :icon="['fab', 'bootstrap']" />
                   </transition>
@@ -28,7 +28,7 @@
               </li>
               <li>
                 FontAwesome
-                <a href="https://fontawesome.com/">
+                <a href="https://fontawesome.com/" aria-label="FontAwesome Webiste">
                   <transition appear name="about-slide">
                     <font-awesome-icon :icon="['fab', 'font-awesome']" />
                   </transition>
@@ -41,7 +41,7 @@
             <ul>
               <li>
                 Python3 - Django
-                <a href="https://www.djangoproject.com/">
+                <a href="https://www.djangoproject.com/" aria-label="Python 3 Django Webiste">
                   <transition appear name="about-slide">
                     <font-awesome-icon :icon="['fab', 'python']" />
                   </transition>
@@ -49,7 +49,7 @@
               </li>
               <li>
                 PostgreSQL
-                <a href="https://www.postgresql.org/">
+                <a href="https://www.postgresql.org/" aria-label="PostgeSQL Webiste">
                   <transition appear name="about-slide">
                     <font-awesome-icon icon="database" />
                   </transition>
@@ -57,7 +57,7 @@
               </li>
               <li>
                 Texts generator -
-                <a href="https://openai.com/">
+                <a href="https://openai.com/" aria-label="OpenAI Webiste">
                   <transition appear name="about-slide">
                     OpenAI
                   </transition>

@@ -123,6 +123,7 @@ export default {
     Loader
   },
   emits: [
+      'flash-alert',
       'update-game-mode-code'
   ],
   props: {
@@ -278,6 +279,17 @@ export default {
           title: this.$t(`${ALERT_GAME_LOSS_TITLE_CODE}`),
           message: this.$t(`${ALERT_GAME_LOSS_MESSAGE_CODE}`),
         })
+
+        return
+      }
+
+      if (!this.$store.getters.isAuthenticated) {
+        this.$emit('flash-alert', {
+          type: ALERT_TYPE_INFO,
+          title: this.$t(`${ALERT_SAVE_GAME_USER_NOT_LOGGED_ERROR_TITLE_CODE}`),
+          message: this.$t(`${ALERT_SAVE_GAME_USER_NOT_LOGGED_ERROR_MESSAGE_CODE}`),
+        })
+
         return
       }
 

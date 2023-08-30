@@ -1,5 +1,5 @@
 <template>
-  <footer ref="mainFooter" class="footer footer-animation bg-dark text-white w-100 mt-auto mb-0">
+  <footer ref="mainFooter" class="footer footer-animation bg-dark text-white w-100 mt-auto mb-0" role="contentinfo">
     <div class="flex-grow-1">
       <div class="container" :class="isMobile ? 'pt-5 pb-3' : 'py-5'">
         <div class="row">
@@ -14,22 +14,22 @@
                 </router-link>
               </li>
               <li>
-                <router-link to="/texts" class="text-white footer-link">
+                <router-link to="/texts" class="text-white footer-link" aria-label="Texts">
                   {{ $t('messages.texts_list') }}
                 </router-link>
               </li>
               <li>
-                <a href="/regulations" class="text-white footer-link">
+                <a href="/regulations" class="text-white footer-link" aria-label="Regulations">
                   {{ $t('messages.regulations') }}
                 </a>
               </li>
               <li>
-                <a href="/privacy-policy" class="text-white footer-link">
+                <a href="/privacy-policy" class="text-white footer-link" aria-label="Privacy policy">
                   {{ $t('messages.privacy_policy') }}
                 </a>
               </li>
               <li>
-                <router-link to="/contact" class="text-white footer-link">
+                <router-link to="/contact" class="text-white footer-link" aria-label="Contact form">
                   {{ $t('messages.contact') }}
                 </router-link>
               </li>
@@ -68,6 +68,7 @@
           target="_blank"
           rel="noopener noreferrer"
           class="me-4"
+          aria-label="Linkedin account"
       >
         <font-awesome-icon :icon="['fab', 'linkedin']" class="text-white" size="2x" />
       </a>
@@ -76,6 +77,7 @@
           target="_blank"
           rel="noopener noreferrer"
           class="me-4"
+          aria-label="GitHub account"
       >
         <font-awesome-icon :icon="['fab', 'github']" class="text-white" size="2x" />
       </a>
@@ -84,6 +86,7 @@
           target="_blank"
           rel="noopener noreferrer"
           class="me-4"
+          aria-label="Send me an e-mail"
       >
         <font-awesome-icon icon="envelope" class="text-white" size="2x" />
       </a>
@@ -92,6 +95,7 @@
           target="_blank"
           rel="noopener noreferrer"
           class="me-4"
+          aria-label="Call me"
       >
         <font-awesome-icon icon="phone" class="text-white" size="2x" />
       </a>

@@ -63,6 +63,9 @@ export default {
     AccountTabs,
     Loader
   },
+  emits: [
+      'flash-alert'
+  ],
   data() {
     return {
       loading: true,

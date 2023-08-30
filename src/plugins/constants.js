@@ -9,7 +9,7 @@ export const MOBILE_MAX_WIDTH_PX = 767
 
 // default routes
 export const LOGIN_SUCCESS_REDIRECT_URL = '/'
-export const REGISTER_SUCCESS_REDIRECT_URL = '/'
+export const REGISTER_SUCCESS_REDIRECT_URL = '/login'
 export const DEFAULT_AUTHENTICATED_REDIRECT_URL = '/'
 export const LANGUAGE_CHANGE_REDIRECT_URL = '/'
 export const DEFAULT_NOT_AUTHENTICATED_REDIRECT_URL = '/login'

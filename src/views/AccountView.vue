@@ -108,6 +108,9 @@ export default {
     AccountTabs,
     Loader
   },
+  emits: [
+    'flash-alert'
+  ],
   data() {
     return {
       deleteModalOpened: false,
@@ -179,7 +182,7 @@ export default {
     async editAccount(email, password) {
       const url = `${process.env.VUE_APP_BACKEND_URL}/api/user`
 
-      if (!validateEmail(email)) {
+      if (!validateEmail(email) && ACCOUNT_EMAIL_CHANGE_AVAILABLE) {
         this.$emit('flash-alert', {
           type: ALERT_TYPE_DANGER,
           message: this.$t(`${ALERT_EMAIL_VALIDATION_ERROR_MESSAGE_CODE}`),

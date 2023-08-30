@@ -58,6 +58,9 @@ export default {
     VueReCaptcha,
     Loader,
   },
+  emits: [
+    'flash-alert'
+  ],
   data() {
     return {
       loading: false,

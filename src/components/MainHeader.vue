@@ -3,10 +3,11 @@
     <button
         class="d-sm-block d-md-none align-self-start btn btn-dark"
         @click="toggleMenu"
+        aria-label="Toggle header menu button"
     >
       <font-awesome-icon icon="bars" />
     </button>
-    <div class="navbar-container mx-auto d-flex justify-content-between align-items-center">
+    <div class="navbar-container mx-auto d-flex justify-content-between align-items-center" role="navigation">
       <router-link
           to="/"
           class="navbar-brand link-appear font-weight-bold"
@@ -49,6 +50,7 @@
             to="/account"
             class="nav-link mx-3 text-primary"
             :class="{'py-1': isMobile}"
+            aria-label="My account"
         >
           <font-awesome-icon icon="user" size="lg" />
           <span v-if="isMobile" class="mx-2">
@@ -60,16 +62,24 @@
             to="/login"
             class="nav-link mx-3"
             :class="{'py-1': isMobile}"
+            aria-label="Sign in"
         >
           <font-awesome-icon icon="user" size="lg" />
           <span v-if="isMobile" class="mx-2">
             {{ $t(`messages.login`) }}
           </span>
         </router-link>
-        <LanguagesDropdown v-if="!isMobile" />
+        <LanguagesDropdown
+            v-if="!isMobile"
+            id-postfix="header-desktop"
+        />
       </div>
     </div>
-    <LanguagesDropdown v-if="isMobile" additional-class="me-1 my-1 align-self-start" />
+    <LanguagesDropdown
+        v-if="isMobile"
+        additional-class="me-1 my-1 align-self-start"
+        id-postfix="header-mobile"
+    />
   </header>
 </template>
 

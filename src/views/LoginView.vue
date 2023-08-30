@@ -111,6 +111,9 @@ export default {
     VueReCaptcha,
     LoginSpecial
   },
+  emits: [
+    'flash-alert'
+  ],
   data() {
     return {
       errorMessage: '',

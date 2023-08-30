@@ -2,13 +2,15 @@
   <div class="m-auto">
     <transition appear name="homepage-special-slide">
       <div ref="homepageSpecialExpectedOutput" class="bg-dark text-light p-2 disabled">
-        <span
-            v-for="(expectedChar, index) in expectedOutput"
-            :key="index"
-            :class="{'text-primary': isCharCorrect(index)}"
-        >
-          {{ expectedChar }}
-        </span>
+        <label for="homepage-special-textarea">
+          <span
+              v-for="(expectedChar, index) in expectedOutput"
+              :key="index"
+              :class="{'text-primary': isCharCorrect(index)}"
+          >
+            {{ expectedChar }}
+          </span>
+        </label>
       </div>
     </transition>
     <transition name="homepage-special-fade-out">

@@ -98,9 +98,6 @@ import {
 import { validateEmail } from '@/plugins/validators'
 import { VueReCaptcha } from 'vue-recaptcha-v3'
 import Loader from '@/components/Loader'
-import {
-  setAuthentication
-} from '@/plugins/helpers'
 
 export default {
   name: 'RegisterView',
@@ -109,6 +106,9 @@ export default {
     VueReCaptcha,
     Loader
   },
+  emits: [
+    'flash-alert'
+  ],
   data() {
     return {
       email: '',
@@ -149,15 +149,16 @@ export default {
       }
 
       try {
-        const url = `${process.env.VUE_APP_BACKEND_URL}/api/users/register`,
-            response = await axios.post(url, registerData) // todo: confirmation
+        const url = `${process.env.VUE_APP_BACKEND_URL}/api/users/register`
+
+        await axios.post(url, registerData) // todo: confirmation
 
         this.$emit('flash-alert', {
           type: ALERT_TYPE_SUCCESS,
           message: this.$t(`${ALERT_DEFAULT_SUCCESS_MESSAGE_CODE}`),
         })
 
-        setAuthentication(response.data.token)
+        // setAuthentication(response.data.token)
         this.$router.push(REGISTER_SUCCESS_REDIRECT_URL)
       } catch (error) {
         this.errorMessage = error.response && error.response.status === 409

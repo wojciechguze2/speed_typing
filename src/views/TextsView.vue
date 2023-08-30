@@ -4,7 +4,7 @@
     <div v-else>
       <table class="mx-auto my-5 table table-responsive table-bordered text-center">
         <thead>
-          <tr>
+          <tr> <!-- todo: add filters -->
             <th>{{ $t('texts.text') }}</th>
             <!--<th>{{ $t('messages.author') }}</th>
             <th>{{ $t('messages.language') }}</th>-->

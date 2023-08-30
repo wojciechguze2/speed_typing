@@ -3,6 +3,7 @@
     <MainGame
         :game-mode-code="gameModeCode"
         @update-game-mode-code="updateGameModeCode"
+        @flash-alert="flashAlert"
     />
   </div>
 </template>
@@ -15,6 +16,9 @@ export default {
   components: {
     MainGame
   },
+  emits: [
+    'flash-alert'
+  ],
   created() {
     scrollToTop()
   },
@@ -26,6 +30,9 @@ export default {
   methods: {
     updateGameModeCode(gameModeCode) {
       this.gameModeCode = gameModeCode
+    },
+    flashAlert(alertData) {
+      this.$emit('flash-alert', alertData)
     }
   }
 }

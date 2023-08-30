@@ -1,0 +1,7 @@
+User-agent: *
+
+Disallow: /de
+Disallow: /pl
+Disallow: /en
+Disallow: /logout
+Disallow: /account/*

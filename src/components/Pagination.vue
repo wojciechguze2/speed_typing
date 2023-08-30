@@ -30,7 +30,7 @@
         <br>
       </div>
       <span class="row d-flex justify-content-center mt-2">
-        {{ $t('pagination.page') }}: ({{ currentPage }} z {{ totalPages }})
+        {{ $t('pagination.page') }}: ({{ currentPage }} / {{ totalPages }})
       </span>
     </template>
   </div>
