@@ -1,6 +1,8 @@
-import { library } from '@fortawesome/fontawesome-svg-core'
-
 export const loadIcons = async () => {
+    const {
+        library
+    } = await import('@fortawesome/fontawesome-svg-core')
+
     const {
         faPlay,
         faFlag,

@@ -29,4 +29,18 @@ module.exports = defineConfig({
       },
     },
   },
+  pwa: {
+    name: 'Typing speed test',
+    themeColor: '#212529FF',
+    msTileColor: '#1473ff',
+    appleMobileWebAppCapable: 'yes',
+    appleMobileWebAppStatusBarStyle: 'black-translucent',
+    iconPaths: {
+        faviconSVG: 'img/icons/favicon-192x192.svg',
+        favicon32: 'img/icons/favicon-32x32.ico',
+        favicon16: 'img/icons/favicon-16x16.ico',
+        appleTouchIcon: 'img/icons/favicon-152x152.ico',
+        msTileImage: 'img/icons/favicon-144x144.ico'
+    }
+  }
 })
