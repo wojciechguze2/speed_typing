@@ -7,6 +7,9 @@ export const FOOTER_MAX_GAME_MODES = 5
 export const DEFAULT_PAGINATION_LIMIT = 10
 export const MOBILE_MAX_WIDTH_PX = 767
 
+// cache
+export const TRANSLATIONS_CACHE_KEY_PREFIX = 'translations_'
+
 // default routes
 export const LOGIN_SUCCESS_REDIRECT_URL = '/'
 export const REGISTER_SUCCESS_REDIRECT_URL = '/login'

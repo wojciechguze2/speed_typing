@@ -2,70 +2,15 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from '@/router'
 import store from '@/store'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import {
-    faPlay,
-    faList,
-    faFlag,
-    faDatabase,
-    faChartPie,
-    faRefresh,
-    faPause,
-    faEraser,
-    faEnvelope,
-    faPhone,
-    faUser,
-    faTrashCan,
-    faPen,
-    faTimes,
-    faGamepad,
-    faRandom,
-    faCircle,
-    faBars
-} from '@fortawesome/free-solid-svg-icons'
-import {
-    faLinkedin,
-    faGithub,
-    faVuejs,
-    faBootstrap,
-    faPython,
-    faFontAwesome,
-} from '@fortawesome/free-brands-svg-icons'
+
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { VueReCaptcha } from 'vue-recaptcha-v3'
 import getI18n from '@/languages'
 import { MOBILE_MAX_WIDTH_PX } from '@/plugins/constants'
-
-library.add(
-    faPlay,
-    faList,
-    faLinkedin,
-    faGithub,
-    faFlag,
-    faDatabase,
-    faChartPie,
-    faRefresh,
-    faPause,
-    faEraser,
-    faEnvelope,
-    faPhone,
-    faVuejs,
-    faBootstrap,
-    faPython,
-    faFontAwesome,
-    faUser,
-    faTrashCan,
-    faPen,
-    faTimes,
-    faGamepad,
-    faRandom,
-    faCircle,
-    faBars
-)
+import { loadIcons } from '@/plugins/icons'
 
 const i18n = await getI18n(),
     app = createApp(App)
-
 
 app.use(router)
 app.use(store)
@@ -82,5 +27,6 @@ window.addEventListener('resize', () => {
     app.config.globalProperties.isMobile = window.matchMedia(`(max-width: ${MOBILE_MAX_WIDTH_PX}px)`).matches
 })
 
-
-app.mount('#app')
+loadIcons().then(() => {
+    app.mount('#app')
+})

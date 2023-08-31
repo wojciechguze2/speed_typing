@@ -1,7 +1,8 @@
 import { createI18n } from 'vue-i18n'
 import {
     AVAILABLE_LOCALES,
-    DEFAULT_LOCALE_ISO
+    DEFAULT_LOCALE_ISO,
+    TRANSLATIONS_CACHE_KEY_PREFIX
 } from '@/plugins/constants'
 import axios from '@/plugins/axios'
 
@@ -21,14 +22,27 @@ export function getLocale() {
     return window['LOCALE_ISO'] || localStorage.getItem('LOCALE_ISO') || getUrlLocale() || getPreferredLocale()
 }
 
+function getTranslationsCacheKey(localeIso) {
+    return `${TRANSLATIONS_CACHE_KEY_PREFIX}${localeIso}`
+}
+
 export async function fetchTranslations(localeIso) {
     try {
+        const translationsCacheKey = getTranslationsCacheKey(localeIso),
+            cachedTranslations = localStorage.getItem(translationsCacheKey)
+
+        if (cachedTranslations) {
+            return JSON.parse(cachedTranslations)
+        }
+
         let translations = await axios.get(`${process.env.VUE_APP_BACKEND_URL}/api/translations/${localeIso}`)
 
         translations = translations.data.reduce((obj, translation) => {
             obj[translation['base__code']] = translation.translation
             return obj
         }, {})
+
+        localStorage.setItem(translationsCacheKey, JSON.stringify(translations))
 
         return translations
     } catch (error) {
