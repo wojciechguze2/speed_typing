@@ -4,7 +4,7 @@ import router from '@/router'
 import store from '@/store'
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { VueReCaptcha } from 'vue-recaptcha-v3'
+// import { VueReCaptcha } from 'vue-recaptcha-v3'
 import getI18n from '@/languages'
 import { MOBILE_MAX_WIDTH_PX } from '@/plugins/constants'
 import { loadIcons } from '@/plugins/icons'
@@ -17,7 +17,7 @@ app.use(store)
 
 app.component('font-awesome-icon', FontAwesomeIcon)
 
-app.use(VueReCaptcha, {siteKey: process.env.VUE_RECAPTCHA_KEY})
+// app.use(VueReCaptcha, {siteKey: process.env.VUE_RECAPTCHA_KEY})
 
 app.use(i18n)
 

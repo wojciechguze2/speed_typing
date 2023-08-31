@@ -1,21 +1,21 @@
 @import 'variables.scss';
 
 .homepage {
-  .homepage-special-fade-out-enter-active,
-  .homepage-special-fade-out-leave-active {
+  .transition-homepage-special-fade-out-enter-active,
+  .transition-homepage-special-fade-out-leave-active {
     transition: opacity 3s;
   }
 
-  .homepage-special-fade-out-leave-active {
+  .transition-homepage-special-fade-out-leave-active {
     color: $homepage-primary-light;
   }
 
-  .homepage-special-fade-out-enter,
-  .homepage-special-fade-out-leave-to {
+  .transition-homepage-special-fade-out-enter,
+  .transition-homepage-special-fade-out-leave-to {
     opacity: 0;
   }
 
-  .homepage-special-slide-enter-active {
+  .transition-homepage-special-slide-enter-active {
     animation: homepage-special-slide-animation .4s;
 
     @media (max-width: $max-mobile-width) {
@@ -23,7 +23,7 @@
     }
   }
 
-  .homepage-special-slide-reverse-enter-active {
+  .transition-homepage-special-slide-reverse-enter-active {
     animation: homepage-special-slide-reverse-animation .4s;
 
     @media (max-width: $max-mobile-width) {

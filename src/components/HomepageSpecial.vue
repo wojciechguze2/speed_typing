@@ -1,6 +1,6 @@
 <template>
   <div class="m-auto">
-    <transition appear name="homepage-special-slide">
+    <transition appear name="transition-homepage-special-slide">
       <div ref="homepageSpecialExpectedOutput" class="bg-dark text-light p-2 disabled">
         <label for="homepage-special-textarea">
           <span
@@ -13,7 +13,7 @@
         </label>
       </div>
     </transition>
-    <transition name="homepage-special-fade-out">
+    <transition name="transition-homepage-special-fade-out">
       <textarea
           v-if="!finished"
           id="homepage-special-textarea"
@@ -26,7 +26,7 @@
       />
     </transition>
     <div class="mt-4">
-      <transition appear name="homepage-special-slide">
+      <transition appear name="transition-homepage-special-slide">
         <Keyboard :current-char="currentChar" />
       </transition>
     </div>

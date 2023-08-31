@@ -48,9 +48,9 @@
             <div v-if="errorMessage" class="alert alert-danger">
               {{ errorMessage }}
             </div>
-            <div class="my-2">
+            <!--<div class="my-2">
               <vue-recaptcha ref="recaptcha" @verify="onRecaptchaVerify" />
-            </div>
+            </div>-->
             <div class="d-grid mb-5">
               <input type="submit" :value="$t('messages.login')" class="btn btn-primary btn-xl" data-dismiss="modal" />
             </div>
@@ -95,7 +95,7 @@ import {
   TITLE,
   USER_IS_NOT_ACTIVE_MESSAGE
 } from '@/plugins/constants'
-import { VueReCaptcha } from 'vue-recaptcha-v3'
+// import { VueReCaptcha } from 'vue-recaptcha-v3'
 import LoginSpecial from '@/components/LoginSpecial'
 import Loader from '@/components/Loader'
 import {
@@ -108,7 +108,7 @@ export default {
   components: {
     Loader,
     // eslint-disable-next-line vue/no-unused-components
-    VueReCaptcha,
+    // VueReCaptcha,
     LoginSpecial
   },
   emits: [
@@ -134,9 +134,11 @@ export default {
     scrollToTop()
   },
   methods: {
+    /*
     onRecaptchaVerify(recaptchaToken) {
       this.recaptchaToken = recaptchaToken
     },
+     */
     async login() {
       this.errorMessage = ''
 

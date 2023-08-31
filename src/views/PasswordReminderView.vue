@@ -30,9 +30,9 @@
             <div v-if="errorMessage" class="alert alert-danger">
               {{ errorMessage }}
             </div>
-            <div class="my-2">
+            <!--<div class="my-2">
               <vue-recaptcha ref="recaptcha" @verify="onRecaptchaVerify" />
-            </div>
+            </div>-->
             <div class="d-grid mb-3">
               <input type="submit" :value="$t('messages.remind_password')" class="btn btn-primary btn-xl" data-dismiss="modal" />
             </div>
@@ -58,7 +58,7 @@ import {
   REGISTER_ENABLED,
   TITLE,
 } from '@/plugins/constants'
-import { VueReCaptcha } from 'vue-recaptcha-v3'
+// import { VueReCaptcha } from 'vue-recaptcha-v3'
 import LoginSpecial from '@/components/LoginSpecial'
 import Loader from '@/components/Loader'
 import {
@@ -70,7 +70,7 @@ export default {
   components: {
     Loader,
     // eslint-disable-next-line vue/no-unused-components
-    VueReCaptcha,
+    // VueReCaptcha,
     LoginSpecial
   },
   data() {
@@ -94,9 +94,11 @@ export default {
     scrollToTop()
   },
   methods: {
+    /*
     onRecaptchaVerify(recaptchaToken) {
       this.recaptchaToken = recaptchaToken
     },
+     */
     async remindPassword() {
       this.errorMessage = 'Not implemented'
     }

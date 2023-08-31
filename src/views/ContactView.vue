@@ -27,9 +27,9 @@
       <div v-if="formMessage">
         {{ formMessage }}
       </div>
-      <div class="mb-3">
+      <!--<div class="mb-3">
         <vue-recaptcha ref="recaptcha" @verify="onRecaptchaVerify" />
-      </div>
+      </div>-->
       <button type="submit" class="btn btn-primary" :class="{'disabled': !isContactAvailable}">{{ $t('messages.send') }}</button>
       <Loader v-if="loading" />
     </form>
@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { VueReCaptcha } from 'vue-recaptcha-v3'
+// import { VueReCaptcha } from 'vue-recaptcha-v3'
 import { validateEmail } from '@/plugins/validators'
 import {
   ALERT_DEFAULT_ERROR_MESSAGE_CODE,
@@ -55,7 +55,7 @@ export default {
   name: 'ContactView',
   components: {
     // eslint-disable-next-line vue/no-unused-components
-    VueReCaptcha,
+    // VueReCaptcha,
     Loader,
   },
   emits: [
@@ -70,7 +70,7 @@ export default {
       email: '',
       phone: '',
       message: '',
-      recaptchaToken: null,
+      // recaptchaToken: null,
       errorMessage: '',
       isContactAvailable: true
     }
@@ -93,9 +93,11 @@ export default {
             })
       }
     },
+    /*
     onRecaptchaVerify(recaptchaToken) {
       this.recaptchaToken = recaptchaToken
     },
+     */
     submitForm() {
       if (!validateEmail(this.email)) {
         this.errorMessage = this.$t(EMAIL_NOT_VALID_MESSAGE)

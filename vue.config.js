@@ -14,6 +14,13 @@ module.exports = defineConfig({
       new CompressionPlugin(),
       new PurgeCSSPlugin({
         paths: glob.sync(`${path.join(__dirname, 'src')}/**/*`,  { nodir: true }),
+        safelist: [
+            /-(leave|enter|appear)(|-(to|from|active))$/,
+            /^(?!(|.*?:)cursor-move).+-move$/,
+            /^router-link(|-exact)-active$/,
+            /data-v-.*/,
+            /^transition-/,
+        ],
       }),
     ],
     resolve: {

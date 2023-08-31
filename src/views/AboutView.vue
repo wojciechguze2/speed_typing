@@ -13,7 +13,7 @@
               <li>
                 Vue.js
                 <a href="https://vuejs.org/" aria-label="Vue.js Webiste">
-                  <transition appear name="about-slide">
+                  <transition appear name="transition-about-slide">
                     <font-awesome-icon :icon="['fab', 'vuejs']" />
                   </transition>
                 </a>
@@ -21,7 +21,7 @@
               <li>
                 Bootstrap
                 <a href="https://getbootstrap.com/" aria-label="Bootstrap Webiste">
-                  <transition appear name="about-slide">
+                  <transition appear name="transition-about-slide">
                     <font-awesome-icon :icon="['fab', 'bootstrap']" />
                   </transition>
                 </a>
@@ -29,7 +29,7 @@
               <li>
                 FontAwesome
                 <a href="https://fontawesome.com/" aria-label="FontAwesome Webiste">
-                  <transition appear name="about-slide">
+                  <transition appear name="transition-about-slide">
                     <font-awesome-icon :icon="['fab', 'font-awesome']" />
                   </transition>
                 </a>
@@ -42,7 +42,7 @@
               <li>
                 Python3 - Django
                 <a href="https://www.djangoproject.com/" aria-label="Python 3 Django Webiste">
-                  <transition appear name="about-slide">
+                  <transition appear name="transition-about-slide">
                     <font-awesome-icon :icon="['fab', 'python']" />
                   </transition>
                 </a>
@@ -50,7 +50,7 @@
               <li>
                 PostgreSQL
                 <a href="https://www.postgresql.org/" aria-label="PostgeSQL Webiste">
-                  <transition appear name="about-slide">
+                  <transition appear name="transition-about-slide">
                     <font-awesome-icon icon="database" />
                   </transition>
                 </a>
@@ -58,7 +58,7 @@
               <li>
                 Texts generator -
                 <a href="https://openai.com/" aria-label="OpenAI Webiste">
-                  <transition appear name="about-slide">
+                  <transition appear name="transition-about-slide">
                     OpenAI
                   </transition>
                 </a>

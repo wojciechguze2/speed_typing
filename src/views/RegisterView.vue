@@ -53,9 +53,9 @@
                 <div v-if="errorMessage" class="alert alert-danger">
                   {{ errorMessage }}
                 </div>
-                <div class="mb-3">
+                <!--<div class="mb-3">
                   <vue-recaptcha ref="recaptcha" @verify="onRecaptchaVerify" />
-                </div>
+                </div>-->
                 <div class="form-group">
                   <button class="btn btn-primary" id="register" type="submit" name="registerSubmit">
                     {{ $t('messages.register') }}
@@ -96,14 +96,14 @@ import {
   ALERT_DEFAULT_SUCCESS_MESSAGE_CODE
 } from '@/plugins/constants'
 import { validateEmail } from '@/plugins/validators'
-import { VueReCaptcha } from 'vue-recaptcha-v3'
+// import { VueReCaptcha } from 'vue-recaptcha-v3'
 import Loader from '@/components/Loader'
 
 export default {
   name: 'RegisterView',
   components: {
     // eslint-disable-next-line vue/no-unused-components
-    VueReCaptcha,
+    // VueReCaptcha,
     Loader
   },
   emits: [
@@ -125,9 +125,11 @@ export default {
     }
   },
   methods: {
+    /*
     onRecaptchaVerify(recaptchaToken) {
       this.recaptchaToken = recaptchaToken
     },
+     */
     async register() {
       this.errorMessage = ''
 
