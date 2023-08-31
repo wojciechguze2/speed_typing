@@ -1,24 +1,29 @@
 # speed_typing
 
-## Project setup
-```
-yarn install
-```
+## Typing speed test - frontend
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+Frontend został napisany we Vue.js [(Vue CLI)](https://cli.vuejs.org/config/),
+posiada kilka drobnych rzeczy do poprawy oznaczonych jako "todo:".
 
-### Compiles and minifies for production
+Na dzień dzisiejszy (01.09.2023) nie planuję, przynajmniej w najbliższej przyszłości, rozwijać tego projektu.
+
+Strona jest dostępna pod adresem [typingspeedtest.ovh](https://typingspeedtest.ovh/)
+
+Backend: [speed_typing_backend](https://github.com/wojciechguze2/speed_typing_backend)
+
+### Production build
+```
+yarn build
+```
+### Development
 ```
 yarn build
 ```
 
-### Lints and fixes files
-```
-yarn lint
-```
+### PageSpeed Insights
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Desktop:
+![image](https://github.com/wojciechguze2/speed_typing/assets/36681523/0b8b8173-b425-4a38-8b45-544554df78ce)
+
+Mobile:
+![image](https://github.com/wojciechguze2/speed_typing/assets/36681523/e5e8b843-d2fb-4b8b-9e9d-bc3775dd87d9)
