@@ -27,3 +27,10 @@ Desktop:
 
 Mobile:
 ![image](https://github.com/wojciechguze2/speed_typing/assets/36681523/e5e8b843-d2fb-4b8b-9e9d-bc3775dd87d9)
+
+
+### TODO:
+- game cheat protections
+![image](https://github.com/wojciechguze2/speed_typing/assets/36681523/d3e63086-eb5f-4531-8dbd-b8a56c712e3c)
+- recaptcha
+- other things marked "todo:" in code
