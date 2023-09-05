@@ -41,9 +41,9 @@
             </p>
             <ul class="list-unstyled">
               <li v-for="popularGameMode in mostPopularGameModes" v-bind:key="popularGameMode.id">
-                <router-link :to="`/game/${popularGameMode.code}`" class="text-white footer-link">
+                <a :href="`/game/${popularGameMode.code}`" class="text-white footer-link">
                   {{ $t(`game_mode.${popularGameMode.code}`) }}
-                </router-link>
+                </a>
               </li>
             </ul>
           </div>
@@ -53,9 +53,9 @@
             </p>
             <ul class="list-unstyled">
               <li v-for="newGameMode in newGameModes" v-bind:key="newGameMode.id">
-                <router-link :to="`/game/${newGameMode.code}`" class="text-white footer-link">
+                <a :href="`/game/${newGameMode.code}`" class="text-white footer-link">
                   {{ $t(`game_mode.${newGameMode.code}`) }}
-                </router-link>
+                </a>
               </li>
             </ul>
           </div>
