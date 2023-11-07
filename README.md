@@ -7,8 +7,6 @@ posiada kilka drobnych rzeczy do poprawy oznaczonych jako "todo:".
 
 Na dzień dzisiejszy (01.09.2023) nie planuję, przynajmniej w najbliższej przyszłości, rozwijać tego projektu.
 
-Strona jest dostępna pod adresem [typingspeedtest.ovh](https://typingspeedtest.ovh/)
-
 Backend: [speed_typing_backend](https://github.com/wojciechguze2/speed_typing_backend)
 
 ### Production build
